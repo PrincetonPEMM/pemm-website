@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
 
-const Home: NextPage = () => {
+const Stories: NextPage = () => {
   return (
     <div>
         <h1>
-          Welcome to the PEMM home page
+          Stories
         </h1>
     </div>
   )
 }
 
-export default Home
+export default Stories
