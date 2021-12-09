@@ -1,0 +1,71 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@id": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100054876611.0x000001/manifest.json",
+    "@type": "sc:Manifest",
+    "sequences": [
+        {
+            "@id": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100054877440.0x000001",
+            "@type": "sc:Sequence",
+            "label": "Current Page Order",
+            "viewingDirection": "left-to-right",
+            "startCanvas": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100054877440.0x000002",
+            "canvases": [
+                {
+                    "@id": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100054877440.0x00000c",
+                    "@type": "sc:Canvas",
+                    "label": "f.5r",
+                    "width": 5026,
+                    "height": 5670,
+                    "images": [
+                        {
+                            "@type": "oa:Annotation",
+                            "motivation": "sc:painting",
+                            "resource": {
+                                "@id": "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054969783.0x00000b/full/max/0/default.jpg",
+                                "@type": "dctypes:Image",
+                                "format": "image/jpg",
+                                "service": {
+                                    "@context": "http://iiif.io/api/image/2/context.json",
+                                    "@id": "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054969783.0x00000b",
+                                    "protocol": "http://iiif.io/api/image",
+                                    "width": 5026,
+                                    "height": 5670,
+                                    "tiles": [
+                                        {
+                                            "scaleFactors": [
+                                                1,
+                                                2,
+                                                4,
+                                                8,
+                                                16,
+                                                32
+                                            ],
+                                            "width": 256
+                                        }
+                                    ],
+                                    "profile": [
+                                        "http://iiif.io/api/image/2/level2.json",
+                                        {
+                                            "qualities": [
+                                                "gray",
+                                                "color",
+                                                "bitonal"
+                                            ],
+                                            "supports": [
+                                                "profileLinkHeader",
+                                                "rotationArbitrary",
+                                                "regionSquare",
+                                                "mirroring"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "on": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100054877440.0x00000c"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
