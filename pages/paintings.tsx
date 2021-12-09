@@ -20,24 +20,25 @@ const PRINCETON_IMAGES = [
 ];
 
 const Paintings: NextPage = () => {
+  const imageStyles = "m-2";
   return (
     <div>
         <h1>
           Paintings
         </h1>
-        <div className="flex flex-wrap">
-        { 
-          IMAGES.map(function(image, i){
-            return <img className="m-2" key={i} src={"https://api.bl.uk/image/iiif/ark:/81055/" + 
-              image + 
-              "/full/400,/0/default.jpg"}></img>;
-        })}
-        { 
-          PRINCETON_IMAGES.map(function(image, i){
-            return <img className="m-2" key={i} src={"https://iiif-cloud.princeton.edu/iiif/2/" + 
-              image + 
-              "%2Fintermediate_file/full/400,/0/default.jpg"}></img>;
-        })}
+        <div className="flex flex-wrap justify-center ml-10">
+          { 
+            IMAGES.map(function(image, i){
+              return <img className={imageStyles} key={i} src={"https://api.bl.uk/image/iiif/ark:/81055/" + 
+                image + 
+                "/full/400,/0/default.jpg"}></img>;
+          })}
+          { 
+            PRINCETON_IMAGES.map(function(image, i){
+              return <img className={imageStyles} key={i} src={"https://iiif-cloud.princeton.edu/iiif/2/" + 
+                image + 
+                "%2Fintermediate_file/full/400,/0/default.jpg"}></img>;
+          })}
         </div>
     </div>
   )
