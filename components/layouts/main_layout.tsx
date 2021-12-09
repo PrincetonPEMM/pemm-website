@@ -15,7 +15,7 @@ const MainLayout = ({ children }: LayoutProps) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <NavBar/>
-          <main className="h-screen">
+          <main>
             {children}
           </main>
         <Footer/>
