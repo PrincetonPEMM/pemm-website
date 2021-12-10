@@ -23,6 +23,9 @@ const Paintings: NextPage = () => {
     },
     {
       loadedManifest: 'https://api.bl.uk/metadata/iiif/ark:/81055/vdc_100054876611.0x000001/manifest.json',
+    },
+    {
+      loadedManifest: 'https://figgy.princeton.edu/concern/scanned_resources/6717f91a-c1f9-473a-8e62-25d6d6a1bc0f/manifest',
     }],
   };
   return (
