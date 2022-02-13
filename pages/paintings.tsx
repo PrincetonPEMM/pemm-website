@@ -7,14 +7,23 @@ import PaginationButtons from '../components/elements/paginationButtons';
 
 const IMAGES_PER_PAGE = 9
 
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   //TODO: Update this URL
   const res = await fetch('http://localhost:3000/api/images/')
-  const images: Images = await res.json();
+  const images: Images[] = await res.json();
+  let imageUris = [];
+  for (let i = 0; i < images.length; i++) {
+    let breakup = images[i].image_link.split("full");
+    if (breakup.length === 3) {
+      images[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
+    }
+    imageUris.push(images[i].image_link);
+  }
   return {
     props: {
       data: {
-        imageUris: images.imageUris
+        imageUris: imageUris
       }
     }
   }
