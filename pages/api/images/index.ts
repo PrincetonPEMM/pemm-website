@@ -4,8 +4,6 @@ import AWS from 'aws-sdk';
 import Lambda from "aws-sdk/clients/lambda";
 import {AWSError} from 'aws-sdk/lib/error';
 
-const IMAGES = ['https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x00004d/full/full/0/default.jpg'];
-
 const lambda = new AWS.Lambda({
   apiVersion: "latest",
   region: "us-east-1",
