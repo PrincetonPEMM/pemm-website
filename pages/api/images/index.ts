@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type {Images} from '../../../components/types/images';
+import type {Paintings} from '../../../components/types/paintings';
 import AWS from 'aws-sdk';
 import Lambda from "aws-sdk/clients/lambda";
 import {AWSError} from 'aws-sdk/lib/error';
@@ -26,13 +26,15 @@ async function getAllImageUris() {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Images>
+  res: NextApiResponse<Paintings[]>
 ) {
   const images = getAllImageUris();
-  images.then((data) => {
-    let imagesObject : Images = JSON.parse(data).body;
-    res.status(200).json(imagesObject);
-  }).catch((error) => {
-    res.status(200).json({imageUris: error});
+  images.then((data: any) => {
+    let paintings : Paintings[] = JSON.parse(data).body;
+    res.status(200).send(paintings);
+    res.end();
+  }).catch(() => {
+    res.status(500).send([]);
+    res.end();
   });
 }

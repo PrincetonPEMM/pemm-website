@@ -1,7 +1,7 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import type {Images} from '../components/types/images';
+import type {Paintings} from '../components/types/paintings';
 import ImagesComponent from '../components/elements/imagesComponent';
 import PaginationButtons from '../components/elements/paginationButtons';
 
@@ -9,27 +9,39 @@ const IMAGES_PER_PAGE = 9
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(process.env.API + 'images/')
-  const images: Images[] = await res.json();
-  let imageUris = [];
-  for (let i = 0; i < images.length; i++) {
-    let breakup = images[i].image_link.split("full");
-    if (breakup.length === 3) {
-      //TODO: Update this and use a more standardized way to format how to display the image
-      images[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
-    }
-    imageUris.push(images[i].image_link);
-  }
-  return {
-    props: {
-      data: {
-        imageUris: imageUris
+  try {
+    const res = await fetch(process.env.API + 'images/');
+    const images: Paintings[] = await res.json();
+    let imageUris = [];
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].image_link) {
+        let breakup = images[i].image_link!.split("full");
+        if (breakup.length === 3) {
+          //TODO: Update this and use a more standardized way to format how to display the image
+          images[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
+        }
+        imageUris.push(images[i].image_link);
       }
     }
+    return {
+      props: {
+        data: {
+          imageUris: imageUris
+        }
+      }
+    }
+  } catch {
+      return {
+        props: {
+          data: {
+            imageUris: []
+          }
+        }
+      }
   }
 }
 
-const Paintings: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const PaintingsPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     // We start with an empty list of items.
     const emptyItems: string[] = [];
     const [currentItems, setCurrentItems] = useState(emptyItems);
@@ -78,4 +90,4 @@ const Paintings: NextPage = ({ data }: InferGetServerSidePropsType<typeof getSer
   )
 }
 
-export default Paintings
+export default PaintingsPage
