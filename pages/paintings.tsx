@@ -4,14 +4,15 @@ import ReactPaginate from 'react-paginate';
 import type {Paintings} from '../components/types/paintings';
 import ImagesComponent from '../components/elements/imagesComponent';
 import PaginationButtons from '../components/elements/paginationButtons';
+import axios from 'axios';
 
 const IMAGES_PER_PAGE = 9
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const res = await fetch(process.env.API + 'images/');
-    const images: Paintings[] = await res.json();
+    const res = await axios(process.env.API + 'images/');
+    const images: Paintings[] = await res.data;
     let imageUris = [];
     for (let i = 0; i < images.length; i++) {
         if (images[i].image_link) {
