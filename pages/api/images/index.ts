@@ -12,7 +12,6 @@ const lambda = new AWS.Lambda({
 async function getAllImageUris() {
   const params = {
     FunctionName: "getAllPaintingUrls",
-    Payload: "",
   };
   return new Promise ((resolve, reject) => {
     lambda.invoke(params, function(err: AWSError, data: Lambda.Types.InvocationResponse) {
