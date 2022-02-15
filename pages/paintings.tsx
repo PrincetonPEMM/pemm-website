@@ -1,47 +1,35 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-
-const IMAGES = [
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004e/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004f/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x000074/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00007b/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x000084/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000027/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000028/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000046/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x00004d/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000054/full/400,/0/default.jpg",
-  "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x0000e6/full/400,/0/default.jpg",
-  "https://iiif-cloud.princeton.edu/iiif/2/99%2F5b%2Fcc%2F995bcc2069dc451298f11bd8448be628%2Fintermediate_file/full/400,/0/default.jpg",
-  "https://iiif-cloud.princeton.edu/iiif/2/d9%2F19%2F40%2Fd91940a0919e43c98a5fe14f27ae0866%2Fintermediate_file/full/400,/0/default.jpg"
-];
+import type {Images} from '../components/types/images';
+import ImagesComponent from '../components/elements/imagesComponent';
+import PaginationButtons from '../components/elements/paginationButtons';
 
 const IMAGES_PER_PAGE = 9
 
-function Images(currentItems: any) {
-  const imageStyles = "m-2";
-  const images : string[] = currentItems.images;
-  return (
-    <>
-      { 
-        images.map(function(image, i){
-          return <img className={imageStyles} key={i} src={image}></img>;
-      })}
-    </>
-  );
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch(process.env.API + 'images/')
+  const images: Images[] = await res.json();
+  let imageUris = [];
+  for (let i = 0; i < images.length; i++) {
+    let breakup = images[i].image_link.split("full");
+    if (breakup.length === 3) {
+      //TODO: Update this and use a more standardized way to format how to display the image
+      images[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
+    }
+    imageUris.push(images[i].image_link);
+  }
+  return {
+    props: {
+      data: {
+        imageUris: imageUris
+      }
+    }
+  }
 }
 
-function PaginationButtons(text: string) {
-  return (
-    <>
-      <button className="bg-black text-white"> {text} </button>
-    </>
-  );
-}
-
-const Paintings: NextPage = () => {
+const Paintings: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     // We start with an empty list of items.
     const emptyItems: string[] = [];
     const [currentItems, setCurrentItems] = useState(emptyItems);
@@ -52,13 +40,13 @@ const Paintings: NextPage = () => {
     useEffect(() => {
       // Fetch items from another resources.
       const endOffset = itemOffset + IMAGES_PER_PAGE;
-      setCurrentItems(IMAGES.slice(itemOffset, endOffset));
-      setPageCount(Math.ceil(IMAGES.length / IMAGES_PER_PAGE));
+      setCurrentItems(data.imageUris.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(data.imageUris.length / IMAGES_PER_PAGE));
     }, [itemOffset, IMAGES_PER_PAGE]);
   
     // Invoke when user click to request another page.
     const handlePageClick = (event: any) => {
-      const newOffset = (event.selected * IMAGES_PER_PAGE) % IMAGES.length;
+      const newOffset = (event.selected * IMAGES_PER_PAGE) % data.imageUris.length;
       setItemOffset(newOffset);
     };
 
@@ -72,7 +60,7 @@ const Paintings: NextPage = () => {
           Paintings
         </h1>
         <div className="flex flex-wrap justify-center">
-          <Images {...imagesObject}/>
+          <ImagesComponent {...imagesObject}/>
         </div>
         <div className="ml-20 mr-20">
             <div id="paginator"></div>
