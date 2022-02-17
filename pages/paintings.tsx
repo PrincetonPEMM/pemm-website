@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         props: {
           data: {
-            imageUris: []
+            imageUris: ["https://iiif-cloud.princeton.edu/iiif/2/99%2F5b%2Fcc%2F995bcc2069dc451298f11bd8448be628%2Fintermediate_file/full/400,/0/default.jpg"]
           }
         }
       }
@@ -64,7 +64,7 @@ const PaintingsPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof ge
     };
 
     const imagesObject: object = {
-      "images": ["https://iiif-cloud.princeton.edu/iiif/2/99%2F5b%2Fcc%2F995bcc2069dc451298f11bd8448be628%2Fintermediate_file/full/400,/0/default.jpg"]
+      "images": currentItems
     };
 
   return (
