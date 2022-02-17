@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 function ImagesComponent(currentItems: any) {
     const imageStyles = "m-2";
     const images : string[] = currentItems.images;
@@ -5,7 +7,7 @@ function ImagesComponent(currentItems: any) {
       <>
         { 
           images.map(function(image, i){
-            return <img className={imageStyles} key={i} src={image}></img>;
+            return <Image src={image} key={i} className={imageStyles} width={450} height={450}/>
         })}
       </>
     );
