@@ -8,11 +8,10 @@ import axios from 'axios';
 
 const IMAGES_PER_PAGE = 9
 
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     console.log("Hello");
-    const res = await axios(process.env.API + 'images/');
+    const res = await axios(process.env.REACT_APP_API + 'images/');
     console.log(res);
     const images: Paintings[] = await res.data;
     let imageUris = [];
