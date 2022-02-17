@@ -10,9 +10,7 @@ const IMAGES_PER_PAGE = 9
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    console.log("Hello");
     const res = await axios(process.env.REACT_APP_API + 'images/');
-    console.log(res);
     const images: Paintings[] = await res.data;
     let imageUris = [];
     for (let i = 0; i < images.length; i++) {
@@ -36,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         props: {
           data: {
-            imageUris: ["https://iiif-cloud.princeton.edu/iiif/2/99%2F5b%2Fcc%2F995bcc2069dc451298f11bd8448be628%2Fintermediate_file/full/400,/0/default.jpg"]
+            imageUris: []
           }
         }
       }
