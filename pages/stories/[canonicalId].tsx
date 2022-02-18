@@ -1,23 +1,47 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
+import type {Paintings} from '../../components/types/paintings';
+import axios from 'axios';
 
-const IMAGES = [
-  {
-    original: "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004e/full/400,/0/default.jpg",
-    thumbnail: "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004f/full/400,/0/default.jpg",
-  },
-  {
-    original: "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x000074/full/400,/0/default.jpg",
-    thumbnail: "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00007b/full/400,/0/default.jpg",
-  },
-  {
-    original: "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x000084/full/400,/0/default.jpg",
-    thumbnail: "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000027/full/400,/0/default.jpg",
-  },
-];
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    try {
+      const { canonicalId } = context.query;
+      const res = await axios(process.env.REACT_APP_API + 'images/' + canonicalId);
+      const images: Paintings[] = await res.data;
+      let imageUris = [];
+      for (let i = 0; i < images.length; i++) {
+          if (images[i].image_link) {
+            let breakup = images[i].image_link!.split("full");
+            let original = images[i].image_link;
+            let thumbnail = images[i].image_link;
+            if (breakup.length === 3) {
+                //TODO: Update this and use a more standardized way to format how to display the image
+                original = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
+                thumbnail = breakup[0] + "full" + breakup[1] + "90," + breakup[2];
+            }
+            imageUris.push({"original": original, "thumbnail": thumbnail});
+        }
+      }
+      return {
+        props: {
+          data: {
+            imageUris: imageUris
+          }
+        }
+      }
+    } catch {
+        return {
+          props: {
+            data: {
+              imageUris: []
+            }
+          }
+        }
+    }
+  }
 
-const Stories: NextPage = () => {
+const Stories: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
       <h1>
@@ -30,7 +54,7 @@ const Stories: NextPage = () => {
         </div>
 
         <div className="w-1/4 overflow-hidden">
-          <ImageGallery items={IMAGES} />
+          {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
         </div>
 
         <div className="w-1/4 overflow-hidden">
