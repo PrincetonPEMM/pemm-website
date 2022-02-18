@@ -3,7 +3,7 @@ import React from 'react';
 
 const Stories: NextPage = () => {
     //TODO: Update this page to get list of all canonical ids from db and render links to those stories
-  const website: string = "https://main.dtma86dor8lfe.amplifyapp.com/";
+  const website: string = "https://main.dtma86dor8lfe.amplifyapp.com";
   return (
     <div>
       <h1>
