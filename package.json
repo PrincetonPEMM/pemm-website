@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aws-sdk": "^2.1073.0",
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
     "next": "11.1.2",
     "next-share": "^0.12.2",
     "react": "17.0.2",
