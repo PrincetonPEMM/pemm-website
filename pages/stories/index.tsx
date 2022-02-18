@@ -2,7 +2,7 @@ import type { NextPage} from 'next'
 import React from 'react';
 
 const Stories: NextPage = () => {
-  const website: string = "http://localhost:3000/";
+  const website: string = "https://lab1.dtma86dor8lfe.amplifyapp.com/";
   return (
     <div>
       <h1>
