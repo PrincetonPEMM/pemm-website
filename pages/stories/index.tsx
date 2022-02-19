@@ -21,7 +21,7 @@ const Stories: NextPage = () => {
           <li><a href={website + "/stories/27"}>
             <button type="button" className="m-2 w-full h-12 px-6 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">Story Number: 27</button>
             </a></li>
-          <li><a href={website + "stories/33"}>
+          <li><a href={website + "/stories/33"}>
             <button type="button" className="m-2 w-full h-12 px-6 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">Story Number: 33</button>
             </a></li>
         </ul>
