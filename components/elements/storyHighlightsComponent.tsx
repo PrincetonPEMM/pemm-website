@@ -14,7 +14,7 @@ function StoryHighlightsComponent(prop: any) {
         </div>
         <div className="px-6 pt-4 pb-2">
           <Link href={"/stories/" + story.macomber_id}>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Details...</span>
+            <span className="cursor-pointer inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Details...</span>
           </Link>
         </div>
       </div>
