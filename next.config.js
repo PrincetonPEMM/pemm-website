@@ -5,6 +5,7 @@ module.exports = {
     domains: ['api.bl.uk', 'iiif-cloud.princeton.edu'],
   },
   env: {
-    REACT_APP_API: process.env.REACT_APP_API
+    REACT_APP_API: process.env.REACT_APP_API,
+    WEBSITE: process.env.WEBSITE
   },
 }

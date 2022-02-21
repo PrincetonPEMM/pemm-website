@@ -2,6 +2,7 @@ import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from '
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import type {Paintings} from '../../components/types/paintings';
+import type {Stories} from '../../components/types/stories';
 import axios from 'axios';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -23,10 +24,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             imageUris.push({"original": original, "thumbnail": thumbnail});
         }
       }
+      const story_res = await axios(process.env.REACT_APP_API + 'stories/' + canonicalId);
+      let story: Stories = {};
+      if (story_res.data.length > 0) {
+        story = story_res.data[0];
+      }
       return {
         props: {
           data: {
-            imageUris: imageUris
+            imageUris: imageUris,
+            story: story
           }
         }
       }
@@ -34,14 +41,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         return {
           props: {
             data: {
-              imageUris: []
+              imageUris: [],
+              story: {}
             }
           }
         }
     }
   }
 
-const Stories: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
       <h1>
@@ -58,31 +66,8 @@ const Stories: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServe
         </div>
 
         <div className="w-1/4 overflow-hidden">
-          <h2>
-            <b>Lorem ipsum</b>
-          </h2>
           <p className="text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-            optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-            obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-            nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-            tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-            quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-            sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-            recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
-            minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
-            quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
-            fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
-            consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-            doloremque. Quaerat provident commodi consectetur veniam similique ad
-            earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo
-            fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore
-            suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-            modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam
-            totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam
-            quasi aliquam eligendi, placeat qui corporis!
+            {data.story && data.story.english_translation}
           </p>
         </div>
 
@@ -95,4 +80,4 @@ const Stories: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServe
   )
 }
 
-export default Stories
+export default StoriesDetailPage
