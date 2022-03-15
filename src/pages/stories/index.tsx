@@ -10,6 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
@@ -46,7 +47,10 @@ const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getS
           <TableHead>
             <TableRow>
               <TableCell  align="left"></TableCell>
-              <TableCell align="left">Macomber ID</TableCell>
+              <TableCell align="left">
+                <Typography fontWeight={"bold"}>
+                  Macomber ID
+                </Typography></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -59,7 +63,11 @@ const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getS
                   maxWidth: {xs: "15rem", md: "5rem", lg: "5rem"},
                   wordWrap: "break-word",
                   whiteSpace: 'normal',
-                }}>{story.macomber_title}</TableCell>
+                }}>
+                  <Typography fontWeight={"bold"}>
+                    {story.macomber_title}
+                  </Typography>
+                </TableCell>
                 <TableCell align="left" component="th" scope="row">
                   {story.macomber_id}
                 </TableCell>
