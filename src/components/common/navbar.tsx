@@ -96,22 +96,30 @@ const NavBar = () => {
                         }}>
                         <Link href='/paintings'>
                             <Button color="primary" className={navigatorStyle}>
-                                 Paintings
+                                <Typography fontWeight={"bold"} textTransform={"capitalize"}>
+                                    Paintings
+                                 </Typography>
                             </Button>
                         </Link>
                         <Link href='/stories'>
-                            <Button color="primary" className={navigatorStyle}>
-                                Stories
+                            <Button color="primary" className={navigatorStyle} >
+                                <Typography fontWeight={"bold"} textTransform={"capitalize"}>
+                                    Stories
+                                </Typography>
                             </Button>
                         </Link>
                         <Link href='/manuscripts'>
                             <Button color="primary" className={navigatorStyle}>  
-                                Manuscripts
+                                <Typography fontWeight={"bold"} textTransform={"capitalize"}>
+                                    Manuscripts
+                                </Typography>
                             </Button>
                         </Link>
                         <Link href='/about'>
                             <Button color="primary" className={navigatorStyle}> 
-                                About 
+                                <Typography fontWeight={"bold"} textTransform={"capitalize"}>
+                                    About 
+                                </Typography>
                             </Button>
                         </Link>
                     </Box>
