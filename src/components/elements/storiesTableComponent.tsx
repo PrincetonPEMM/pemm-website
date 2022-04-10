@@ -44,7 +44,7 @@ const StoriesTableComponent = (props: any) => {
                     whiteSpace: 'normal',
                 }}>
                 <Typography fontWeight={"bold"}>
-                  Story's Century of Origin
+                  Story&apos;s Century of Origin
                 </Typography>
               </TableCell>
               <TableCell 

@@ -9,7 +9,7 @@ function ImagesComponent(currentItems: any) {
           images.map(function(image, i){
             return (
             <div className={imageStyles} key={i}> 
-              <Image src={image} width={450} height={450}/> 
+              <Image src={image} width={450} height={450} alt=""/> 
             </div>
             )
         })}

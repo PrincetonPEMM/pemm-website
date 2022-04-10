@@ -251,7 +251,7 @@ const AdvancedSearchComponent = (props: any) => {
               </Box>
   
               <Box>
-                <Typography color="secondary" className='m-2' variant="h6">Story's Century of Origin</Typography>
+                <Typography color="secondary" className='m-2' variant="h6">Story&apos;s Century of Origin</Typography>
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
@@ -390,7 +390,7 @@ const AdvancedSearchComponent = (props: any) => {
               </Box>
   
               <Box>
-                <Typography color="secondary" className='m-2' variant="h6">Story's Place of Origin</Typography>
+                <Typography color="secondary" className='m-2' variant="h6">Story&apos;s Place of Origin</Typography>
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
