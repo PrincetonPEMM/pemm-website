@@ -9,4 +9,5 @@ export type Stories = {
     total_records?: number | null,
     theme?: string | null,
     canonical_incipit?: string | null,
+    has_english_translation?: boolean | null,
   }

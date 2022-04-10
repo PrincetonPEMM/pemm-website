@@ -33,9 +33,7 @@ export class TableFilter {
       }
       if (this.filterData.withEnglishTranslation) {
         this.filteredTableData =
-          this.filteredTableData.filter(story => story.english_translation !== "" &&
-                                                 story.english_translation &&
-                                                 story.english_translation.includes("summary only") != true);
+          this.filteredTableData.filter(story => story.has_english_translation === true);
       }
       if (this.filterData.ethiopianStories) {
         this.filteredTableData =
