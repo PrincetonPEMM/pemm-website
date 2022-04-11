@@ -26,15 +26,14 @@ async function getStoryList() {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Stories[]>
+  res: NextApiResponse<string>
 ) {
   const stories_response = getStoryList();
   stories_response.then((data: any) => {
-    let stories : Stories[] = JSON.parse(data).body;
-    res.status(200).send(stories);
+    res.status(200).send(data);
     res.end();
   }).catch(() => {
-    res.status(500).send([]);
+    res.status(500).send('');
     res.end();
   });
 }
