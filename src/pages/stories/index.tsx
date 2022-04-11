@@ -21,11 +21,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     } else {
       const res = await axios(process.env.REACT_APP_API + 'stories/');
       stories = await res.data;
+      console.log("Stories", stories);
     }
     return {
       props: {
         data: {
-          stories: stories
+          stories: JSON.stringify(stories)
         }
       }
     }
@@ -45,8 +46,9 @@ const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getS
   const handleShowAdvancedSearch = () => {
     setShowAdvancedSearch(!showAdvancedSearch);
   };
-  const [tableDataState, setTableDataState] = React.useState<Stories[]>(data.stories);
-  tableFilter.setData(data.stories);
+  const stories = JSON.parse(data.stories);
+  const [tableDataState, setTableDataState] = React.useState<Stories[]>(stories);
+  tableFilter.setData(stories);
 
   return (
     <div className='flex'>
@@ -55,7 +57,7 @@ const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getS
           handleShowAdvancedSearch={handleShowAdvancedSearch}
           tableDataState={tableDataState}
           setTableDataState={setTableDataState}
-          tableData={data.stories}
+          tableData={stories}
           tableFilter={tableFilter} />
       }
       <div className='p-0 m-0 w-full h-full'>
