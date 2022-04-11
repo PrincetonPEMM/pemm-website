@@ -17,7 +17,9 @@ const MainLayout = ({ children }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar/>
-        <Box bgcolor="#E8E4DD">
+        <Box 
+          //TODO: Update hardcoded secondary color
+          bgcolor="#E8E4DD">
           <main>
             {children}
           </main>
