@@ -1,25 +1,32 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType} from 'next'
 import React from 'react';
-import type {Stories} from '../../components/types/stories';
-import axios from 'axios';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+import type {Stories} from '../../components/types/stories';
+import { TableFilter } from '../../utils/table_filter';
+import { TEST_DATA } from '../../data/stories';
+import AdvancedSearchComponent from '../../components/elements/advancedSearchComponent';
+import StoriesTableComponent from '../../components/elements/storiesTableComponent';
+
+import axios from 'axios';
+import { Menu } from '@mui/icons-material';
+import IconButton from '@mui/material/IconButton';
+
+const tableFilter: TableFilter = new TableFilter([]);
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  var stories: Stories[] = [];
   try {
-    const res = await axios(process.env.REACT_APP_API + 'stories/');
-    const stories: Stories[] = await res.data;
+    if (process.env.WEBSITE === "http://localhost:3000") {
+      stories = TEST_DATA;
+    } else {
+      const res = await axios(process.env.REACT_APP_API + 'stories/');
+      stories = await res.data;
+      console.log("Stories", stories);
+    }
     return {
       props: {
         data: {
-          stories: stories
+          stories: JSON.stringify(stories)
         }
       }
     }
@@ -35,47 +42,32 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [showAdvancedSearch, setShowAdvancedSearch] = React.useState<boolean>(true);
+  const handleShowAdvancedSearch = () => {
+    setShowAdvancedSearch(!showAdvancedSearch);
+  };
+  const stories = JSON.parse(data.stories);
+  const [tableDataState, setTableDataState] = React.useState<Stories[]>(stories);
+  tableFilter.setData(stories);
+
   return (
-    <div>
-      <TableContainer sx={{
-        bgcolor: "secondary.main"
-      }} component={Paper}>
-        <Table sx={{
-          marginLeft: {xs: "0", md: "1em", lg: "3em"},
-          maxWidth: {xs: "none", md: "95vw", lg: "95vw"},
-          }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell  align="left"></TableCell>
-              <TableCell align="left">
-                <Typography fontWeight={"bold"}>
-                  Macomber ID
-                </Typography></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.stories.map((story: Stories) => (
-              <TableRow
-                key={story.macomber_id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell align="left" sx= {{
-                  maxWidth: {xs: "15rem", md: "5rem", lg: "5rem"},
-                  wordWrap: "break-word",
-                  whiteSpace: 'normal',
-                }}>
-                  <Typography fontWeight={"bold"}>
-                    {story.macomber_title}
-                  </Typography>
-                </TableCell>
-                <TableCell align="left" component="th" scope="row">
-                  {story.macomber_id}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+    <div className='flex'>
+      { showAdvancedSearch && 
+        <AdvancedSearchComponent
+          handleShowAdvancedSearch={handleShowAdvancedSearch}
+          tableDataState={tableDataState}
+          setTableDataState={setTableDataState}
+          tableData={stories}
+          tableFilter={tableFilter} />
+      }
+      <div className='p-0 m-0 w-full h-full'>
+        { !showAdvancedSearch &&
+        <IconButton className='block m-1' onClick={handleShowAdvancedSearch}>
+          <Menu/>
+        </IconButton>
+        }
+        <StoriesTableComponent tableDataState={tableDataState} />
+      </div>
     </div>
   )
 }
