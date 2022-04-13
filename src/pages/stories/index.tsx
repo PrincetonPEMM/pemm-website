@@ -16,12 +16,11 @@ const tableFilter: TableFilter = new TableFilter([]);
 export const getServerSideProps: GetServerSideProps = async (context) => {
   var stories: Stories[] = [];
   try {
-    if (process.env.WEBSITE === "http://localhost:3000") {
+    if (process.env.WEBSITE === "http://localhost:300") {
       stories = TEST_DATA;
     } else {
       const res = await axios(process.env.REACT_APP_API + 'stories/');
       stories = await res.data;
-      console.log("Stories", stories);
     }
     return {
       props: {
