@@ -30,7 +30,7 @@ export default function handler(
 ) {
   const stories_response = getStoryList();
   stories_response.then((data: any) => {
-    let stories : Stories[] = JSON.parse(data).body;
+    let stories : Stories[] = JSON.parse(JSON.parse(data).body);
     res.status(200).send(stories);
     res.end();
   }).catch(() => {
