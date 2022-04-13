@@ -1,6 +1,7 @@
 import type {Stories} from '../types/stories';
 
 import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,19 +10,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 
+const primary = "#3D6F58";
+const secondary = "#E8E4DD";
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  backgroundColor: primary,
+}));
+
 const StoriesTableComponent = (props: any) => {
     return (
       <TableContainer sx={{
         bgcolor: "secondary.main"
       }} component={Paper}>
         <Table sx={{
-          marginLeft: {xs: "0", md: "1em", lg: "3em"},
-          maxWidth: {xs: "none", md: "95vw", lg: "95vw"},
+          maxWidth: {xs: "none", md: "100vw", lg: "100vw"},
           }} aria-label="story table">
           <TableHead>
-            <TableRow>
+            <StyledTableRow>
               <TableCell align="left">
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Title of Story
                 </Typography>
               </TableCell>
@@ -32,7 +39,7 @@ const StoriesTableComponent = (props: any) => {
                     whiteSpace: 'normal',
                 }}
                 align="left">
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Macomber ID
                 </Typography>
               </TableCell>
@@ -43,7 +50,7 @@ const StoriesTableComponent = (props: any) => {
                     wordWrap: "break-word",
                     whiteSpace: 'normal',
                 }}>
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Story&apos;s Century of Origin
                 </Typography>
               </TableCell>
@@ -54,7 +61,7 @@ const StoriesTableComponent = (props: any) => {
                     wordWrap: "break-word",
                     whiteSpace: 'normal',
                 }}>
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Number of Manuscripts with Stories
                 </Typography>
               </TableCell>
@@ -65,7 +72,7 @@ const StoriesTableComponent = (props: any) => {
                     wordWrap: "break-word",
                     whiteSpace: 'normal',
                 }}>
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Number of Paintings of Story
                 </Typography>
               </TableCell>
@@ -76,7 +83,7 @@ const StoriesTableComponent = (props: any) => {
                     wordWrap: "break-word",
                     whiteSpace: 'normal',
                 }}>
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Type of Mary Story
                 </Typography>
               </TableCell>
@@ -87,11 +94,11 @@ const StoriesTableComponent = (props: any) => {
                     wordWrap: "break-word",
                     whiteSpace: 'normal',
                 }}>
-                <Typography fontWeight={"bold"}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
                   Theme
                 </Typography>
               </TableCell>
-            </TableRow>
+            </StyledTableRow>
           </TableHead>
           <TableBody>
             {props.tableDataState && props.tableDataState.map((story: Stories) => (
