@@ -14,19 +14,18 @@ import IconButton from '@mui/material/IconButton';
 const tableFilter: TableFilter = new TableFilter([]);
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  var stories: string = '';
+  var stories: Stories[] = [];
   try {
     if (process.env.WEBSITE === "http://localhost:300") {
-      stories = JSON.stringify(TEST_DATA);
+      stories = TEST_DATA;
     } else {
       const res = await axios(process.env.REACT_APP_API + 'stories/');
-      const data = await res.data;
-      stories = JSON.stringify(data.body);
+      stories = await res.data;
     }
     return {
       props: {
         data: {
-          stories: stories
+          stories: JSON.stringify(stories)
         }
       }
     }
@@ -34,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         props: {
           data: {
-            stories: ''
+            stories: []
           }
         }
       }

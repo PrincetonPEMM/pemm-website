@@ -255,12 +255,14 @@ const AdvancedSearchComponent = (props: any) => {
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury13s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -274,12 +276,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury14s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -293,12 +297,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury15s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -312,12 +318,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury16s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -331,12 +339,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury17s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -350,12 +360,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury18s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -369,12 +381,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originCentury19s"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -394,12 +408,14 @@ const AdvancedSearchComponent = (props: any) => {
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originAfrica"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -413,12 +429,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originEgypt"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -432,12 +450,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originEthiopia"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -451,12 +471,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originEurope"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -470,12 +492,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originFrance"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -489,12 +513,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originSpain"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -508,12 +534,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originLevant"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -527,12 +555,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="originUnknown"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -552,12 +582,14 @@ const AdvancedSearchComponent = (props: any) => {
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscriptsMax"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -571,12 +603,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts200To299"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -590,12 +624,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts100To199"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -609,12 +645,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts50To99"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -628,12 +666,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts10To49"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -647,12 +687,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts5To9"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -666,12 +708,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts2To4"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -685,12 +729,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="manuscripts1"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -710,12 +756,14 @@ const AdvancedSearchComponent = (props: any) => {
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="paintingsMax"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -729,12 +777,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="paintings2To19"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -748,12 +798,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="paintings1"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -767,12 +819,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="paintings0"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -792,12 +846,14 @@ const AdvancedSearchComponent = (props: any) => {
                 <List>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="languagesGeez"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -811,12 +867,14 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
                         size="small"
+                        id="languagesArabic"
                         //TODO: Update hardcoded secondary color
                         sx = {{
                           color: secondary
@@ -830,11 +888,13 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
+                        id="languagesAmharic"
                         size="small"
                         //TODO: Update hardcoded secondary color
                         sx = {{
@@ -849,11 +909,13 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
+                        id="languagesEnglish"
                         size="small"
                         //TODO: Update hardcoded secondary color
                         sx = {{
@@ -868,11 +930,13 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
+                        id="languagesFrench"
                         size="small"
                         //TODO: Update hardcoded secondary color
                         sx = {{
@@ -887,11 +951,13 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
+                        id="languagesItalian"
                         size="small"
                         //TODO: Update hardcoded secondary color
                         sx = {{
@@ -906,11 +972,13 @@ const AdvancedSearchComponent = (props: any) => {
                   </ListItem>
                   <ListItem className="p-0">
                     <ListItemButton className="p-0"
+                      onClick={filterTable}
                       sx = {{
                         height: "1.5em"
                       }}>
                       <ListItemIcon>
                         <Checkbox
+                        id="languagesLatin"
                         size="small"
                         //TODO: Update hardcoded secondary color
                         sx = {{
