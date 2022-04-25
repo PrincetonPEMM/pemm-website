@@ -9,13 +9,7 @@ export type FilterData = {
     recentStories: boolean;
     popularStories: boolean;
     uniqueStories: boolean;
-    originCentury13s: boolean;
-    originCentury14s: boolean;
-    originCentury15s: boolean;
-    originCentury16s: boolean;
-    originCentury17s: boolean;
-    originCentury18s: boolean;
-    originCentury19s: boolean;
+    centuryRange: number[];
     originAfrica: boolean;
     originEgypt: boolean;
     originEthiopia: boolean;
@@ -24,18 +18,8 @@ export type FilterData = {
     originSpain: boolean;
     originLevant: boolean;
     originUnknown: boolean;
-    manuscriptsMax: boolean;
-    manuscripts200To299: boolean;
-    manuscripts100To199: boolean;
-    manuscripts50To99: boolean;
-    manuscripts10To49: boolean;
-    manuscripts5To9: boolean;
-    manuscripts2To4: boolean;
-    manuscripts1: boolean;
-    paintingsMax: boolean;
-    paintings2To19: boolean;
-    paintings1: boolean;
-    paintings0: boolean;
+    manuscriptsWithStoryRange: number[],
+    paintingsOfStoryRange: number[],
     languagesGeez: boolean;
     languagesArabic: boolean;
     languagesAmharic: boolean;
