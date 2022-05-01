@@ -18,13 +18,7 @@ export class TableFilter {
         recentStories: false,
         popularStories: false,
         uniqueStories: false,
-        originCentury13s: false,
-        originCentury14s: false,
-        originCentury15s: false,
-        originCentury16s: false,
-        originCentury17s: false,
-        originCentury18s: false,
-        originCentury19s: false,
+        centuryRange: [0, 100],
         originAfrica: false,
         originEgypt: false,
         originEthiopia: false,
@@ -33,18 +27,8 @@ export class TableFilter {
         originSpain: false,
         originLevant: false,
         originUnknown: false,
-        manuscriptsMax: false,
-        manuscripts200To299: false,
-        manuscripts100To199: false,
-        manuscripts50To99: false,
-        manuscripts10To49: false,
-        manuscripts5To9: false,
-        manuscripts2To4: false,
-        manuscripts1: false,
-        paintingsMax: false,
-        paintings2To19: false,
-        paintings1: false,
-        paintings0: false,
+        manuscriptsWithStoryRange: [0, 100],
+        paintingsOfStoryRange: [0, 100],
         languagesGeez: false,
         languagesArabic: false,
         languagesAmharic: false,
@@ -56,6 +40,8 @@ export class TableFilter {
       this.data = data;
       this.filteredTableData = this.data;
     }
+
+    searchTable() {}
   
     filterStoryTheme() {
       if (this.filterData.withPaintings) {
@@ -100,39 +86,14 @@ export class TableFilter {
     }
 
     filterCenturyOfOrigin() {
-      if (this.filterData.originCentury13s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 14);
-      }
-
-      if (this.filterData.originCentury14s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 15);
-      }
-
-      if (this.filterData.originCentury15s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 16);
-      }
-
-      if (this.filterData.originCentury16s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 17);
-      }
-
-      if (this.filterData.originCentury17s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 18);
-      }
-
-      if (this.filterData.originCentury18s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 19);
-      }
-
-      if (this.filterData.originCentury19s) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.earliest_attestation && story.earliest_attestation == 20);
+      if (this.filterData["centuryRange"][0] !== 0 || this.filterData["centuryRange"][1] !== 100) {
+        const startRange =  (this.filterData["centuryRange"][0] * 7) + 1300;
+        const endRange = (this.filterData["centuryRange"][1] * 7) + 1300;
+        this.filteredTableData = this.filteredTableData.filter(story => 
+          story.earliest_attestation &&
+          story.earliest_attestation*100 >= startRange &&
+          (story.earliest_attestation-1)*100 <= endRange
+        );
       }
     }
 
@@ -172,56 +133,26 @@ export class TableFilter {
     }
 
     filterNumberOfManuscripts() {
-      if (this.filterData.manuscriptsMax) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 300);
-      }
-      if (this.filterData.manuscripts200To299) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 200 && story.total_records < 300);
-      }
-      if (this.filterData.manuscripts100To199) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 100 && story.total_records < 199);
-      }
-      if (this.filterData.manuscripts50To99) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 50 && story.total_records < 100);
-      }
-      if (this.filterData.manuscripts10To49) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 10 && story.total_records < 50);
-      }
-      if (this.filterData.manuscripts5To9) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 5 && story.total_records < 10);
-      }
-      if (this.filterData.manuscripts2To4) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records >= 2 && story.total_records < 5);
-      }
-      if (this.filterData.manuscripts1) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_records && story.total_records === 1);
+      if (this.filterData["manuscriptsWithStoryRange"][0] !== 0 || this.filterData["manuscriptsWithStoryRange"][1] !== 100) {
+        const startRange =  (this.filterData["manuscriptsWithStoryRange"][0] * 3.5);
+        const endRange = (this.filterData["manuscriptsWithStoryRange"][1] * 3.5);
+        this.filteredTableData = this.filteredTableData.filter(story => 
+          story.total_records &&
+          story.total_records >= startRange &&
+          story.total_records <= endRange
+        );
       }
     }
 
     filterNumberOfPaintings() {
-      if (this.filterData.paintingsMax) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_paintings && story.total_paintings >= 20);
-      }
-      if (this.filterData.paintings2To19) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_paintings && story.total_paintings < 20 && story.total_paintings > 1);
-      }
-      if (this.filterData.paintings1) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => story.total_paintings && story.total_paintings == 1);
-      }
-      if (this.filterData.paintings0) {
-        this.filteredTableData = this.filteredTableData.filter(
-          story => !story.total_paintings);
+      if (this.filterData["paintingsOfStoryRange"][0] !== 0 || this.filterData["paintingsOfStoryRange"][1] !== 100) {
+        const startRange =  (this.filterData["paintingsOfStoryRange"][0] / 2.5);
+        const endRange = (this.filterData["paintingsOfStoryRange"][1] / 2.5);
+        this.filteredTableData = this.filteredTableData.filter(story => 
+          story.total_paintings &&
+          story.total_paintings >= startRange &&
+          story.total_paintings <= endRange
+        );
       }
     }
 
