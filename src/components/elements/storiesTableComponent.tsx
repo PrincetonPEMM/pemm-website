@@ -1,7 +1,6 @@
 import type {Stories} from '../types/stories';
 import React from 'react';
 
-import { Box } from '@mui/system';
 import { Button } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -127,14 +126,13 @@ const StoriesTableComponent = (props: any) => {
               }
             </TableHead>
             <TableBody>
-              {props.tableDataState && props.tableDataState.map((story: Stories) => (
+              {props.tableDataState && props.tableDataState.map((story: Stories , index: number) => (
                 <>
                   <TableRow key={"title" + story.macomber_id}>
                     <TableCell
                         colSpan={6}
                         align="left"
                         sx= {{
-                            // maxWidth: {xs: "15rem", md: "15rem", lg: "25rem"},
                             wordWrap: "break-word",
                             whiteSpace: 'normal',
                           }}>
