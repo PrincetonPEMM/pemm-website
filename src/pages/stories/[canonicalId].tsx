@@ -3,13 +3,19 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
+import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
 import axios from 'axios';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { canonicalId } = context.query;
     try {
-      const { canonicalId } = context.query;
-      const res = await axios(process.env.REACT_APP_API + 'images/' + canonicalId);
-      const images: Paintings[] = await res.data;
+      var images: Paintings[] = [];
+      if (process.env['ENVIRONMENT'] == "DEV") {
+        images = STORY_13_IMAGE_TEST_DATA;
+      } else {
+        const res = await axios(process.env.REACT_APP_API + 'images/' + canonicalId);
+        images = await res.data;
+      }
       let imageUris = [];
       for (let i = 0; i < images.length; i++) {
           if (images[i].image_link) {
@@ -24,10 +30,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             imageUris.push({"original": original, "thumbnail": thumbnail});
         }
       }
-      const story_res = await axios(process.env.REACT_APP_API + 'stories/' + canonicalId);
-      let story: Stories = {};
-      if (story_res.data.length > 0) {
-        story = story_res.data[0];
+      var story: Stories = {};
+      if (process.env['ENVIRONMENT'] == "DEV") {
+        story = STORY_13_TEST_DATA;
+      }
+      else {
+        const story_res = await axios(process.env.REACT_APP_API + 'stories/' + canonicalId);
+        if (story_res.data.length > 0) {
+          story = story_res.data[0];
+        }
       }
       return {
         props: {
@@ -52,9 +63,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
-      <h1>
-        Stories
-      </h1>
       <div className="flex space-x-10 flex-wrap overflow-hidden">
         
         <div className="w-1/4 overflow-hidden">
