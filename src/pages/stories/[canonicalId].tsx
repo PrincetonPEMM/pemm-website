@@ -3,7 +3,13 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
+import { STORY_13_TEST_DATA } from '../../data/[canonicalId]';
 import axios from 'axios';
+
+
+const getStories = () => {
+  
+};
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     try {
@@ -24,10 +30,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             imageUris.push({"original": original, "thumbnail": thumbnail});
         }
       }
-      const story_res = await axios(process.env.REACT_APP_API + 'stories/' + canonicalId);
-      let story: Stories = {};
-      if (story_res.data.length > 0) {
-        story = story_res.data[0];
+      var story: Stories = {};
+      console.log("HEll0o");
+      if (process.env.WEBSITE === "https://pemm-website.henokalem.repl.co") {
+        story  = STORY_13_TEST_DATA;
+      } else {
+        const story_res = await axios(process.env.REACT_APP_API + 'stories/' + canonicalId);
+        if (story_res.data.length > 0) {
+          story = story_res.data[0];
+        }
       }
       return {
         props: {
