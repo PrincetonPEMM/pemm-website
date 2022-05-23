@@ -6,6 +6,24 @@ import type {Stories} from '../../components/types/stories';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
 import axios from 'axios';
 
+export const StoryInformationWidget = (props: any) => {
+    const story = props.story;
+    return (
+      <>
+        <button className="bg-black text-white"> Story Information Widget </button>
+      </>
+    );
+  };
+
+export const GeneratedStoryText = (props: any) => {
+    const story = props.story;
+    return (
+      <>
+        <button className="bg-black text-white"> Generated Story Text </button>
+      </>
+    );
+  };
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { canonicalId } = context.query;
     try {
@@ -72,6 +90,9 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
         <div className="w-1/4 overflow-hidden">
           {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
         </div>
+
+        <GeneratedStoryText story={data.story}/>
+        <StoryInformationWidget story={data.story}/>
 
         <div className="w-1/4 overflow-hidden">
           <p className="text-justify">
