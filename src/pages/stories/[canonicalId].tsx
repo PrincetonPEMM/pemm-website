@@ -19,6 +19,7 @@ export const GeneratedStoryText = (props: any) => {
     const story = props.story;
     return (
       <>
+      
         <button className="bg-black text-white"> Generated Story Text </button>
       </>
     );
