@@ -19,8 +19,7 @@ export const GeneratedStoryText = (props: any) => {
     const story = props.story;
     return (
       <>
-      
-        <button className="bg-black text-white"> Generated Story Text </button>
+        <button className="text-black"> Generated Story Text </button>
       </>
     );
   };
@@ -87,15 +86,24 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
         <div className="w-1/4 overflow-hidden">
           {/* Add content */}
         </div>
-
+     
         <div className="w-1/4 overflow-hidden">
           {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
+          <StoryInformationWidget story={data.story}/>
         </div>
 
-        <GeneratedStoryText story={data.story}/>
-        <StoryInformationWidget story={data.story}/>
-
         <div className="w-1/4 overflow-hidden">
+          <div className = "flex flex-wrap justify-center">
+            <GeneratedStoryText story={data.story}/>
+          </div>
+
+          <div className = "flex flex-wrap justify-center">
+            {/* if button click = find info */}
+            <p className="text-justify">
+              {data.story && "This text is very ______"}
+            </p>
+          </div>
+          
           <p className="text-justify">
             {data.story && data.story.english_translation}
           </p>
