@@ -173,7 +173,8 @@ export class TableFilter {
       // Filter data based on Text
       if (this.filterData.substring !== "") {
         this.filteredTableData = this.filteredTableData.filter(
-          story => story.macomber_title?.includes(this.filterData.substring));
+          story => story.macomber_title?.toLocaleLowerCase()
+                      .includes(this.filterData.substring.toLocaleLowerCase()));
       }
     }
   
