@@ -65,7 +65,11 @@ const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getS
           <Menu/>
         </IconButton>
         }
-        <StoriesTableComponent tableDataState={tableDataState} />
+        <StoriesTableComponent
+          tableDataState={tableDataState}
+          setTableDataState={setTableDataState}
+          tableData={stories}
+          tableFilter={tableFilter} />
       </div>
     </div>
   )
