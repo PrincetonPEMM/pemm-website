@@ -7,6 +7,9 @@ import type {Stories} from '../../components/types/stories';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import axios from 'axios';
 
 
@@ -64,35 +67,109 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
+  function a11yProps(index: any) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+
+  function TabPanel(props: any) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
 const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [value, setValue] = React.useState(0);
+  const handleMobileTabChange = (event: any, newValue: any) => {
+    setValue(newValue);
+  };
   return (
     <div>
+      <Box sx={{ 
+            flexGrow: 1, 
+            display: { xs: 'none', md: 'flex', lg: 'flex' }
+        }}>
+        <div className="flex space-x-10 flex-wrap overflow-hidden ml-2">
+          <div className='m-4 w-3/4'>
+            <Typography variant="h3">{data.story.macomber_title}</Typography>
+          </div>
+          <div className='w-1/5'></div>
 
-      <div className="flex space-x-10 flex-wrap overflow-hidden ml-2">
-        <div className='m-4 w-3/4'>
-          <Typography variant="h3">{data.story.macomber_title}</Typography>
+          <div className="w-1/4 overflow-hidden">
+            {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
+          </div>
+
+          <div className="w-1/2 overflow-hidden">
+            <GeneratedStoryText story={data.story}/>
+          </div>
+
+          <div className="w-1/4 overflow-hidden">
+            <StoryInformationWidget story={data.story}/>
+          </div>
+
+          <div className="w-1/2 overflow-hidden mb-2">
+            <p className="text-justify">
+              {data.story && data.story.english_translation}
+            </p>
+          </div>
+
         </div>
-        <div className='w-1/5'></div>
+      </Box>
 
-        <div className="w-1/4 overflow-hidden">
-          {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
+      <Box sx={{ 
+            flexGrow: 1, 
+            display: { xs: 'flex', md: 'none', lg: 'none' }
+        }}>
+        <div className="flex-col overflow-hidden">
+          <div className='m-4'>
+            <Typography variant="h6">{data.story.macomber_title}</Typography>
+          </div>
+
+          <div className="overflow-hidden">
+            {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
+          </div>
+
+          <Tabs value={value} onChange={handleMobileTabChange} aria-label="Story Detail Tabs">
+            <Tab label="About" {...a11yProps(0)} />
+            <Tab label="Information" {...a11yProps(1)} />
+            <Tab label="Translation" {...a11yProps(2)} />
+          </Tabs>
+          <TabPanel value={value} index={0}>
+            <div className="overflow-hidden m-1">
+              <GeneratedStoryText story={data.story}/>
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <div className="overflow-hidden m-1">
+              <StoryInformationWidget story={data.story}/>
+            </div>
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <div className="overflow-hidden m-1">
+              <p className="text-justify">
+                {data.story && data.story.english_translation}
+              </p>
+            </div>
+          </TabPanel>
+
         </div>
-
-        <div className="w-1/2 overflow-hidden">
-          <GeneratedStoryText story={data.story}/>
-        </div>
-
-        <div className="w-1/4 overflow-hidden">
-          <StoryInformationWidget story={data.story}/>
-        </div>
-
-        <div className="w-1/2 overflow-hidden mb-2">
-          <p className="text-justify">
-            {data.story && data.story.english_translation}
-          </p>
-        </div>
-
-      </div>
+      </Box>
     </div>
   )
 }
