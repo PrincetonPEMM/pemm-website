@@ -10,4 +10,5 @@ export type Stories = {
     theme?: string | null,
     canonical_incipit?: string | null,
     has_english_translation?: boolean | null,
+    appears_in_arabic?: boolean | null,
   }

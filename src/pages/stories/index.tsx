@@ -1,4 +1,4 @@
-import type { NextPage, GetServerSideProps, InferGetServerSidePropsType} from 'next'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType} from 'next'
 import React from 'react';
 
 import type {Stories} from '../../components/types/stories';
@@ -13,15 +13,14 @@ import IconButton from '@mui/material/IconButton';
 
 const tableFilter: TableFilter = new TableFilter([]);
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   var stories: Stories[] = [];
   try {
-    if (process.env.WEBSITE === "http://localhost:3000") {
+    if (process.env['ENVIRONMENT'] == "DEV") {
       stories = TEST_DATA;
     } else {
       const res = await axios(process.env.REACT_APP_API + 'stories/');
       stories = await res.data;
-      console.log("Stories", stories);
     }
     return {
       props: {
@@ -34,14 +33,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         props: {
           data: {
-            stories: []
+            stories: JSON.stringify([])
           }
         }
       }
   }
 }
 
-const StoriesPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const StoriesPage: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [showAdvancedSearch, setShowAdvancedSearch] = React.useState<boolean>(true);
   const handleShowAdvancedSearch = () => {
     setShowAdvancedSearch(!showAdvancedSearch);

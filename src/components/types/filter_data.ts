@@ -9,4 +9,22 @@ export type FilterData = {
     recentStories: boolean;
     popularStories: boolean;
     uniqueStories: boolean;
+    centuryRange: number[];
+    originAfrica: boolean;
+    originEgypt: boolean;
+    originEthiopia: boolean;
+    originEurope: boolean;
+    originFrance: boolean;
+    originSpain: boolean;
+    originLevant: boolean;
+    originUnknown: boolean;
+    manuscriptsWithStoryRange: number[],
+    paintingsOfStoryRange: number[],
+    languagesGeez: boolean;
+    languagesArabic: boolean;
+    languagesAmharic: boolean;
+    languagesEnglish: boolean;
+    languagesFrench: boolean;
+    languagesItalian: boolean;
+    languagesLatin: boolean;
 }
