@@ -1,4 +1,4 @@
-import type { NextPage, GetServerSideProps, InferGetServerSidePropsType, GetStaticProps, InferGetStaticPropsType} from 'next'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType} from 'next'
 import React from 'react';
 
 import type {Stories} from '../../components/types/stories';
