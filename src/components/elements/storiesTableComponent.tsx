@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
@@ -29,16 +30,25 @@ const StoriesTableComponent = (props: any) => {
       if (tableDetailsButtonText === "Title View") setTableDetailsButtonText("Detail View")
       else setTableDetailsButtonText("Title View");
     };
+    const updateSubstring = (event: any) => {
+      props.tableFilter.filterData.substring = event.target.value;
+      props.tableFilter.filterTableData();
+      props.setTableDataState(props.tableFilter.getFilteredTableData());
+    }
     return (
       <>
-        <Button className="my-1 ml-auto mr-1 block" color="secondary"
-          onClick={updateTableDetialsButtonText}
-          sx={{
-            bgcolor: primary,
-            "&:hover": {
-              bgcolor: warning
-            }
-          }}>{tableDetailsButtonText}</Button>
+        <div className="flex">
+          <TextField className="my-1 mr-auto ml-1 w-1/2" onChange={updateSubstring}
+            label="Filter" color="primary" focused />
+          <Button className="my-1 ml-auto mr-1" color="secondary"
+            onClick={updateTableDetialsButtonText}
+            sx={{
+              bgcolor: primary,
+              "&:hover": {
+                bgcolor: warning
+              }
+            }}>{tableDetailsButtonText}</Button>
+        </div>
         <TableContainer sx={{
           bgcolor: "secondary.main"
         }} component={Paper}>

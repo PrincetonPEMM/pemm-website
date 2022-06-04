@@ -27,4 +27,5 @@ export type FilterData = {
     languagesFrench: boolean;
     languagesItalian: boolean;
     languagesLatin: boolean;
+    substring: string;
 }
