@@ -4,7 +4,7 @@ import { AppBar } from '@mui/material';
 import Image from 'next/image'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import logo from '../../../public/logo.jpg'
+import logo from '../../../public/navbar_logo.png'
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -85,18 +85,15 @@ const NavBar = () => {
                         </Menu>
                     </Box>
                     <Link href='/'>
-                        <div className="h-16 w-16 cursor-pointer">
+                        <div className="cursor-pointer">
                             <Image
                               alt="PEMM Logo"
                               src={logo}
                               width={500}
-                              height={500}
+                              height={75}
                             />
                         </div>
                     </Link>
-                    <Typography className="pl-3 w-64 font-serif">
-                        Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary Project
-                    </Typography>
                     <Box sx={{ 
                             flexGrow: 1, 
                             display: { xs: 'none', md: 'flex', lg: 'flex' }

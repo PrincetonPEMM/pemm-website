@@ -1,29 +1,14 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
+import { GeneratedStoryText } from '../../components/elements/generatedStoryText';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
+import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
+import Typography from '@mui/material/Typography';
 import axios from 'axios';
 
-export const StoryInformationWidget = (props: any) => {
-    const story = props.story;
-    return (
-      <>
-        <button className="bg-black text-white"> Story Information Widget </button>
-      </>
-    );
-  };
-
-export const GeneratedStoryText = (props: any) => {
-    const story = props.story;
-    return (
-      <>
-      
-        <button className="bg-black text-white"> Generated Story Text </button>
-      </>
-    );
-  };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { canonicalId } = context.query;
@@ -82,27 +67,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
-      <div className="flex space-x-10 flex-wrap overflow-hidden">
-        
-        <div className="w-1/4 overflow-hidden">
-          {/* Add content */}
+
+      <div className="flex space-x-10 flex-wrap overflow-hidden ml-2">
+        <div className='m-4 w-3/4'>
+          <Typography variant="h3">{data.story.macomber_title}</Typography>
         </div>
+        <div className='w-1/5'></div>
 
         <div className="w-1/4 overflow-hidden">
           {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
         </div>
 
-        <GeneratedStoryText story={data.story}/>
-        <StoryInformationWidget story={data.story}/>
-
-        <div className="w-1/4 overflow-hidden">
-          <p className="text-justify">
-            {data.story && data.story.english_translation}
-          </p>
+        <div className="w-1/2 overflow-hidden">
+          <GeneratedStoryText story={data.story}/>
         </div>
 
         <div className="w-1/4 overflow-hidden">
-          {/* Add content */}
+          <StoryInformationWidget story={data.story}/>
+        </div>
+
+        <div className="w-1/2 overflow-hidden mb-2">
+          <p className="text-justify">
+            {data.story && data.story.english_translation}
+          </p>
         </div>
 
       </div>

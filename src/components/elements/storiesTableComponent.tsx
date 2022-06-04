@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
 const primary = "#3D6F58";
 const secondary = "#E8E4DD";
@@ -49,7 +50,7 @@ const StoriesTableComponent = (props: any) => {
                 <StyledTableRow>
                 <TableCell align="left" colSpan={6}>
                     <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                      Title of Story &amp; Canonical Incipit
+                      Title of Story
                     </Typography>
                   </TableCell>
                 </StyledTableRow>
@@ -136,12 +137,13 @@ const StoriesTableComponent = (props: any) => {
                             wordWrap: "break-word",
                             whiteSpace: 'normal',
                           }}>
-                      <Typography fontWeight={"bold"}>
-                        {story.macomber_title}
-                      </Typography>
-                      <div className='block m-2'></div>
-                      <Typography className="ml-3" fontWeight={"bold"}>
-                        {story.canonical_incipit}
+                      <Typography
+                        fontWeight={"bold"}
+                        className="underline text-primary hover:text-warning visited:text-warning">
+                        <Link 
+                          href={process.env.WEBSITE + "/stories/" + story.macomber_id}>
+                          {story.macomber_title}
+                        </Link>
                       </Typography>
                     </TableCell>
                   </TableRow>
