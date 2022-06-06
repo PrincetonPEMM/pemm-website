@@ -137,7 +137,6 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           <div className='m-4'>
             <Typography variant="h6">{data.story.macomber_title}</Typography>
           </div>
-
           <div className="overflow-hidden">
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
           </div>
