@@ -12,7 +12,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import axios from 'axios';
 
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { canonicalId } = context.query;
     try {
@@ -127,7 +126,6 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
               {data.story && data.story.english_translation}
             </p>
           </div>
-
         </div>
       </Box>
 
