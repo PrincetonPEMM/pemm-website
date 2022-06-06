@@ -10,7 +10,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
 const primary = "#3D6F58";
 const secondary = "#E8E4DD";
@@ -28,16 +30,25 @@ const StoriesTableComponent = (props: any) => {
       if (tableDetailsButtonText === "Title View") setTableDetailsButtonText("Detail View")
       else setTableDetailsButtonText("Title View");
     };
+    const updateSubstring = (event: any) => {
+      props.tableFilter.filterData.substring = event.target.value;
+      props.tableFilter.filterTableData();
+      props.setTableDataState(props.tableFilter.getFilteredTableData());
+    }
     return (
       <>
-        <Button className="my-1 ml-auto mr-1 block" color="secondary"
-          onClick={updateTableDetialsButtonText}
-          sx={{
-            bgcolor: primary,
-            "&:hover": {
-              bgcolor: warning
-            }
-          }}>{tableDetailsButtonText}</Button>
+        <div className="flex">
+          <TextField className="my-1 mr-auto ml-1 w-1/2" onChange={updateSubstring}
+            label="Filter" color="primary" focused />
+          <Button className="my-1 ml-auto mr-1" color="secondary"
+            onClick={updateTableDetialsButtonText}
+            sx={{
+              bgcolor: primary,
+              "&:hover": {
+                bgcolor: warning
+              }
+            }}>{tableDetailsButtonText}</Button>
+        </div>
         <TableContainer sx={{
           bgcolor: "secondary.main"
         }} component={Paper}>
@@ -49,7 +60,7 @@ const StoriesTableComponent = (props: any) => {
                 <StyledTableRow>
                 <TableCell align="left" colSpan={6}>
                     <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                      Title of Story &amp; Canonical Incipit
+                      Title of Story
                     </Typography>
                   </TableCell>
                 </StyledTableRow>
@@ -136,12 +147,13 @@ const StoriesTableComponent = (props: any) => {
                             wordWrap: "break-word",
                             whiteSpace: 'normal',
                           }}>
-                      <Typography fontWeight={"bold"}>
-                        {story.macomber_title}
-                      </Typography>
-                      <div className='block m-2'></div>
-                      <Typography className="ml-3" fontWeight={"bold"}>
-                        {story.canonical_incipit}
+                      <Typography
+                        fontWeight={"bold"}
+                        className="underline text-primary hover:text-warning visited:text-warning">
+                        <Link 
+                          href={process.env.WEBSITE + "/stories/" + story.macomber_id}>
+                          {story.macomber_title}
+                        </Link>
                       </Typography>
                     </TableCell>
                   </TableRow>

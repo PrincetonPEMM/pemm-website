@@ -35,7 +35,8 @@ export class TableFilter {
         languagesEnglish: false,
         languagesFrench: false,
         languagesItalian: false,
-        languagesLatin: false
+        languagesLatin: false,
+        substring: "",
       }
       this.data = data;
       this.filteredTableData = this.data;
@@ -167,6 +168,15 @@ export class TableFilter {
         )
       }
     }
+
+    filterSubstring() {
+      // Filter data based on Text
+      if (this.filterData.substring !== "") {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.macomber_title?.toLocaleLowerCase()
+                      .includes(this.filterData.substring.toLocaleLowerCase()));
+      }
+    }
   
     filterTableData() {
       // Resetting Data.
@@ -179,6 +189,7 @@ export class TableFilter {
       this.filterNumberOfManuscripts();
       this.filterNumberOfPaintings();
       this.filterLanguagesOfStory();
+      this.filterSubstring();
     }
   
     setData(stories: Stories[]) {

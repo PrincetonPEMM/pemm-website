@@ -5,7 +5,7 @@ import { AppBar } from '@mui/material';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Image from 'next/image'
-import logo from '../../../public/logo.jpg'
+import logo from '../../../public/footer_logo.png'
 import princeton_logo from '../../../public/princeton_logo.png';
 
 const Footer = () => {
@@ -19,18 +19,15 @@ const Footer = () => {
         }}>
           <Box className="pl-5 inline-flex flex-col text-center items-center">
             <Link href='/'>
-                <div className="cursor-pointer w-40">
+                <div className="cursor-pointer">
                     <Image
                       alt="PEMM Logo"
                       src={logo}
-                      width={500}
-                      height={500}
+                      width={250}
+                      height={75}
                     />
                 </div>
             </Link>
-            <Typography className="w-60 pt-2 pb-2 font-serif" color="primary">
-              Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary Project
-            </Typography>
             <Image
               alt="Princeton Logo"
               src={princeton_logo}
