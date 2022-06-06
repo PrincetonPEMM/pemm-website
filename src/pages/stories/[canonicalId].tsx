@@ -12,7 +12,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import axios from 'axios';
 
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { canonicalId } = context.query;
     try {
@@ -109,7 +108,6 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           <div className='m-4 w-3/4'>
             <Typography variant="h3">{data.story.macomber_title}</Typography>
           </div>
-          <div className='w-1/5'></div>
 
           <div className="w-1/4 overflow-hidden">
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
@@ -128,7 +126,6 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
               {data.story && data.story.english_translation}
             </p>
           </div>
-
         </div>
       </Box>
 
@@ -140,7 +137,6 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           <div className='m-4'>
             <Typography variant="h6">{data.story.macomber_title}</Typography>
           </div>
-
           <div className="overflow-hidden">
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
           </div>

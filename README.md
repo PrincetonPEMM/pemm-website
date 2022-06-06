@@ -1,4 +1,5 @@
-This is the applicaiton built for the The Princeton Ethiopian Miracles of Mary Project. It is meant to help users navigate, read and learn about stories cataloged through this project.
+![](public/navbar_logo.png) 
+This is the applicaiton built for the The Princeton Ethiopian Miracles of Mary Project. It is meant to help users navigate, read and learn about stories cataloged through this project. You can visit the production app at [ethiopicmary.com](https://ethiopicmary.com)
 
 
 ## Setup Instructions
@@ -42,7 +43,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
     - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
   ### Backend
 
-## Getting Started
+  Our backend is a collection of AWS Lambda functions.
 
 ## Deployment
 
