@@ -119,6 +119,15 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
 
           <div className="w-1/4 overflow-hidden">
             <StoryInformationWidget story={data.story}/>
+            <Typography variant="body2"> <b>Story type:</b> {data.story.type_of_story}</Typography>
+            <Typography variant="body2"> <b>Subjects:</b> {data.story.canonical_story_subjects}</Typography>
+            <Typography variant="body2"> <b>Keywords:</b> {data.story.macomber_keywords}</Typography>
+            <Typography variant="body2"> <b>Incipit:</b> {data.story.canoncial_incipit}</Typography>
+            <Typography variant="body2"> <b>Number of Incipits in PEMM Incipit Tool:</b> {data.story.total_incipts_in_the_itool}</Typography>
+            <Typography variant="body2"> <b>Translation Source:</b> {data.story.english_translation_source}</Typography>
+            <Typography variant="body2"> <b>Manuscript source for English translation:</b> {data.story.english_translation_manuscript_name}</Typography>
+            <Typography variant="body2"> <b>ID Numbers:</b> PEMM ID {data.story.pemm_id}; Hamburg ID {data.story.hamburg_id}; Macomber ID {data.story.macomber_id}; CSM Number {data.story.csm_number}; Poncelet Number {data.story.poncelet_number} </Typography>
+            <Typography variant="body2"> <b>GMP Manuscripts in which story appears (with page or folio start):</b> {data.story.names_of_mms_with_earliest_attestation}</Typography>
           </div>
 
           <div className="w-1/2 overflow-hidden mb-2">
@@ -155,6 +164,15 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           <TabPanel value={value} index={1}>
             <div className="overflow-hidden m-1">
               <StoryInformationWidget story={data.story}/>
+              <Typography variant="body2"> <b>Story type:</b> {data.story.type_of_story}</Typography>
+              <Typography variant="body2"> <b>Subjects:</b> {data.story.canonical_story_subjects}</Typography>
+              <Typography variant="body2"> <b>Keywords:</b> {data.story.macomber_keywords}</Typography>
+              <Typography variant="body2"> <b>Incipit:</b> {data.story.canoncial_incipit}</Typography>
+              <Typography variant="body2"> <b>Number of Incipits in PEMM Incipit Tool:</b> {data.story.total_incipts_in_the_itool}</Typography>
+              <Typography variant="body2"> <b>Translation Source:</b> {data.story.english_translation_source}</Typography>
+              <Typography variant="body2"> <b>Manuscript source for English translation:</b> {data.story.english_translation_manuscript_name}</Typography>
+              <Typography variant="body2"> <b>ID Numbers:</b> PEMM ID {data.story.pemm_id}; Hamburg ID {data.story.hamburg_id}; Macomber ID {data.story.macomber_id}; CSM Number {data.story.csm_number}; Poncelet Number {data.story.poncelet_number} </Typography>
+              <Typography variant="body2"> <b>GMP Manuscripts in which story appears (with page or folio start):</b> {data.story.names_of_mms_with_earliest_attestation}</Typography>
             </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
