@@ -1,5 +1,5 @@
-import type { NextPage } from 'next'
-import Link from 'next/link';
+import type { NextPage } from 'next';
+import Box from '@mui/material/Box';
 
 import {ImageTextComponent} from '../components/elements/imageTextComponent';
 
@@ -20,24 +20,52 @@ const MANUSCRIPTS_LINK="/manuscripts";
 
 const Home: NextPage = () => {
   return (
-    <div>
-        <div className='flex content-center'>
-          <ImageTextComponent 
-            imageUrl={STORY_IMAGE}
-            title={STORY_TITLE}
-            description={STORY_DESCRIPTION}
-            link={STORY_LINK}/>
-          <ImageTextComponent 
-            imageUrl={MANUSCRIPTS_IMAGE}
-            title={MANUSCRIPTS_TITLE}
-            description={MANUSCRIPTS_DESCRIPTION}
-            link={MANUSCRIPTS_LINK}/>
-          <ImageTextComponent 
-            imageUrl={PAINTINGS_IMAGE}
-            title={PAINTINGS_TITLE}
-            description={PAINTINGS_DESCRIPTION}
-            link={PAINTINGS_LINK}/>
-        </div>
+    <div className="block">
+      <Box sx={{ 
+            flexGrow: 1, 
+            display: { xs: 'none', md: 'flex', lg: 'flex' },
+            alignContent: 'center'
+        }}>
+        <ImageTextComponent 
+          imageUrl={STORY_IMAGE}
+          title={STORY_TITLE}
+          description={STORY_DESCRIPTION}
+          link={STORY_LINK}/>
+        <ImageTextComponent 
+          imageUrl={MANUSCRIPTS_IMAGE}
+          title={MANUSCRIPTS_TITLE}
+          description={MANUSCRIPTS_DESCRIPTION}
+          link={MANUSCRIPTS_LINK}/>
+        <ImageTextComponent 
+          imageUrl={PAINTINGS_IMAGE}
+          title={PAINTINGS_TITLE}
+          description={PAINTINGS_DESCRIPTION}
+          link={PAINTINGS_LINK}/>
+      </Box>
+      <Box sx={{ 
+            flexGrow: 1, 
+            display: { xs: 'flex', md: 'none', lg: 'none' },
+            flexDirection: 'column',
+            alignContent: 'center',
+            marginRight: 'auto',
+            marginLeft: 'auto'
+        }}>
+        <ImageTextComponent 
+          imageUrl={STORY_IMAGE}
+          title={STORY_TITLE}
+          description={STORY_DESCRIPTION}
+          link={STORY_LINK}/>
+        <ImageTextComponent 
+          imageUrl={MANUSCRIPTS_IMAGE}
+          title={MANUSCRIPTS_TITLE}
+          description={MANUSCRIPTS_DESCRIPTION}
+          link={MANUSCRIPTS_LINK}/>
+        <ImageTextComponent 
+          imageUrl={PAINTINGS_IMAGE}
+          title={PAINTINGS_TITLE}
+          description={PAINTINGS_DESCRIPTION}
+          link={PAINTINGS_LINK}/>
+      </Box>
     </div>
   )
 }
