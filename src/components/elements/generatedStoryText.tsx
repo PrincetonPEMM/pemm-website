@@ -102,6 +102,15 @@ export const GeneratedStoryText = (props: any) => {
       return;
     }
 
+    // function to write story setting sentence, if any
+    const ConstructStoryPlaceSentence = (story_place : string, story_place_type: string) => {
+    
+      if(story_place != null){
+        return <>This story takes place in {story_place} {(story_place_type != null) ? story_place_type : ''}. </>
+      }
+      return;
+    }
+
 
   // parts n, m, p instructions are missing from issue post
   return (
@@ -114,6 +123,7 @@ export const GeneratedStoryText = (props: any) => {
       <h2>The story was originally written down in {story.origin}. </h2>
       <h2>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
       <h2>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
+      <h2>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
       <h2>Summary: </h2>
       <h2>{story.summary_plot} Summary by {story.summary_created_by}; edited by Taylor Eggan.</h2>
     </>
