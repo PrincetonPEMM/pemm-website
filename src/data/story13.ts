@@ -16,6 +16,8 @@ export const STORY_13_TEST_DATA: Stories = {
   "summary_created_by": "Jason O. Seavey",
   "pemm_id": 13,
   "sum_of_countif_unique_manuscript": 52,
+  "canonical_story_place": null,
+  "canonical_story_place_type": null,
 };
 
 export const STORY_13_IMAGE_TEST_DATA: Paintings[] = 
