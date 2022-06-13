@@ -19,7 +19,7 @@ export const STORY_13_TEST_DATA: Stories = {
   "type_of_story": "Miracle of Mary",
   "canonical_story_subjects": "Writing & Books",
   "macomber_keywords": "Bishops, archbishops; Hildephonsus (St.) [Dakseyos]; Dexius; Miracles of Saint Mary; Toledo [Telteleya]",
-  "canoncial_incipit": "ተብህለ፡ ከመ፡ ሀሎ፡ በውስተ፡ ቤተ፡ ክርስቲያን፡ ዘጥልጥልያ፡ ኤጲስ፡ ቆጶስ፡ ዘስሙ፡ ደቅስዮስ፡ ወኮነ፡ ብእሴ፡ ቡሩከ፡ ወኄረ፡ ወፈራሄ፡ እግዚአብሔር",
+  "canonical_incipit": "ተብህለ፡ ከመ፡ ሀሎ፡ በውስተ፡ ቤተ፡ ክርስቲያን፡ ዘጥልጥልያ፡ ኤጲስ፡ ቆጶስ፡ ዘስሙ፡ ደቅስዮስ፡ ወኮነ፡ ብእሴ፡ ቡሩከ፡ ወኄረ፡ ወፈራሄ፡ እግዚአብሔር",
   "total_incipts_in_the_itool": 128,
   "english_translation_source": "Budge, One Hundred, p. 1.",
   "english_translation_manuscript_name": "BOr (BL) 650",
