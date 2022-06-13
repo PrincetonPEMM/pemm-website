@@ -8,7 +8,7 @@ export const StoryInformationWidget = (props: any) => {
             <Typography variant="body2"> <b>Story type:</b> {story.type_of_story}</Typography>
             <Typography variant="body2"> <b>Subjects:</b> {story.canonical_story_subjects}</Typography>
             <Typography variant="body2"> <b>Keywords:</b> {story.macomber_keywords}</Typography>
-            <Typography variant="body2"> <b>Incipit:</b> {story.canoncial_incipit}</Typography>
+            <Typography variant="body2"> <b>Incipit:</b> {story.canonical_incipit}</Typography>
             <Typography variant="body2"> <b>Number of Incipits in PEMM Incipit Tool:</b> {story.total_incipts_in_the_itool}</Typography>
             <Typography variant="body2"> <b>Translation Source:</b> {story.english_translation_source}</Typography>
             <Typography variant="body2"> <b>Manuscript source for English translation:</b> {story.english_translation_manuscript_name}</Typography>
