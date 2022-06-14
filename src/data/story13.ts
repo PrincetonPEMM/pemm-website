@@ -28,6 +28,8 @@ export const STORY_13_TEST_DATA: Stories = {
   "csm_number": 2,
   "poncelet_number": 117,
   "names_of_mms_with_earliest_attestation": "BAdd (BL) 16192, BOr (BL) 650, BOr (BL) 652, EMML (HMML) 3536, EMML (HMML) 392, EMML (HMML) 5105, EMML (HMML) 7772, EMML (HMML) 8739, EMML (HMML) 8970, EMML (HMML) 9002, B-Mc (McCarthy) 1574, Davies (HMML) Marara, DL-E (Brown) 14",
+  "canonical_story_place": null,
+  "canonical_story_place_type": null,
 };
 
 export const STORY_13_IMAGE_TEST_DATA: Paintings[] = 
