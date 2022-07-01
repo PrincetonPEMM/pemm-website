@@ -24,7 +24,6 @@ export type Stories = {
     type_of_story?: string | null,
     canonical_story_subjects?: string | null,
     macomber_keywords?: string | null,
-    canonical_incipit?: string | null,
     total_incipts_in_the_itool?: number | null,
     english_translation_source?: string | null,
     english_translation_manuscript_name?: string | null,
