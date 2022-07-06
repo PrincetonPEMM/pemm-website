@@ -111,18 +111,15 @@ export const GeneratedStoryText = (props: any) => {
       return;
     }
 
-
   // parts n, m, p instructions are missing from issue post
   return (
-    <>
-      <h2>The story is {DetermineStoryAge(story.earliest_attestation)}. The earliest GMP (Gəˁəz manuscripts in the PEMM database) in which this story appears is from the 
-      {WriteEarliestGMP(story.earliest_attestation)}.The story is {DetermineStoryPopularity(story.total_records)}, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
-      % of GMP (among those manuscripts with more
-      than five stories). The story was originally written down in {story.origin}. {ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} 
-      {ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} 
-      {ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
-      {/* <h2>Summary: </h2>
-      <h2>{story.summary_plot} Summary by {story.summary_created_by}; edited by Taylor Eggan.</h2> */}
-    </>
+       <>
+        <h2>The story is {DetermineStoryAge(story.earliest_attestation)}. The earliest GMP (Gəˁəz manuscripts in the PEMM database) in which this story appears is from the {WriteEarliestGMP(story.earliest_attestation)}.
+        The story is {DetermineStoryPopularity(story.total_records)}, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
+        % of GMP (among those manuscripts with more
+        than five stories). The story was originally written down in {story.origin}. {ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} 
+        {ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} 
+        {ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
+     </>
   );
 };

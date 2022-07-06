@@ -2,7 +2,7 @@ import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from '
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import { GeneratedStoryText } from '../../components/elements/generatedStoryText';
-// import { SummaryComponent } from '../../components/elements/summaryComponent';
+import { SummaryText } from '../../components/elements/summaryText';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
@@ -116,13 +116,10 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
 
           <div className="w-1/2 overflow-hidden">
             <GeneratedStoryText story={data.story}/>
-
-            <div className="mt-8 overflow-hidden">
-                <h1>SUMMARY</h1>
-                <h2>{data.story.summary_plot} Summary by {data.story.summary_created_by}; 
-                edited by Taylor Eggan.</h2>
-              </div>
+            {data.story.total_paintings != 0 ? <SummaryText story={data.story}/> : <></>}
           </div>
+          {data.story.total_paintings === 0 ? <SummaryText story={data.story}/>  : <></>}
+          
 
           <div className="w-1/4 overflow-hidden">
             <StoryInformationWidget story={data.story}/>
