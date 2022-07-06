@@ -9,8 +9,7 @@ export const SummaryText = (props: any) => {
     return (
         <div className="mt-8 overflow-hidden">
             <h1>SUMMARY</h1>
-            <h2>{story.summary_plot} Summary by {story.summary_created_by}; 
-            edited by Taylor Eggan.</h2>
+            <h2>{story.summary_plot}</h2>
       </div>
     );
   };
