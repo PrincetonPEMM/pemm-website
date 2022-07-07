@@ -75,10 +75,10 @@ export const StoryInformationWidget = (props: any) => {
     // Function to write incipits, if any
     const ConstructIncipit = (canonical_incipit: boolean, incipit: string, recension_id: string, manuscript: string, folio_start: string, folio_end: string) => {
         if (canonical_incipit == true && incipit != null && recension_id != null) {
-            return <> <Typography variant="body2"> <b>Incipit(s):</b> {incipit} ({manuscript}, f. {folio_start}-{folio_end})</Typography>
+            return <> <Typography variant="body2"> <b>Incipit(s):</b> {incipit} ... From {manuscript}, f. {folio_start}-{folio_end}</Typography>
                       <Typography variant="body2"> <b>Recension ID:</b> {recension_id}</Typography> </>
         } else if (canonical_incipit == true && incipit != null) {
-            return <> <Typography variant="body2"> <b>Incipit(s):</b> {incipit} ({manuscript}, f. {folio_start}-{folio_end})</Typography> </>
+            return <> <Typography variant="body2"> <b>Incipit(s):</b> {incipit} ... From {manuscript}, f. {folio_start}-{folio_end}</Typography> </>
         }
         return;
     }
@@ -86,7 +86,7 @@ export const StoryInformationWidget = (props: any) => {
     // Function to write id numbers (hamburg id, clavis id, csm number, poncelet number, macomber id), if any
     const ConstructIDNumbers = (hamburg_id: string, clavis_id: string, csm_number: number, poncelet_number: number, macomber_id: string) => {
         if (hamburg_id != null || clavis_id != null || macomber_id != null || csm_number != null || poncelet_number != null) {
-            return <> <Typography variant="body2"> <b>ID Numbers:</b> Hamburg ID {story.hamburg_id}, Clavis ID {story.clavis_id}, CSM No. {story.csm_number}, Poncelet No. {story.poncelet_number}, Macomber ID {story.macomber_id}</Typography> </>
+            return <> <Typography variant="body2"> <b>ID Numbers:</b> Macomber ID {macomber_id}; Beta maṣāḥǝft ID {hamburg_id}, Clavis ID {clavis_id}; Cantigas ID {csm_number}; Poncelet ID {poncelet_number}</Typography> </>
         }
     }
 
