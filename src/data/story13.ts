@@ -43,7 +43,7 @@ export const STORY_13_TEST_DATA: Stories = {
   "tgs_folio_start": 39,
   "colin_item": "1",
   "print_version": "Budge, Miracles, p. 10; T-l, p. 21; Cerulli, Il libro, p. 311.",
-  "recension_id": "L)XXXX",
+  "recension_id": null,
   "manuscript": "Z-Paris (BNF) 63",
   "folio_start": "120v",
   "folio_end": "124r",
