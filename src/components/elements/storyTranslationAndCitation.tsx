@@ -14,7 +14,6 @@ export const StoryTranslationAndCitation = (props: any) => {
     // Function to write english translation, if any
     const ConstructEnglishTranslation = (english_translation: string) => {
         if (english_translation != null) {
-            // var rendered = english_translation.replace(/(?:\r\n|\r|\n)/g, "<br>");
             return <> <Typography variant="body2"> <div dangerouslySetInnerHTML={{ __html: english_translation }} /> </Typography> </>
         }
         return;
