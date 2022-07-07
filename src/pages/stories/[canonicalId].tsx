@@ -2,6 +2,7 @@ import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from '
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import { GeneratedStoryText } from '../../components/elements/generatedStoryText';
+import { SummaryText } from '../../components/elements/summaryText';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
@@ -115,12 +116,15 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
 
           <div className="w-1/2 overflow-hidden">
             <GeneratedStoryText story={data.story}/>
+            {data.story.total_paintings != 0 ? <SummaryText story={data.story}/> : <></>}
           </div>
+          {data.story.total_paintings === 0 ? <SummaryText story={data.story}/>  : <></>}
+          
 
           <div className="w-1/4 overflow-hidden">
             <StoryInformationWidget story={data.story}/>
           </div>
-
+          
           <div className="w-1/2 overflow-hidden mb-2">
             <p className="text-justify">
               {data.story && data.story.english_translation}
