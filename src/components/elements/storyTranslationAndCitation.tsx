@@ -23,31 +23,31 @@ export const StoryTranslationAndCitation = (props: any) => {
     const ConstructTranslationCitation = (english_translation_author: string, macomber_id: string, macomber_title: string) => {
         const last_modified_date = new Date();
         if (english_translation_author != null && macomber_id != null && macomber_title != null) {
-            return <> <Typography variant="body2"> {english_translation_author}. "ID {macomber_id} {macomber_title}" Täˀammərä Maryam (Miracle of Mary) Stories, edited by Wendy Laura Belcher, Jeremy Brown, Mehari Worku, and Dawit Muluneh. Princeton: Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary project. http://pemm.princeton.edu/story-detail/{macomber_id}. Last modified: {last_modified_date.toLocaleDateString().replace(/\//ig, '.')}.</Typography> </>
+            return <> <Typography variant="subtitle1"> <b>TO CITE THIS TRANSLATION</b> </Typography> <Typography variant="body2"> {english_translation_author}. "ID {macomber_id} {macomber_title}" Täˀammərä Maryam (Miracle of Mary) Stories, edited by Wendy Laura Belcher, Jeremy Brown, Mehari Worku, and Dawit Muluneh. Princeton: Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary project. http://pemm.princeton.edu/story-detail/{macomber_id}. Last modified: {last_modified_date.toLocaleDateString().replace(/\//ig, '.')}.</Typography> </>
         }
         return;
     }
 
     // Function to write other citations, if any
-    const ConstructOtherTranslations = (appears_in_arabic: boolean, appears_in_french: boolean, appears_in_amharic: boolean, appears_in_latin: boolean, appears_in_italian: boolean) => {
-        if (appears_in_arabic != null || appears_in_french != null || appears_in_amharic != null || appears_in_latin != null || appears_in_italian != null) {
+    const ConstructOtherTranslations = (appears_in_arabic: boolean, appears_in_french: boolean, appears_in_amharic: boolean, appears_in_latin: boolean, appears_in_italian: boolean, print_version: string) => {
+        if (appears_in_arabic != false || appears_in_french != false || appears_in_amharic != false || appears_in_latin != false || appears_in_italian != false || print_version != null) {
             return <> <Typography variant="subtitle1"> <b>OTHER TRANSLATIONS & EDITIONS</b> </Typography></>
         }
         return;
     }
 
     // Function to write amharic citation, if any
-    const ConstructAmharicCitation = (tgs: string, tgs_folio_start: number) => {
-        if (tgs == "TGS (EOTC) 1968") {
+    const ConstructAmharicCitation = (appears_in_amharic: boolean, tgs: string, tgs_folio_start: number) => {
+        if (appears_in_amharic == true && tgs == "TGS (EOTC) 1968") {
             return <> <Typography variant="body2"> Amharic: Täsfa Giyorgis, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: 111 Miracles]. 2nd ed. Addis Ababa, Ethiopia, 1968, page {tgs_folio_start}</Typography> </>
         } 
-        else if (tgs == "TGS (EOTC) 1971") {
+        else if (appears_in_amharic == true && tgs == "TGS (EOTC) 1971") {
             return <> <Typography variant="body2"> Amharic: Täsfa Gäbrä Śəllase, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: Part One: 270 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1971, page {tgs_folio_start}</Typography> </>
         }
-        else if (tgs == "TGS (EOTC) 1996") {
+        else if (appears_in_amharic == true && tgs == "TGS (EOTC) 1996") {
             return <> <Typography variant="body2"> Amharic: Täsfa Gäbrä Śəllase, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: Part Two: 402 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1996, page {tgs_folio_start}</Typography> </>
         }
-        else if (tgs == "TGS (EOTC) 2014") {
+        else if (appears_in_amharic == true && tgs == "TGS (EOTC) 2014") {
             return <> <Typography variant="body2"> Amharic: Gäbrä Śəllase Bərhan, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: 366 Miracles]. Aksum, Ethiopia: Gäbrä Śəllase Bərhan Printing Press, 2014, page {tgs_folio_start}</Typography> </>
         }
         return;
@@ -90,14 +90,13 @@ export const StoryTranslationAndCitation = (props: any) => {
             <br></br>
             <h2>{ConstructEnglishTranslation(story.english_translation)}</h2>
             <br></br>
-            {/* TODO: Story Cycle Link (Assigned to Ayo) */}
-            <Typography variant="subtitle1"> <b>TO CITE THIS TRANSLATION</b> </Typography>
+            {/* TODO: Story Cycle Hyperlink (Assigned to Ayo) */}
             <h2>{ConstructTranslationCitation(story.english_translation_author, story.macomber_id, story.macomber_title)}</h2><br></br>
-            <h2>{ConstructOtherTranslations(story.appears_in_arabic, story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian)}</h2>
-            <h2>{ConstructAmharicCitation(story.tgs, story.tgs_folio_start)}</h2>
+            <h2>{ConstructOtherTranslations(story.appears_in_arabic, story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.print_version)}</h2>
+            <h2>{ConstructAmharicCitation(story.appears_in_amharic, story.tgs, story.tgs_folio_start)}</h2>
             <h2>{ConstructFrenchCitation(story.appears_in_french, story.colin_item)}</h2>
-            <h2>{ConstructGeEzPrintEdition(story.print_version)}</h2>
             <h2>{ConstructItalianCitation(story.appears_in_italian)}</h2>
+            <h2>{ConstructGeEzPrintEdition(story.print_version)}</h2>
         </>
     );
 };
