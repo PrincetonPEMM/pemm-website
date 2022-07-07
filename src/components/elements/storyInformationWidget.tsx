@@ -60,7 +60,7 @@ export const StoryInformationWidget = (props: any) => {
     // Function to write total records, if any
     const ConstructTotalRecords = (total_records: number) => {
         if (total_records != null) {
-            return <> <Typography variant="body2"> <b>Total Instances in GMP:</b> {total_records} </Typography> </>
+            return <> <Typography variant="body2"> <b>Total Manuscripts in which Story Appears:</b> {total_records} </Typography> </>
         }
     }
 
