@@ -5,6 +5,7 @@ import { GeneratedStoryText } from '../../components/elements/generatedStoryText
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
+import { StoryTranslationAndCitation } from '../../components/elements/storyTranslationAndCitation';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -34,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 thumbnail = breakup[0] + "full" + breakup[1] + "90," + breakup[2];
             }
             imageUris.push({"original": original, "thumbnail": thumbnail});
-        }
+          }
       }
       var story: Stories = {};
       if (process.env['ENVIRONMENT'] == "DEV") {
@@ -122,9 +123,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           </div>
 
           <div className="w-1/2 overflow-hidden mb-2">
-            <p className="text-justify">
-              {data.story && data.story.english_translation}
-            </p>
+            <StoryTranslationAndCitation story={data.story}/>
           </div>
         </div>
       </Box>
@@ -159,9 +158,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           </TabPanel>
           <TabPanel value={value} index={2}>
             <div className="overflow-hidden m-1">
-              <p className="text-justify">
-                {data.story && data.story.english_translation}
-              </p>
+              <StoryTranslationAndCitation story={data.story}/>
             </div>
           </TabPanel>
 
