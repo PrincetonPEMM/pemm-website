@@ -23,7 +23,7 @@ export const StoryTranslationAndCitation = (props: any) => {
     const ConstructTranslationCitation = (english_translation_author: string, macomber_id: string, macomber_title: string) => {
         const last_modified_date = new Date();
         if (english_translation_author != null && macomber_id != null && macomber_title != null) {
-            return <> <Typography variant="subtitle1"> <b>TO CITE THIS TRANSLATION</b> </Typography> <Typography variant="body2"> {english_translation_author}. "ID {macomber_id} {macomber_title}" Täˀammərä Maryam (Miracle of Mary) Stories, edited by Wendy Laura Belcher, Jeremy Brown, Mehari Worku, and Dawit Muluneh. Princeton: Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary project. http://pemm.princeton.edu/story-detail/{macomber_id}. Last modified: {last_modified_date.toLocaleDateString().replace(/\//ig, '.')}.</Typography> </>
+            return <> <Typography variant="subtitle1"> <b>TO CITE THIS TRANSLATION</b> </Typography> <Typography variant="body2"> {english_translation_author}. "ID {macomber_id}: {macomber_title}" Täˀammərä Maryam (Miracle of Mary) Stories, edited by Wendy Laura Belcher, Jeremy Brown, Mehari Worku, and Dawit Muluneh. Princeton: Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary project. http://pemm.princeton.edu/story-detail/{macomber_id}. Last modified: {last_modified_date.toLocaleDateString().replace(/\//ig, '.')}.</Typography> </>
         }
         return;
     }
@@ -39,16 +39,16 @@ export const StoryTranslationAndCitation = (props: any) => {
     // Function to write amharic citation, if any
     const ConstructAmharicCitation = (appears_in_amharic: boolean, tgs: string, tgs_folio_start: number) => {
         if (appears_in_amharic == true && tgs == "TGS (EOTC) 1968") {
-            return <> <Typography variant="body2"> Amharic: Täsfa Giyorgis, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: 111 Miracles]. 2nd ed. Addis Ababa, Ethiopia, 1968, page {tgs_folio_start}</Typography> </>
+            return <> <Typography variant="body2"> <b>Amharic:</b> Täsfa Giyorgis, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: 111 Miracles]. 2nd ed. Addis Ababa, Ethiopia, 1968, page {tgs_folio_start}</Typography> </>
         } 
         else if (appears_in_amharic == true && tgs == "TGS (EOTC) 1971") {
-            return <> <Typography variant="body2"> Amharic: Täsfa Gäbrä Śəllase, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: Part One: 270 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1971, page {tgs_folio_start}</Typography> </>
+            return <> <Typography variant="body2"> <b>Amharic:</b> Täsfa Gäbrä Śəllase, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: Part One: 270 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1971, page {tgs_folio_start}</Typography> </>
         }
         else if (appears_in_amharic == true && tgs == "TGS (EOTC) 1996") {
-            return <> <Typography variant="body2"> Amharic: Täsfa Gäbrä Śəllase, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: Part Two: 402 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1996, page {tgs_folio_start}</Typography> </>
+            return <> <Typography variant="body2"> <b>Amharic:</b> Täsfa Gäbrä Śəllase, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: Part Two: 402 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1996, page {tgs_folio_start}</Typography> </>
         }
         else if (appears_in_amharic == true && tgs == "TGS (EOTC) 2014") {
-            return <> <Typography variant="body2"> Amharic: Gäbrä Śəllase Bərhan, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: 366 Miracles]. Aksum, Ethiopia: Gäbrä Śəllase Bərhan Printing Press, 2014, page {tgs_folio_start}</Typography> </>
+            return <> <Typography variant="body2"> <b>Amharic:</b> Gäbrä Śəllase Bərhan, ed. Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña [the Miracles of Mary in Gəˁəz and Amharic: 366 Miracles]. Aksum, Ethiopia: Gäbrä Śəllase Bərhan Printing Press, 2014, page {tgs_folio_start}</Typography> </>
         }
         return;
     }
@@ -56,7 +56,7 @@ export const StoryTranslationAndCitation = (props: any) => {
     // Function to write french citation, if any
     const ConstructFrenchCitation = (appears_in_french: boolean, colin_item: string) => {
         if (appears_in_french == true) {
-            return <> <Typography variant="body2"> French: Colin, Gérard. Le Livre Éthiopien Des Miracles De Marie (Taamra Mâryâm). Paris: Les Editions du Cerf, 2004, item {colin_item}</Typography> </>
+            return <> <Typography variant="body2"> <b>French:</b> Colin, Gérard. <i>Le Livre Éthiopien Des Miracles De Marie (Taamra Mâryâm).</i> Paris: Les Editions du Cerf, 2004, item {colin_item}</Typography> </>
         }
         return;
     }
@@ -64,7 +64,7 @@ export const StoryTranslationAndCitation = (props: any) => {
     // Function to write ge'ez print edition, if any
     const ConstructGeEzPrintEdition = (print_version: string) => {
         if (print_version != null) {
-            return <> <Typography variant="body2"> Ge'ez Print Edition(s): {print_version}</Typography> </>
+            return <> <Typography variant="body2"> <b>Ge'ez Print Edition(s):</b> {print_version}</Typography> </>
         }
     }
 
@@ -79,7 +79,7 @@ export const StoryTranslationAndCitation = (props: any) => {
     // Function to write italian citation, if any
     const ConstructItalianCitation = (appears_in_italian: boolean) => {
         if (appears_in_italian == true) {
-            return <> <Typography variant="body2"> Italian: Italian Translation in Cerulli, Enrico. Il Libro Etiopico Dei Miracoli Di Maria E Le Sue Fonti Nelle Letterature Del Medio Evo Latino. Universita Di Roma, Studi Orientali Pubblicati a Cura Della Scuola Orientale. Rome: Giovanni Bardi Editore, 1943.</Typography> </>
+            return <> <Typography variant="body2"> <b>Italian:</b> Cerulli, Enrico. <i>Il Libro Etiopico Dei Miracoli Di Maria E Le Sue Fonti Nelle Letterature Del Medio Evo Latino. Universita Di Roma, Studi Orientali Pubblicati a Cura Della Scuola Orientale.</i> Rome: Giovanni Bardi Editore, 1943.</Typography> </>
         }
     }
 
