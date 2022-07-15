@@ -31,4 +31,5 @@ export type Stories = {
     csm_number?: number | null,
     poncelet_number?: number | null,
     names_of_mms_with_earliest_attestation?: string | null,
+    cycle_name?: string | null,
   }

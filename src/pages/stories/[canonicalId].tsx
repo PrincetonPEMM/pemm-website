@@ -2,11 +2,12 @@ import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from '
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import { GeneratedStoryText } from '../../components/elements/generatedStoryText';
-// import { SummaryComponent } from '../../components/elements/summaryComponent';
+import { CycleHyperlink } from '../../components/elements/cycleHyperlink';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
+import { TEST_DATA } from '../../data/stories';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
@@ -47,11 +48,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           story = story_res.data[0];
         }
       }
+
+      var all_stories: Stories[] = [];
+      if (process.env['ENVIRONMENT'] == "DEV") {
+        all_stories = TEST_DATA;
+      }
+      else {
+        const stories_dat = await axios(process.env.REACT_APP_API + 'stories/');
+        if(stories_dat.data.length > 0){
+          all_stories = stories_dat.data[0];
+        }
+      }
+
       return {
         props: {
           data: {
             imageUris: imageUris,
-            story: story
+            story: story,
+            all_stories: all_stories
           }
         }
       }
@@ -60,7 +74,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           props: {
             data: {
               imageUris: [],
-              story: {}
+              story: {},
+              all_stories: {}
             }
           }
         }
@@ -132,7 +147,13 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
             <p className="text-justify">
               {data.story && data.story.english_translation}
             </p>
+
+            <div className="overflow-hidden mt-1">
+              <CycleHyperlink story= {data.story}
+                              all_stories = {data.all_stories}/>
+            </div>
           </div>
+
         </div>
       </Box>
 

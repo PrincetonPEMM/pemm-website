@@ -14,7 +14,6 @@ export const STORY_13_TEST_DATA: Stories = {
   "appears_in_italian": true,
   "summary_plot": "Bishop Dexius (Hildephonsus) |sp|, of the church in Teltelya |sp| (Toledo, Spain), was working on a book recounting the miracles of the Virgin Mary. When he was almost finished writing the book, Mary appeared to him, examined his work with pleasure, and blessed him. Dexius then established a new feast day in Mary's honor, to take place before the Nativity. The people of the town celebrated the festival joyfully.",
   "summary_created_by": "Jason O. Seavey",
-  "pemm_id": 13,
   "sum_of_countif_unique_manuscript": 52,
   "type_of_story": "Miracle of Mary",
   "canonical_story_subjects": "Writing & Books",
@@ -24,12 +23,14 @@ export const STORY_13_TEST_DATA: Stories = {
   "english_translation_source": "Budge, One Hundred, p. 1.",
   "english_translation_manuscript_name": "BOr (BL) 650",
   "hamburg_id": "LIT3586Miracle",
-  "macomber_id": "13",
   "csm_number": 2,
   "poncelet_number": 117,
   "names_of_mms_with_earliest_attestation": "BAdd (BL) 16192, BOr (BL) 650, BOr (BL) 652, EMML (HMML) 3536, EMML (HMML) 392, EMML (HMML) 5105, EMML (HMML) 7772, EMML (HMML) 8739, EMML (HMML) 8970, EMML (HMML) 9002, B-Mc (McCarthy) 1574, Davies (HMML) Marara, DL-E (Brown) 14",
   "canonical_story_place": null,
   "canonical_story_place_type": null,
+  "pemm_id": 13,
+  "macomber_id": "13",
+  "cycle_name": null,
 };
 
 export const STORY_13_IMAGE_TEST_DATA: Paintings[] = 
