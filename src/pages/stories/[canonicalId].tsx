@@ -3,9 +3,11 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import { GeneratedStoryText } from '../../components/elements/generatedStoryText';
 import { CycleHyperlink } from '../../components/elements/cycleHyperlink';
+import { SummaryText } from '../../components/elements/summaryText';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
+import { StoryTranslationAndCitation } from '../../components/elements/storyTranslationAndCitation';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA } from '../../data/story13';
 import { TEST_DATA } from '../../data/stories';
 import Typography from '@mui/material/Typography';
@@ -36,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 thumbnail = breakup[0] + "full" + breakup[1] + "90," + breakup[2];
             }
             imageUris.push({"original": original, "thumbnail": thumbnail});
-        }
+          }
       }
       var story: Stories = {};
       if (process.env['ENVIRONMENT'] == "DEV") {
@@ -131,22 +133,17 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
 
           <div className="w-1/2 overflow-hidden">
             <GeneratedStoryText story={data.story}/>
-
-            <div className="mt-8 overflow-hidden">
-                <h1>SUMMARY</h1>
-                <h2>{data.story.summary_plot} Summary by {data.story.summary_created_by}; 
-                edited by Taylor Eggan.</h2>
-              </div>
+            {data.story.total_paintings != 0 ? <SummaryText story={data.story}/> : <></>}
           </div>
+          {data.story.total_paintings === 0 ? <SummaryText story={data.story}/>  : <></>}
+          
 
           <div className="w-1/4 overflow-hidden">
             <StoryInformationWidget story={data.story}/>
           </div>
           
           <div className="w-1/2 overflow-hidden mb-2">
-            <p className="text-justify">
-              {data.story && data.story.english_translation}
-            </p>
+            <StoryTranslationAndCitation story={data.story}/>
 
             <div className="overflow-hidden mt-1">
               <CycleHyperlink story= {data.story}
@@ -187,9 +184,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
           </TabPanel>
           <TabPanel value={value} index={2}>
             <div className="overflow-hidden m-1">
-              <p className="text-justify">
-                {data.story && data.story.english_translation}
-              </p>
+              <StoryTranslationAndCitation story={data.story}/>
             </div>
           </TabPanel>
 
