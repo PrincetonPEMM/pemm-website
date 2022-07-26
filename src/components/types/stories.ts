@@ -38,6 +38,7 @@ export type Stories = {
     csm_number?: number | null,
     poncelet_number?: number | null,
     names_of_mms_with_earliest_attestation?: string | null,
+    cycle_name?: string | null,
     english_translation_author?: string | null,
     tgs?: string | null,
     tgs_folio_start?: number | null,
