@@ -1,58 +1,56 @@
 import Typography from '@mui/material/Typography';
-import type {Instances} from '../../components/types/instances';
+
+// List of all the centiries we currenlty have story instances in.
+const CENTURIES: [number, string][] = [[13, '1300s'], [14, '1400s'], [15, '1500s'], [16, '1600s'], [17, '1700s'], [18, '1800s'], [19, '1900s']];
 
 export const ManuscriptInformationBox = (props: any) => {
-    const INSTANCE = props.instances;
-    const STORY_ID = INSTANCE.canonical_story_id;
-    const MANUSCRIPT = INSTANCE.manuscript;
-    const SCAN_START = INSTANCE.scan_start;
-    const FOLIO_START = INSTANCE.folio_start;
-    const STORY_CENTURY = Math.ceil(INSTANCE.date_range_mean/100);
+    const INSTANCES = props.instances;
 
-    // Function to group manuscripts by story century
-    // Print in chronological order
-    // Each manuscript should be hyperlinked to the corresponding Manuscript Detail page
-    // e.g. STORY CENTURY == 1300 (boolean) then map()
-
-    // OUTPUT e.g. GMP in Which The Story Appears:
-    //             1300s: EMDL 21 f. 34v; M-Duke 392 s. 342
-    //             1400s: BOr (BL) 413 f. 3; Gayant f. 6; 1500s: BOr 520 f. 234; EMML 232 f. 123
-    //             1500s: ...
-    //             <See all manuscripts that contain this story> 
-
-    const FindAllManuscripts = (story_century: number, instances:any) => {
-        
-        // for (const century of instances) {
-        //     let century_number = century.STORY_CENTURY;
-        //     if (century_number == 13) {
-        //         return <> <Typography variant="body2"> {STORY_CENTURY}00s: {MANUSCRIPT} s. {SCAN_START}.</Typography> </>
-        //     }
-        // }
-
-        if (STORY_CENTURY == 17) {
-            return <> <Typography variant="body2"> {STORY_CENTURY}00s: {MANUSCRIPT} s. {SCAN_START}.</Typography> </>
-        } else if (SCAN_START == null) {
-            return <> <Typography variant="body2"> {STORY_CENTURY - 1}00s: {MANUSCRIPT} f. {FOLIO_START}.</Typography> </>
+    // Takes in a single story century and a list of story instances and returns
+    // semicolon separated element of all the manuscripts in that century
+    const FindManuscriptsOfCentury = (story_century: number, instances:any) => {
+        let manuscripts = [];
+        for (const instance of instances) {
+            let century_number = Math.ceil(instance.date_range_mean/100);
+            if (century_number == story_century) {
+                if (instance.scan_start) {
+                    manuscripts.push(instance.manuscript + " s. " + instance.scan_start);
+                } else {
+                    manuscripts.push(instance.manuscript + " f. " + instance.folio_start);
+                }
+            }
         }
+        return manuscripts.map(function(manuscript, i){
+            return (
+                <div key={i} className="inline-block">
+                    {manuscript + "; "}
+                </div>
+            )
+        })
+    }
 
-        // var calculated_century = Math.ceil(story_century/100);
-
-        // if (calculated_century == 17) {
-        //     var new_instance = INSTANCE.map(function(val, index) {
-        //         <div key={index}> 
-        //         return <> <Typography variant="body2"> 1700s: {val} s. {SCAN_START}.</Typography> </>
-        //         </div>
-        //     }
-        // }
-
-        return;
+    // Returns True if any of the story instances were written in the story century.
+    const HasManuscirptsInCentury = (story_century: number, instances:any) => {
+        for (const instance of instances) {
+            let century_number = Math.ceil(instance.date_range_mean/100);
+            if (century_number == story_century) {
+                return true
+            }
+        }
+        return false;
     }
 
     return (
         <>
             <Typography variant="subtitle1"> <b>MANUSCRIPTS</b> </Typography>
             <Typography variant="body2"> GMP Manuscripts in which story appears (with page or folio start): </Typography>
-            <h2>{FindAllManuscripts(STORY_CENTURY, INSTANCE)}</h2>
+            {CENTURIES.map(function(century, i){
+                return (
+                    <div className='block' key={i}> 
+                        { HasManuscirptsInCentury(century[0], INSTANCES) && century[1] + ": " }  {FindManuscriptsOfCentury(century[0], INSTANCES)} 
+                    </div>
+                )
+            })}
         </>
     );
 };
