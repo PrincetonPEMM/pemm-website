@@ -89,11 +89,11 @@ export const GeneratedStoryText = (props: any) => {
 
 
     // function to write illustration availability sentences
-    const ConstructIllustrationSentences = (pemm_id : number, total_paintings: number, socum_num: number) => {
+    const ConstructIllustrationSentences = (pemm_id : string, total_paintings: number, socum_num: number) => {
     
-      let id_list: number[] = [13, 187, 161, 162, 163, 19, 27, 33, 54, 
-            153, 154, 16, 46, 43, 48, 59, 57, 61, 68, 82, 83, 99, 103, 112, 
-            158, 140, 142, 7, 125, 152, 148, 236 ];
+      let id_list: string[] = ["13", "187", "161", "162", "163", "19", "27", "33", "54", 
+            "153", "154", "16", "46", "43", "48", "59", "57", "61", "68", "82", "83", "99", "103", "112", 
+            "158", "140", "142", "7", "125", "152", "148", "236" ];
   
       if(id_list.includes(pemm_id)){
         return <> The story is among the thirty-two Täˀammərä Maryam stories that are most frequently illustrated. 
