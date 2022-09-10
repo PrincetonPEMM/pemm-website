@@ -15,6 +15,9 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import axios from 'axios';
+import Image from 'next/image';
+
+const DEFAULT_IMAGE = "https://pemm-data-migration.s3.amazonaws.com/geez.jpg";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { canonicalId } = context.query;
@@ -129,6 +132,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
 
           <div className="w-1/4 overflow-hidden">
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
+            {!data.imageUris || data.imageUris.length === 0 && <Image src={DEFAULT_IMAGE} width={500} height={700}/>}
           </div>
 
           <div className="w-1/2 overflow-hidden">
