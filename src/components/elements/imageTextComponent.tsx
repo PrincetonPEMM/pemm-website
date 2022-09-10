@@ -7,7 +7,7 @@ export const ImageTextComponent = (props: any) => {
     return (
       <>
         <div className="relative overflow-hidden">
-            <Image src={props.imageUrl} width={600} height={1000} className="object-cover" />
+            <Image src={props.imageUrl} width={600} height={1000} className="object-cover" alt="Painting From a Manuscript" />
             <div className="absolute py-2.5 bottom-64 inset-x-0 leading-4 flex flex-col">
                 <Link href={props.link}>
                     <Button className="block">
