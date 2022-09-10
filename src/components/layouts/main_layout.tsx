@@ -18,6 +18,7 @@ const MainLayout = ({ children }: LayoutProps) => {
       </Head>
       <NavBar/>
         <Box 
+          className="h-screen"
           //TODO: Update hardcoded secondary color
           bgcolor="#E8E4DD">
           <main>
