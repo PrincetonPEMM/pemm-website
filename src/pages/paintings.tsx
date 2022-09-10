@@ -11,22 +11,23 @@ const IMAGES_PER_PAGE = 9
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const res = await axios(process.env.REACT_APP_API + 'images/');
-    const images: Paintings[] = await res.data;
+    const paintings: Paintings[] = await res.data;
     let imageUris = [];
-    for (let i = 0; i < images.length; i++) {
-        if (images[i].image_link) {
-        let breakup = images[i].image_link!.split("full");
+    for (let i = 0; i < paintings.length; i++) {
+        if (paintings[i].image_link) {
+        let breakup = paintings[i].image_link!.split("full");
         if (breakup.length === 3) {
           //TODO: Update this and use a more standardized way to format how to display the image
-          images[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
+          paintings[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
         }
-        imageUris.push(images[i].image_link);
+        imageUris.push(paintings[i].image_link);
       }
     }
     return {
       props: {
         data: {
-          imageUris: imageUris
+          imageUris: imageUris,
+          paintings: paintings
         }
       }
     }
@@ -34,7 +35,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         props: {
           data: {
-            imageUris: []
+            imageUris: [],
+            paintings: []
           }
         }
       }
@@ -68,11 +70,8 @@ const PaintingsPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof ge
 
   return (
     <div>
-        <h1>
-          Paintings
-        </h1>
         <div className="flex flex-wrap justify-center">
-          <ImagesComponent {...imagesObject}/>
+          <ImagesComponent {...imagesObject} paintings={data.paintings}/>
         </div>
         <div className="ml-20 mr-20">
             <div id="paginator"></div>
