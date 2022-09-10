@@ -191,6 +191,8 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
               <StoryTranslationAndCitation story={data.story}/>
             </div>
           </TabPanel>
+          <CycleHyperlink story= {data.story}
+                              all_stories = {data.all_stories}/>
 
         </div>
       </Box>
