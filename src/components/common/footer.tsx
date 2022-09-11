@@ -82,6 +82,11 @@ const Footer = () => {
               <p className="text-white w-60 inline-flex flex-col gap-y-3">
                 <a href = "mailto: wendy@princeton.edu"><Button>Wendy Belcher</Button></a>
                 <a href = "mailto: evgeniia@princeton.edu"><Button>Evgeniia Lambrinaki</Button></a>
+                <Link href='/maps'>
+                  <Button>
+                    Maps
+                  </Button>
+                </Link>
               </p>
               <div className="pt-3">
                 <Social/>
