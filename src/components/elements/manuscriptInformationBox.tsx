@@ -47,7 +47,7 @@ export const ManuscriptInformationBox = (props: any) => {
             {CENTURIES.map(function(century, i){
                 return (
                     <div className='block' key={i}> 
-                        { HasManuscirptsInCentury(century[0], INSTANCES) && century[1] + ": " }  {FindManuscriptsOfCentury(century[0], INSTANCES)} 
+                        <div className='font-bold inline'>{ HasManuscirptsInCentury(century[0], INSTANCES) && century[1] + ": " }</div>  {FindManuscriptsOfCentury(century[0], INSTANCES)} 
                     </div>
                 )
             })}

@@ -6,6 +6,7 @@ import { SummaryText } from '../../components/elements/summaryText';
 import type {Paintings} from '../../components/types/paintings';
 import type {Stories} from '../../components/types/stories';
 import type {Instances} from '../../components/types/instances';
+import { CycleHyperlink } from '../../components/elements/cycleHyperlink';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
 import { StoryTranslationAndCitation } from '../../components/elements/storyTranslationAndCitation';
 import { ManuscriptInformationBox } from '../../components/elements/manuscriptInformationBox';
@@ -16,6 +17,9 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import axios from 'axios';
+import Image from 'next/image';
+
+const DEFAULT_IMAGE = "https://pemm-data-migration.s3.amazonaws.com/geez.jpg";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { canonicalId } = context.query;
@@ -59,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       else {
         const stories_dat = await axios(process.env.REACT_APP_API + 'stories/');
         if(stories_dat.data.length > 0){
-          all_stories = stories_dat.data[0];
+          all_stories = stories_dat.data;
         }
       }
 
@@ -136,31 +140,40 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
             flexGrow: 1, 
             display: { xs: 'none', md: 'flex', lg: 'flex' }
         }}>
-        <div className="flex space-x-10 flex-wrap overflow-hidden ml-2">
+        <div className="flex space-x-10 flex-wrap ml-2">
           <div className='m-4 w-3/4'>
             <Typography variant="h3">{data.story.macomber_title}</Typography>
           </div>
 
-          <div className="w-1/4 overflow-hidden">
+          <div className="w-1/4 flex flex-col">
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
+            {!data.imageUris || data.imageUris.length === 0 && <Image src={DEFAULT_IMAGE} width={500} height={700}/>}
+
+            <div className="">
+              <StoryInformationWidget story={data.story}/>
+            </div>
           </div>
 
-          <div className="w-1/2 overflow-hidden">
+          <div className="w-1/2 flex flex-col">
             <GeneratedStoryText story={data.story}/>
-            {data.story.total_paintings != 0 ? <SummaryText story={data.story}/> : <></>}
-          </div>
-          {data.story.total_paintings === 0 ? <SummaryText story={data.story}/>  : <></>}
-          
 
-          <div className="w-1/4 overflow-hidden">
-            <StoryInformationWidget story={data.story}/>
-          </div>
+            <SummaryText story={data.story}/>
           
-          <div className="w-1/2 overflow-hidden mb-2">
-            <StoryTranslationAndCitation story={data.story}/>
-          <br></br>
-            <ManuscriptInformationBox story={data.story}
+          
+              
+            <div className='mt-5'>
+              <StoryTranslationAndCitation story={data.story}/>
+            </div>
+            <div className='mt-5'>
+              <ManuscriptInformationBox story={data.story}
                                       instances = {data.instances}/>
+            </div>
+            
+          </div>
+          <div className='w-1/4'></div>
+          <div className='w-1/2 mb-2'>
+              <CycleHyperlink story= {data.story}
+                              all_stories = {data.all_stories}/>
           </div>
         </div>
       </Box>
@@ -205,6 +218,9 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
                                         instances = {data.instances}/>
             </div>
           </TabPanel>
+          <CycleHyperlink story= {data.story}
+                              all_stories = {data.all_stories}/>
+
         </div>
       </Box>
     </div>
