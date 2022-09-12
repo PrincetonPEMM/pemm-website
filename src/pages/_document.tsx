@@ -22,6 +22,7 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+          <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
         </Head>
         <body>
           <Main />
