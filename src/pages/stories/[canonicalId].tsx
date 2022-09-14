@@ -94,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             data: {
               imageUris: [],
               story: {},
-              all_stories: {},
+              all_stories: [],
               instances: []
             }
           }
