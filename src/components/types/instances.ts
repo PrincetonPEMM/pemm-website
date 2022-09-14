@@ -14,4 +14,7 @@ export type Instances = {
     line_end?: number | null,
     miracle_number?: number | null,
     date_range_mean?: number | null,
+    incipit?: string | null,
+    story_paintings?: number | null,
+    story_century?: number | null,
 }
