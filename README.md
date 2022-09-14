@@ -1,5 +1,5 @@
 ![](public/navbar_logo.png) 
-This is the applicaiton built for the The Princeton Ethiopian Miracles of Mary Project. It is meant to help users navigate, read and learn about stories cataloged through this project. You can visit the production app at [ethiopicmary.com](https://ethiopicmary.com)
+This is the application built for the The Princeton Ethiopian Miracles of Mary Project. It is meant to help users navigate, read and learn about stories cataloged through this project. You can visit the production app at [ethiopicmary.com](https://ethiopicmary.com)
 
 
 ## Setup Instructions
