@@ -171,7 +171,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
             
           </div>
           <div className='w-1/4'></div>
-          <div className='w-1/2 mb-2'>
+          <div className='w-1/2 m-10'>
               <CycleHyperlink story= {data.story}
                               all_stories = {data.all_stories}/>
           </div>
