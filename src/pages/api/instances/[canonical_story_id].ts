@@ -28,7 +28,7 @@ const lambda = new AWS.Lambda({
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Instances[]>
+  res: NextApiResponse<Instances[] | any[]>
 ) {
     const { canonical_story_id } = req.query;
     if (typeof(canonical_story_id) == "string") {
@@ -37,12 +37,14 @@ export default function handler(
             let instances : Instances[] = JSON.parse(data).body;
             res.status(200).send(instances);
             res.end();
-        }).catch(() => {
-            res.status(500).send([]);
+        }).catch((error: any) => {
+            console.log("First error", error);
+            res.status(500).send([error]);
             res.end();
         });
     } else {
-        res.status(500).send([]);
+        console.log("Second error");
+        res.status(500).send([typeof(canonical_story_id)]);
         res.end();
     }
 }
