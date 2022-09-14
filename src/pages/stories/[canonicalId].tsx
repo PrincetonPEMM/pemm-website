@@ -62,9 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
       else {
         const stories_dat = await axios(process.env.REACT_APP_API + 'stories/');
-        if(stories_dat.data.length > 0){
-          all_stories = stories_dat.data;
-        }
+        all_stories = await stories_dat.data;
       }
 
       var instances: Instances[] = [];
@@ -94,7 +92,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             data: {
               imageUris: [],
               story: {},
-              all_stories: {},
+              all_stories: [],
               instances: []
             }
           }
@@ -171,7 +169,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeo
             
           </div>
           <div className='w-1/4'></div>
-          <div className='w-1/2 mb-2'>
+          <div className='w-1/2 m-10'>
               <CycleHyperlink story= {data.story}
                               all_stories = {data.all_stories}/>
           </div>
