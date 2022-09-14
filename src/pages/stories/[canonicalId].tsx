@@ -71,9 +71,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
       else {
         const instance_res = await axios(process.env.REACT_APP_API + 'instances/' + canonicalId);
-        if (instance_res.data.length > 0) {
-          instances = instance_res.data;
-        }
+        instances = await instance_res.data;
       }
 
       return {

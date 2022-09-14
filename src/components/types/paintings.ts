@@ -3,4 +3,5 @@ export type Paintings = {
     canonical_story_id?: string,
     manuscript?: string,
     episode_keywords?: string[],
+    painting_id?: number | null,
   }
