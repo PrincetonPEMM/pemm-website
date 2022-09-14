@@ -4,7 +4,12 @@ import type {Stories} from '../../components/types/stories';
 const PREV_TEXT = "<< Read previous part of story";
 const NEXT_TEXT = "Read next part of story >>";
 
-export const CycleHyperlink = (props: any) => {
+interface CycleHyperLinkProps {
+  story: Stories;
+  all_stories: Stories[];
+}
+
+export const CycleHyperlink = (props: CycleHyperLinkProps) => {
   const story : Stories = props.story;
   const all_stories : Stories[] = props.all_stories;
   const cycle_name = story.cycle_name;
