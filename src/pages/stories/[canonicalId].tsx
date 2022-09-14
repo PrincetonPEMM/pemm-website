@@ -62,9 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
       else {
         const stories_dat = await axios(process.env.REACT_APP_API + 'stories/');
-        if(stories_dat.data.length > 0){
-          all_stories = stories_dat.data;
-        }
+        all_stories = await stories_dat.data;
       }
 
       var instances: Instances[] = [];
