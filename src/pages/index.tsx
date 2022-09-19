@@ -1,9 +1,11 @@
 import type { NextPage } from 'next';
 import Box from '@mui/material/Box';
-
+import { styled } from '@mui/material/styles';
 import {ImageTextComponent} from '../components/elements/imageTextComponent';
 import {FeaturedContentComponent} from '../components/elements/featuredContentComponent';
-import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Accordion } from '@mui/material';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { useState } from 'react';
 
 const STORY_IMAGE = "/stories.jpeg";
@@ -47,16 +49,48 @@ const MANUSCRIPTS_DATA = [
 const PAINTINGS_DATA = [
   PAINTINGS_IMAGE, PAINTINGS_TITLE, PAINTINGS_DESCRIPTION, PAINTINGS_LINK, PAINTINGS_BACKGROUND_COLOR, PAINTINGS_CONTENT];
 
+
+const AccordionSummary = styled(MuiAccordionSummary)(({ theme }) => ({
+  padding: theme.spacing(0),
+  margin: theme.spacing(0),
+  '& .MuiAccordionSummary-content' : {
+    margin: '0 !important'
+  }
+}));
+    
+
+const AccordionDetails = styled(MuiAccordionDetails)(() => ({
+  padding: 0,
+  margin: 0
+}));
+  
+
 const Home: NextPage = () => {
   const [accordionState, setAccordionState] = useState(STORY_DATA);
+  const [expanded, setExpanded] = useState(false);
   const handleStoryClick = () => {
-    setAccordionState(STORY_DATA);
+    if (accordionState !== STORY_DATA || !expanded) {
+      setAccordionState(STORY_DATA);
+      setExpanded(true);
+    } else {
+      setExpanded(false);
+    }
   }
   const handleManuscriptsClick = () => {
-    setAccordionState(MANUSCRIPTS_DATA);
+    if (accordionState !== MANUSCRIPTS_DATA || !expanded) {
+      setAccordionState(MANUSCRIPTS_DATA);
+      setExpanded(true);
+    } else {
+      setExpanded(false);
+    }
   }
   const handlePaintingsClick = () => {
-    setAccordionState(PAINTINGS_DATA);
+    if (accordionState !== PAINTINGS_DATA || !expanded) {
+      setAccordionState(PAINTINGS_DATA);
+      setExpanded(true);
+    } else {
+      setExpanded(false);
+    }
   }
   return (
     <div className="block">
@@ -64,7 +98,7 @@ const Home: NextPage = () => {
             flexGrow: 1, 
             alignContent: 'center'
         }}>
-      <Accordion>
+      <Accordion expanded={expanded}>
         <AccordionSummary
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -98,55 +132,6 @@ const Home: NextPage = () => {
             content = {accordionState[5]}/>
         </AccordionDetails>
       </Accordion>
-
-      {/* <Accordion
-        sx= {{
-          width: 1/3
-        }}>
-            <AccordionSummary
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <ImageTextComponent 
-                imageUrl={MANUSCRIPTS_IMAGE}
-                title={MANUSCRIPTS_TITLE}
-                // description={MANUSCRIPTS_DESCRIPTION}
-                link={MANUSCRIPTS_LINK}/>
-            </AccordionSummary>
-            <AccordionDetails>
-              <FeaturedContentComponent 
-                imageUrl={STORY_IMAGE}
-                title={STORY_TITLE}
-                description={STORY_DESCRIPTION}
-                link={STORY_LINK}
-                backgroundColor = {STORY_BACKGROUND_COLOR}
-                content = {STORY_CONTENT}/>
-            </AccordionDetails>
-      </Accordion> */}
-      {/* <Accordion
-        sx= {{
-          width: 1/3
-        }}>
-            <AccordionSummary
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <ImageTextComponent 
-                imageUrl={PAINTINGS_IMAGE}
-                title={PAINTINGS_TITLE}
-                // description={PAINTINGS_DESCRIPTION}
-                link={PAINTINGS_LINK}/>
-            </AccordionSummary>
-            <AccordionDetails>
-              <FeaturedContentComponent 
-                imageUrl={STORY_IMAGE}
-                title={STORY_TITLE}
-                description={STORY_DESCRIPTION}
-                link={STORY_LINK}
-                backgroundColor = {STORY_BACKGROUND_COLOR}
-                content = {STORY_CONTENT}/>
-            </AccordionDetails>
-      </Accordion> */}
       </Box>
 
       <Box sx={{ 
