@@ -96,7 +96,8 @@ const Home: NextPage = () => {
     <div className="block">
       <Box sx={{ 
             flexGrow: 1, 
-            alignContent: 'center'
+            alignContent: 'center',
+            display: { xs: 'none', md: 'block', lg: 'block'},
         }}>
       <Accordion expanded={expanded}>
         <AccordionSummary
@@ -142,21 +143,72 @@ const Home: NextPage = () => {
             marginRight: 'auto',
             marginLeft: 'auto'
         }}>
-        <ImageTextComponent 
-          imageUrl={STORY_IMAGE}
-          title={STORY_TITLE}
-          description={STORY_DESCRIPTION}
-          link={STORY_LINK}/>
-        <ImageTextComponent 
-          imageUrl={MANUSCRIPTS_IMAGE}
-          title={MANUSCRIPTS_TITLE}
-          description={MANUSCRIPTS_DESCRIPTION}
-          link={MANUSCRIPTS_LINK}/>
-        <ImageTextComponent 
-          imageUrl={PAINTINGS_IMAGE}
-          title={PAINTINGS_TITLE}
-          description={PAINTINGS_DESCRIPTION}
-          link={PAINTINGS_LINK}/>
+        <Accordion>
+          <AccordionSummary
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            className='flex'>
+            <ImageTextComponent 
+              imageUrl={STORY_IMAGE}
+              title={STORY_TITLE}
+              description={STORY_DESCRIPTION}
+              link={STORY_LINK}
+              accordionHandler={handleStoryClick}/>
+          </AccordionSummary>
+          <AccordionDetails>
+            <FeaturedContentComponent 
+              imageUrl={STORY_DATA[0]}
+              title={STORY_DATA[1]}
+              description={STORY_DATA[2]}
+              link={STORY_DATA[3]}
+              backgroundColor = {STORY_DATA[4]}
+              content = {STORY_DATA[5]}/>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            className='flex'>
+            <ImageTextComponent 
+              imageUrl={MANUSCRIPTS_IMAGE}
+              title={MANUSCRIPTS_TITLE}
+              description={MANUSCRIPTS_DESCRIPTION}
+              link={MANUSCRIPTS_LINK}
+              accordionHandler={handleManuscriptsClick}/>
+          </AccordionSummary>
+          <AccordionDetails>
+            <FeaturedContentComponent 
+              imageUrl={MANUSCRIPTS_DATA[0]}
+              title={MANUSCRIPTS_DATA[1]}
+              description={MANUSCRIPTS_DATA[2]}
+              link={MANUSCRIPTS_DATA[3]}
+              backgroundColor = {MANUSCRIPTS_DATA[4]}
+              content = {MANUSCRIPTS_DATA[5]}/>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            className='flex'>
+            <ImageTextComponent 
+              imageUrl={PAINTINGS_IMAGE}
+              title={PAINTINGS_TITLE}
+              description={PAINTINGS_DESCRIPTION}
+              link={PAINTINGS_LINK}
+              accordionHandler={handlePaintingsClick}/>
+          </AccordionSummary>
+          <AccordionDetails>
+            <FeaturedContentComponent 
+              imageUrl={PAINTINGS_DATA[0]}
+              title={PAINTINGS_DATA[1]}
+              description={PAINTINGS_DATA[2]}
+              link={PAINTINGS_DATA[3]}
+              backgroundColor = {PAINTINGS_DATA[4]}
+              content = {PAINTINGS_DATA[5]}/>
+          </AccordionDetails>
+        </Accordion>
       </Box>
     </div>
   )

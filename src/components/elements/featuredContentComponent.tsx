@@ -9,7 +9,7 @@ export const FeaturedContentComponent = (props: any) => {
         <div className="relative overflow-hidden">
             <Box sx={{ 
                     flexDirection: 'row',
-                    display: { xs: 'none', md: 'flex', lg: 'flex' },
+                    display: { xs: 'flex', md: 'flex', lg: 'flex' },
                     backgroundColor: props.backgroundColor
                 }}>
                 <Image src={props.imageUrl} width={600} height={600}/>
@@ -32,7 +32,7 @@ export const FeaturedContentComponent = (props: any) => {
             </Box>
             <Box sx={{ 
                     flexGrow: 1, 
-                    display: { xs: 'none', md: 'flex', lg: 'flex' },
+                    display: { xs: 'flex', md: 'flex', lg: 'flex' },
                     alignContent: 'center'
                 }}>
                 <FeaturedContentButton 
