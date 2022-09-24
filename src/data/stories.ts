@@ -14,7 +14,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "311",
-    "cycle_name": null
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1-A",
@@ -29,7 +30,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": true,
     "pemm_id": "1.1",
-    "cycle_name": 'VisionTheophilus'
+    "cycle_name": 'VisionTheophilus',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1-B",
@@ -44,7 +46,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": false,
     "appears_in_arabic": true,
     "pemm_id": "1.2",
-    "cycle_name": 'VisionTheophilus'
+    "cycle_name": 'VisionTheophilus',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1-C",
@@ -59,7 +62,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": false,
     "appears_in_arabic": true,
     "pemm_id": "1.3",
-    "cycle_name": 'VisionTheophilus'
+    "cycle_name": 'VisionTheophilus',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "10",
@@ -74,7 +78,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "10",
-    "cycle_name": null
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "100",
@@ -89,7 +94,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "100",
-    "cycle_name": 'The Thieves and the Miraculous Spring'
+    "cycle_name": 'The Thieves and the Miraculous Spring',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1002",
@@ -104,7 +110,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "646",
-    "cycle_name": null
+    "cycle_name": null,
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1003",
@@ -119,7 +126,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "644",
-    "cycle_name": null
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1004",
@@ -134,7 +142,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "645",
-    "cycle_name": 'Saint Thecla and Abba Esi'
+    "cycle_name": 'Saint Thecla and Abba Esi',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1005",
@@ -149,7 +158,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "695",
-    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo'
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1006",
@@ -164,7 +174,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "696",
-    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo'
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1007",
@@ -179,7 +190,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "697",
-    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo'
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1008",
@@ -194,7 +206,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "698",
-    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo'
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1009",
@@ -209,7 +222,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "699",
-    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo'
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "104",
@@ -224,7 +238,8 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": false,
     "appears_in_arabic": false,
     "pemm_id": "104",
-    "cycle_name": null
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "101",
@@ -239,6 +254,7 @@ export const TEST_DATA: Stories[] = [
     "has_english_translation": true,
     "appears_in_arabic": false,
     "pemm_id": "101",
-    "cycle_name": 'The Thieves and the Miraculous Spring'
+    "cycle_name": 'The Thieves and the Miraculous Spring',
+    "type_of_story": 'Miracle of Mary'
   }
 ];
