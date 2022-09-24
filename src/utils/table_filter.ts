@@ -62,11 +62,11 @@ export class TableFilter {
       }
       if (this.filterData.miracleOfMaryStories) {
         this.filteredTableData = 
-          this.filteredTableData.filter(story => story.non_life_miracle === true);
+          this.filteredTableData.filter(story => story.type_of_story?.toLocaleLowerCase() === 'mircale of mary');
       }
       if (this.filterData.lifeOfMaryStories) {
         this.filteredTableData = 
-          this.filteredTableData.filter(story => story.non_life_miracle === false);
+          this.filteredTableData.filter(story => story.type_of_story?.toLocaleLowerCase() === 'life of mary');
       }
       if (this.filterData.earliestStories) {
         this.filteredTableData = 

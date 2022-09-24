@@ -1,4 +1,4 @@
-import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType, GetStaticPaths} from 'next'
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import { GeneratedStoryText } from '../../components/elements/generatedStoryText';
@@ -12,17 +12,34 @@ import { StoryTranslationAndCitation } from '../../components/elements/storyTran
 import { ManuscriptInformationBox } from '../../components/elements/manuscriptInformationBox';
 import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA, STORY_13_INSTANCE_TEST_DATA } from '../../data/story13';
 import { TEST_DATA } from '../../data/stories';
+import { STATIC_PAGES } from '../../data/story_ids';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import axios from 'axios';
 import Image from 'next/image';
+import { ParsedUrlQuery } from 'querystring'
 
 const DEFAULT_IMAGE = "https://pemm-data-migration.s3.amazonaws.com/geez.jpg";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { canonicalId } = context.query;
+interface IParams extends ParsedUrlQuery {
+  canonicalId: string
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const arr: string[] = STATIC_PAGES;
+  const paths = arr.map((canonicalId) => {
+      return {
+          params: { canonicalId },
+      }
+  })
+  return { paths, fallback: false }
+}
+
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { canonicalId } = context.params as IParams;
     try {
       var images: Paintings[] = [];
       if (process.env['ENVIRONMENT'] == "DEV") {
@@ -125,7 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     );
   }
 
-const StoriesDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [value, setValue] = React.useState(0);
   const handleMobileTabChange = (event: any, newValue: any) => {
     setValue(newValue);
