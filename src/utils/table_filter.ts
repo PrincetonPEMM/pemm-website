@@ -167,6 +167,26 @@ export class TableFilter {
           story => story.appears_in_arabic
         )
       }
+      if (this.filterData.languagesFrench) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_french
+        )
+      }
+      if (this.filterData.languagesAmharic) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_amharic
+        )
+      }
+      if (this.filterData.languagesLatin) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_latin
+        )
+      }
+      if (this.filterData.languagesItalian) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_italian
+        )
+      }
     }
 
     filterSubstring() {
