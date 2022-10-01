@@ -3,7 +3,7 @@ export const SummaryText = (props: any) => {
     const story = props.story;
    
     // Doesn't place summary if not available
-    if (story.summary_plot == null){
+    if (story.summary_plot == null || story.summary_plot === ""){
         return(<div></div>);
     }
 
