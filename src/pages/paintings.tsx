@@ -52,12 +52,13 @@ const PaintingsPage: NextPage = ({ server_data }: InferGetServerSidePropsType<ty
   const { data, error } = useSWR(process.env.REACT_APP_API + 'images/', axios);
   let imageUris : string[] = server_data.imageUris;
   let paintings : Paintings[] = server_data.paintings;
+  if (data) {
+    paintings = data?.data;
+    imageUris = getImageUrisFromPaintings(paintings);
+  }
 
   if (error) return <div>failed to load</div>
-  if (!data) return <div className='h-screen'><CircularProgress color="warning" /></div>
-
-  paintings = data?.data;
-  imageUris = getImageUrisFromPaintings(paintings);
+  if (!data && imageUris.length === 0 && paintings.length === 0) return <div className='h-screen'><CircularProgress color="warning" /></div>
 
   return (
     <div>
