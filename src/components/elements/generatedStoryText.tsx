@@ -130,7 +130,6 @@ export const GeneratedStoryText = (props: any) => {
         <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
           percent of PEMM manuscripts with five stories or more.</h2>
         <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
-        <h2 style={{textIndent:"10px"}}>POST-LIFE MIRACLE INFO? </h2>
         <h2 style={{textIndent:"10px"}}>The story was originally <u>composed</u> in {story.origin}. </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
