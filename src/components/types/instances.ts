@@ -17,4 +17,6 @@ export type Instances = {
     incipit?: string | null,
     story_paintings?: number | null,
     story_century?: number | null,
+    manuscript_date_range_start?: number | null,
+    manuscript_date_range_end?: number | null,
 }
