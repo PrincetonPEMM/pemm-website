@@ -101,13 +101,22 @@ export const GeneratedStoryText = (props: any) => {
     return <>{ConstructPaintingSentences(total_paintings, socum_num)}</>;
   }
 
-  // function to write story setting sentence, if any
+  // function to write read aloud sentence, if any
   const ConstructReadAloudSentence = (readings_date: string) => {
 
     if (readings_date != null) {
       return <>This story is assigned by to <u>read aloud</u> on a particular day during the Ethiopian church service: it is read on a {readings_date}. </>
     }
     return;
+  }
+
+  // function to write life miracle sentence, if any
+  const ConstructLifeMiracleSentence = (type_of_story: string) => {
+
+    if (type_of_story == 'Life of Mary') {
+      return <>This story is a <u>life miracle</u>: it takes place during Our Lady Mary's lifetime, not after it.</>
+    }
+    return <>This story is a <u>post-life miracle</u>: it does not take place during Our Lady Mary's lifetime, but after it.</>;
   }
 
   // function to write story setting sentence, if any
@@ -129,6 +138,7 @@ export const GeneratedStoryText = (props: any) => {
         <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
           percent of PEMM manuscripts with five stories or more.</h2>
         <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
+        <h2 style={{textIndent:"10px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
         <h2 style={{textIndent:"10px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
