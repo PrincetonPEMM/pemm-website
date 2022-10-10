@@ -56,7 +56,7 @@ export const GeneratedStoryText = (props: any) => {
   const ConstructTranslationSentence = (appears_in_french: boolean, appears_in_amharic: boolean,
     appears_in_latin: boolean, appears_in_italian: boolean, english_translation: string) => {
 
-    let language_list: string[] = [];
+    let language_list: string[] = ['Gəˁəz'];
 
     if (appears_in_french) {
       language_list.push('French');
@@ -84,7 +84,7 @@ export const GeneratedStoryText = (props: any) => {
     if (total_paintings === 0) {
       return <> This story is <u>not illustrated</u> in PEMM manuscripts.</>;
     }
-    return <> it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_paintings} paintings.</>
+    return <> This story is <u>frequently illustrated</u>: it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_paintings} paintings.</>
   }
 
 
@@ -96,8 +96,7 @@ export const GeneratedStoryText = (props: any) => {
       158, 140, 142, 7, 125, 152, 148, 236];
 
     if (id_list.includes(pemm_id)) {
-      return <> This story is <u>frequently illustrated</u>: 
-        {ConstructPaintingSentences(total_paintings, socum_num)}</>
+      return <> {ConstructPaintingSentences(total_paintings, socum_num)}</>
     }
     return <>{ConstructPaintingSentences(total_paintings, socum_num)}</>;
   }
@@ -130,7 +129,7 @@ export const GeneratedStoryText = (props: any) => {
         <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
           percent of PEMM manuscripts with five stories or more.</h2>
         <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
-        <h2 style={{textIndent:"10px"}}>The story was originally <u>composed</u> in {story.origin}. </h2>
+        <h2 style={{textIndent:"10px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
