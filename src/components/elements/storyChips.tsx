@@ -18,10 +18,9 @@ const placeOfOriginMap : {[key: string]: any} = {
     "Arabic": 1,
     "Amharic": 2,
     "English": 3,
-    "France": 4,
-    "French": 5,
-    "Italian": 6,
-    "Latin": 7,
+    "French": 4,
+    "Italian": 5,
+    "Latin": 6,
   };
   
   const chipTypeMap : {[key: string]: any} = {

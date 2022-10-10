@@ -62,11 +62,11 @@ export class TableFilter {
       }
       if (this.filterData.miracleOfMaryStories) {
         this.filteredTableData = 
-          this.filteredTableData.filter(story => story.non_life_miracle === true);
+          this.filteredTableData.filter(story => story.type_of_story?.toLocaleLowerCase() === 'mircale of mary');
       }
       if (this.filterData.lifeOfMaryStories) {
         this.filteredTableData = 
-          this.filteredTableData.filter(story => story.non_life_miracle === false);
+          this.filteredTableData.filter(story => story.type_of_story?.toLocaleLowerCase() === 'life of mary');
       }
       if (this.filterData.earliestStories) {
         this.filteredTableData = 
@@ -165,6 +165,26 @@ export class TableFilter {
       if (this.filterData.languagesArabic) {
         this.filteredTableData = this.filteredTableData.filter(
           story => story.appears_in_arabic
+        )
+      }
+      if (this.filterData.languagesFrench) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_french
+        )
+      }
+      if (this.filterData.languagesAmharic) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_amharic
+        )
+      }
+      if (this.filterData.languagesLatin) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_latin
+        )
+      }
+      if (this.filterData.languagesItalian) {
+        this.filteredTableData = this.filteredTableData.filter(
+          story => story.appears_in_italian
         )
       }
     }
