@@ -76,15 +76,15 @@ export const GeneratedStoryText = (props: any) => {
       language_list.push('English');
     }
 
-    return <>The story is available in PEMM in the following <u>languages</u>: {language_list.join(", ")}. </>
+    return <>This story is available in the following <u>languages</u>: {language_list.join(", ")}. </>
   }
 
   // function to write painting sentences, if any
   const ConstructPaintingSentences = (total_paintings: number, socum_num: number) => {
     if (total_paintings === 0) {
-      return <> This story is <u>not illustrated</u> in PEMM manuscripts. </>;
+      return <> This story is <u>not illustrated</u> in PEMM manuscripts.</>;
     }
-    return <> It has <u>{total_paintings} paintings</u> in {socum_num} GMP. </>
+    return <> it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_paintings} paintings.</>
   }
 
 
@@ -96,10 +96,19 @@ export const GeneratedStoryText = (props: any) => {
       158, 140, 142, 7, 125, 152, 148, 236];
 
     if (id_list.includes(pemm_id)) {
-      return <> The story is among the thirty-two Täˀammərä Maryam stories that are most frequently illustrated.
+      return <> This story is <u>frequently illustrated</u>: 
         {ConstructPaintingSentences(total_paintings, socum_num)}</>
     }
     return <>{ConstructPaintingSentences(total_paintings, socum_num)}</>;
+  }
+
+  // function to write story setting sentence, if any
+  const ConstructReadAloudSentence = (readings_date: string) => {
+
+    if (readings_date != null) {
+      return <>This story is assigned by to <u>read aloud</u> on a particular day during the Ethiopian church service: it is read on a {readings_date}. </>
+    }
+    return;
   }
 
   // function to write story setting sentence, if any
@@ -116,19 +125,19 @@ export const GeneratedStoryText = (props: any) => {
   return (
     <>
       <div>
-        <h2>The story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>. The earliest PEMM manuscript* in which this story appears is from the
+        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript* in which this story appears is from the
           {WriteEarliestGMP(story.earliest_attestation)}. </h2>
-        <h2>The story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
-          % of GMP (among those manuscripts with more
-          than five stories). </h2>
-        <h2>The story was originally <u>composed</u> in {story.origin}. </h2>
-        <h2>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
-        <h2>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
-        <h2>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
+        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
+          percent of PEMM manuscripts with five stories or more.</h2>
+        <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
+        <h2 style={{textIndent:"10px"}}>POST-LIFE MIRACLE INFO? </h2>
+        <h2 style={{textIndent:"10px"}}>The story was originally <u>composed</u> in {story.origin}. </h2>
+        <h2 style={{textIndent:"10px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
+        <h2 style={{textIndent:"10px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
+        <h2 style={{textIndent:"10px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
       </div>
       <div style={{ marginTop: "10px" }}>
-        <small >* The information above reflects the data in the PEMM database as of ______. A "PEMM manuscript" is defined as any Gəˁəz Marian manuscript that PEMM has catalogued,
-          which to date total ______. For more information, see About page.</small>
+        <small >* A "PEMM manuscript" is defined as any Gəˁəz Marian manuscript that PEMM has catalogued. For more information, see About page.</small>
       </div>
     </>
   );

@@ -18,6 +18,7 @@ export const STORY_13_TEST_DATA: Stories = {
   "sum_of_countif_unique_manuscript": 52,
   "canonical_story_place": null,
   "canonical_story_place_type": null,
+  "readings_dates": "Month of Terr (according to ESP (UH) SM-010, f. 9v); Reading of Daqseyos (according to ESP (UH) DMB-003, f. 23r and ESP (UH) QDQ-003, f. 93v); 22 Tahsas (according to EMML (HMML) 5492, f. 24v)",
 };
 
 export const STORY_13_IMAGE_TEST_DATA: Paintings[] = 
