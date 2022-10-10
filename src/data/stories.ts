@@ -12,7 +12,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": null,
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "311",
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1-A",
@@ -25,7 +28,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "በእንተ፡ ዘከመ፡ አስተርአየቶ፡ ለቴዎፍሎስ፡ ሊቀ፡ ጳጳሳት፡ ወዘከመ፡ ተናገረቶ፡ ወአጽነዐቶ፡ እምደካመ፡ ፍኖት። ይቤ፡ ቴዎፍሎስ፡ ሊቀ፡ ጳጳሳት፡ ስምዑ፡ አበውየ፡ ወአኀውየ፡ ዘእነግረክሙ፡ በፍርሃት፡ ወበረዓድ፡ ወበሃይማኖት፡ ርትዕት",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": true
+    "appears_in_arabic": true,
+    "pemm_id": "1.1",
+    "cycle_name": 'VisionTheophilus',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1-B",
@@ -38,7 +44,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወበይእቲ፡ ዕለት፡ ሞተ፡ ስምዖን፡ ካህን፡ አረጋዊ። ወነበረ፡ ሄሮድስ፡ ፪፡ ዓመተ፡ እንዘ፡ ይጸንሖሙ፡ ለሰብአ፡ ሰገል",
     "theme": null,
     "has_english_translation": false,
-    "appears_in_arabic": true
+    "appears_in_arabic": true,
+    "pemm_id": "1.2",
+    "cycle_name": 'VisionTheophilus',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1-C",
@@ -51,7 +60,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወእምዝ፡ በጽሐ፡ ሀገረ፡ ሳምኖን፡ ውስተ፡ ቀዳሚ፡ አንቀጽ፡ ማኅፈድ፡ በ፬፡ መዓዝኒሁ፡ ወይትሌዓል፡ እምኵሉ፡ ሀገር",
     "theme": null,
     "has_english_translation": false,
-    "appears_in_arabic": true
+    "appears_in_arabic": true,
+    "pemm_id": "1.3",
+    "cycle_name": 'VisionTheophilus',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "10",
@@ -64,7 +76,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወሀሎ፡ አሐዱ፡ ብእሲ፡ በሀገረ፡ ስዒድ፡ በደብረ፡ እንጽና፡ ቤተ፡ ክርስቲያን፡ በስመ፡ እግዝእትነ፡…. ወእስከ፡ ይእዜ፡ ሀሎ፡ ወኵሉ፡ አሐዱ፡ አሐዱ፡ የአምሮ፡ ወይሰመይ፡ ምኔተ፡ አቡ፡ ንዕናእ",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "10",
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "100",
@@ -77,7 +92,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወኮነ፡ እንከ፡ እምድኅረ፡ ወለደቶ፡ ለፍቁር፡ ወልዳ፡ ኢየሱስ፡ ክርስቶስ፡ እንዘ፡ ሀለወት፡ ምድረ፡ ቤተ፡ ልሔም፡ ወአዘዘ፡ ሄሮድስ፡ ንጉሥ፡ ከመ፡ ይቅትሉ፡ ኵሎ፡ ተባዕተ፡ ሕፃናተ",
     "theme": "Unrepentant sinners forgiven",
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "100",
+    "cycle_name": 'The Thieves and the Miraculous Spring',
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1002",
@@ -90,7 +108,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ስምዑ፡ አበውየ፡ ወአኀውየ፡ ዘገብረት፡ እግዝእትነ፡ እምድኅረ፡ ዕረፍታ ፨ ወከመዝ፡ ገብረት፡ ተአምራተ፡ ወመንክራተ፡ ዘአልቦ፡ ኆልቈ፡ እስመ፡ ተወልደ፡ እምኔሃ፡ ዘወረደ፡ እምሰማይ፡ ወተሰገወ፡ ወረሰያ፡ ቤተ፡ መቅደስ፡ ለክብረ፡ ዚአሁ ፨ ወከመዝ፡ ይሁብ፡ ስብሐተ፡ ሰብአ፡ ቤተ፡ መቅደሳ፡ ለቅድስት፡ ድንግል፡ ማርያም፡ ወዓዲ፡ አንስትኒ፡ ይመፅኣ፡ ኀቤሃ፡ እምኵሉ፡ በሐውርት፡ እምሮሜ፡ ወእምእልስክንድርያ፡ ወአዋልደ፡ ነገሥት፡",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "646",
+    "cycle_name": null,
+    "type_of_story": 'Life of Mary'
   },
   {
     "macomber_id": "1003",
@@ -103,7 +124,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወሀሎ፡ ፩ ወሬዛ፡ ዘይነብር፡ ውስተ፡ አሐቲ፡ ሀገር፡ ወኮነ፡ ይፈርሆ፡ ለእግዚአብሔር፡ ልዑል፡ ወያፈቅራ፡ ለእግእዝትነ፡ ማርያም፡ በኵሉ፡ ልቡ፡ ወይትአመን፡ ረድኤተ፡ ዚአሃ፡ ፈድፋደ፡ ወይረክብ፡ በጸሎታ፡ ኵሎ፡ ዘኀሠሠ፡ ወኵሎ፡ ዘተመነየ ፨ ወበአሐቲ፡ ዕለት፡ ለአኮ፡ አቡሁ፡ ኀበ፡ አሐቲ፡ ሀገር፡ ምስለ፡ ፩ ወሬዛ፡ ዘከማሁ ፨-፨ ወውእቱሰ፡ ዘመን፡ መዋዕለ፡ ክረምት፡ ወይዘንም፡ ብዙኀ፡ ዝናም፡ ወአፍለግኒ፡ ምሉአን፡ ኵሎሙ፡ ወይትኄየሉ፡ ጥቀ ፨-፨",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "644",
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1004",
@@ -116,7 +140,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወእምድኅረ፡ ዝንቱ፡ በሳኒታ፡ በጽሑ፡ ኀበ፡ ሀገር፡ እንተ፡ ስማ፡ ጣዋ ፨ ወትቤሎ፡ እግዝእትነ፡ ማርያም፡ ለመልአክ፡ ገብርኤል፡ አቁምኬ፡ ለሐመር፡ ዝየ፡ እስመ፡ አነ፡ እፈቅድ፡ እዕርግ፡ ውስተ፡ ዝንቱ፡ መካን ፨ ወሶበ፡ አቆምዋ፡ ለሐመር፡ ተንሥኡ፡ ሶቤሃ፡ ወወጽኡ፡ ውስተ፡ ሀገር፡ ወነሥኡ፡ ቴክላሃ፡ ምስሌሆሙ፡ ወበጽሑ፡ ውስተ፡ ይእቲ፡ መኰንነ፡ ሀገር ፨",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "645",
+    "cycle_name": 'Saint Thecla and Abba Esi',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1005",
@@ -129,7 +156,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ስምዑ፡ ዘንተ፡ አበዊነ፡ ወአኃዊነ፡ ንነግረክሙ፡ ዜና፡ ተአምሪሃ፡ ለእግዝእትነ፡ ማርያም፡ ዘገብረት፡ በደብረ፡ ዘመዶ፡ በውስተ፡ ሐይመተ፡ እብን። ወነበረት፡ ውስቴታ፡ አሐቲ፡ ብእሲት፡ ዘምስ[ለ]፡ ብዙኅ፡ ንዋያ፡ ወብዙኃን፡ ውሉዳ፡ ዘሞተ፡ ምታ። ወስማ፡ ለይእቲ፡ ብእሲት፡ ዘመደ፡ ማርያም። ወሀገራሰ፡ ዘእግዝእትነ፡ ዘወሀባ፡ ወልዳ፡ እግዚእነ፡ ብሂሎ፡ ትኩንኪ፡ ዐሥራተኪ።",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "695",
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1006",
@@ -142,7 +172,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወእምድኅረ፡ ኀለፈ፡ አቡነ፡ በርተሎሜዎስ፡ ተሰይሙ፡ ፭ቱ፡ ኖሎት፡ በዛቲ፡ መካን፡ እምድ[ኅረ]ዝ፡ ጸውዐቶ፡ ወሰሐበቶ፡ በሐብለ፡ ፍቅራ፡ እግዝእትነ፡ ማርያም፡ ለአቡነ፡ ዮሐንስ፡ ዐምዳ፡ ወድዳ፡ ለቤተ፡ ክርስቲያን፡ እምነ፡ ሀገሩ፡ ዘይሰመይ፡ ጃን፡ አሞራ፡ ወመላኪሃ፡ ውእቱ፡ በእንተ፡ ፍቅራ፡ ለእግዝእትነ፡ ማርያም፡ ወበእንተ፡ ፍቅረ፡ ወልዳ፡ ኀዲጎ፡ ኵሎ፡ ፍቅሮ፡ ለዝንቱ፡ ዓለም፡ ወቈሳቍሲሁ፡ ተንሥአ፡ ፍጡነ፡ ከመ፡ ይሑር፡ ኀበ፡ ተጸውዐ፡ ከመ፡ ይርአይ፡ ማኅ ለቅቶ፡ ለነገር፡ ወፍጻሜሁ።",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "696",
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1007",
@@ -155,7 +188,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ስምዑ፡ እነግርክሙ፡ ዘገብረት፡ ሎቱ፡ እግዝእትነ፡ ማርያም፡ ለአቡነ፡ ዮሐንስ፡ እምድኅረ፡ ጸውዐቶ፡ እምነ፡ ሀገሩ፡ ወተራከበቶ፡ በፍኖት፡ ተመሲላ፡ ነዳይተ፡ ወአስተራከበቶ፡ ካዕበ፡ ምስለ፡ አቡነ፡ ተጠምቀ፡ መድኅን፡ ዘፈከረ፡ ሎቱ፡ ኵሎ። ወእምድኅረ፡ ሤመቶ፡ ኖላዌ፡ አባግዒሃ፡ ወሶበ፡ ኮኖ፡ ፪ዓመተ፡ እምድኅረ፡ ተሠይመ፡ ወአመ፡ በጽሐ፡ ጊዜሁ፡ ዘትቤሎ፡ በአፈ፡ ተጠምቀ፡ መድኅን፡ ድኅረ፡ ተሐውር፡ ኢየሩሳሌም፡ ሆከቶ፡ ጸጋ፡ ወአስተናሥአቶ፡ ወኀሠሠ፡ ዘይስእል፡ ኀበ፡ እግዚአብሔር፡ ከመ፡ ያርትዕ፡ [ሎቱ፡] ፍኖቶ፡ ወኀበ፡ እግዝእትነ፡ ማርያም፡ ከመ፡ ትዕቀቦ፡ እምኵሉ፡ እኩይ።",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "697",
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1008",
@@ -168,7 +204,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ነገር፡ ዘገብረት፡ ሎቱ፡ እግዝእትነ፡ ማርያም፡ ወተናገረቶ፡ ለአቡነ፡ ዮሐንስ፡ እምድኅረ፡ ፈጸመ፡ ሐኒፀ፡ ቤታ፡ ወአንበረ፡ ሥዕላ፡ ውስቴቱ፡ ላዕለ፡ መንበር። ወአሐተ፡ ዕለተ፡ ተደግፈት፡ ውስተ፡ ምድር፡ እንዘ፡ ኢየአምሩ፡ ሰብአ፡ ቤታ። ",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "698",
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "1009",
@@ -181,7 +220,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ተአምር፡ እምእለ፡ ኀለፉ፡ ፭ዘተራድአቶ፡ እግዝእትነ፡ ማርያም፡ [ዘገብረት፡ ሎቱ፡] ለአቡነ፡ ዮሐንስ፡ በአርእዮ፡ ኀይላ፡ ወበከሢተ፡ ተአምር። ሶበ፡ ተበአስዎ፡ ሰብአ፡ ሀገሩ፡ እለ፡ ይነብሩ፡ በጎረ፡ ምኔቱ፡ ወአመ፡ ነሥእዎ፡ ላሕሞ፡ በኀይል፡ ወበትዕቢት፡ በምክንያተ፡ ሣዕር፡ እንዘ፡ ይብሉ፡ ቦአት፡ ትብላዕ። ወወሰድዋ፡ ውስተ፡ ቤቶሙ፡ በዝንቱ፡ ምክንያት፡ ፈቂዶሙ፡ ከመ፡ ይስተዩ፡ ሐሊባ።",
     "theme": null,
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "699",
+    "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "104",
@@ -194,7 +236,10 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወሀሎ፡ ፩፡ ሊቀ፡ ጳጳሳት፡ ዘሀገረ፡ እስክንድርያ፡ ዘስሙ፡ ቆዝሞስ፡ ውእቱ፡ አብ፡ ቅዱስ፡ እምኍልቈ፡ ሊቃነ፡ ጳጳሳት፡ ፶ወ፬። ወለዝንቱ፡ ቅዱስ፡ በጽሐ፡ ላዕሌሁ፡ ኀዘን፡ ብዙኅ",
     "theme": null,
     "has_english_translation": false,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "104",
+    "cycle_name": null,
+    "type_of_story": 'Miracle of Mary'
   },
   {
     "macomber_id": "101",
@@ -207,6 +252,9 @@ export const TEST_DATA: Stories[] = [
     "canonical_incipit": "ወእምድኅረ፡ አዕረፈት፡ እግዝእትነ፡ ማርያም፡ መጽአ፡ ካልእ፡ ፋያታይ፡ ኀበ፡ ውእቱ፡ ማይ፡ ዘነቅዓ፡ እምታሕተ፡ እግራ፡ ለማርያም፡ ውዒሎ፡ ኀበ፡ ቀቲለ፡ ነፍስ",
     "theme": "Unrepentant sinners forgiven",
     "has_english_translation": true,
-    "appears_in_arabic": false
+    "appears_in_arabic": false,
+    "pemm_id": "101",
+    "cycle_name": 'The Thieves and the Miraculous Spring',
+    "type_of_story": 'Miracle of Mary'
   }
 ];

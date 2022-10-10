@@ -10,11 +10,11 @@ const Social = () => {
   return (
     <div>
       <FacebookShareButton
-        url={'http://localhost:3000'} >
+        url={'https://www.facebook.com/miraclesofmaryam'} >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
       <InstapaperShareButton
-        url={'http://localhost:3000'} >
+        url={'https://www.instagram.com/miraclesofmaryam'} >
         <InstapaperIcon size={32} round />
       </InstapaperShareButton>
     </div>

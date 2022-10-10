@@ -175,8 +175,7 @@ const StoriesTableComponent = (props: any) => {
                         {story.total_paintings}
                       </TableCell>
                       <TableCell colSpan={1} align="left" component="th" scope="row">
-                        {story.non_life_miracle === true && "Miracle Story"}
-                        {story.non_life_miracle === false && "Life Story"}
+                        {story.type_of_story}
                       </TableCell>
                       <TableCell colSpan={1} align="left" component="th" scope="row">
                         {story.theme}
