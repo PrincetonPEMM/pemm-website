@@ -21,7 +21,7 @@ const STORY_CONTENT = [
 ] // CAN EACH HAVE ITS OWN ASSOCIATED BACKGROUND IMAGE????
 // WHERE TO FIND STORY ILLUSTRATION
 
-const PAINTINGS_IMAGE = "/featured_paintings.png";
+const PAINTINGS_IMAGE = "/featured_paintings.jpg";
 const PAINTINGS_TITLE = "Paintings";
 const PAINTINGS_SUMMARY = "Miracle of Mary manuscripts from Ethiopia sometimes having paintings, also called illuminations or miniatures. The staff of PEMM has selected three paintings that best represent the genre (from among the 1,201 paintings in the PEMM database).";
 const PAINTINGS_DESCRIPTION = "Miracle of Mary manuscripts from Ethiopia sometimes having paintings, also called illuminations or miniatures. The staff of PEMM has selected three paintings that best represent the genre. The first is from one of the earliest manuscripts (1400), the second is a [something], and the third is from one of the most recent manuscripts (19xx)";
@@ -33,7 +33,7 @@ const PAINTINGS_CONTENT = [
   {'title': 'Newest - 20th C', 'id': '158', 'illustration': '/stories.jpeg'},
 ]; // FILL IN
 
-const MANUSCRIPTS_IMAGE = "/featured_manuscripts.png";
+const MANUSCRIPTS_IMAGE = "/featured_manuscripts.jpg";
 const MANUSCRIPTS_TITLE = "Manuscripts";
 const MANUSCRIPTS_SUMMARY = "Miracle of Mary manuscripts from Ethiopia are among the most spectacular of Ethiopia's parchment manuscripts. The staff of PEMM has selected three manuscirpts that best represent the genre (from among its 491 manuscripts)";
 const MANUSCRIPTS_DESCRIPTION = "Miracle of Mary manuscripts from Ethiopia are among the most spectacular of Ethiopia's parchment manuscripts. The staff of PEMM has selected three manuscirpts that best represent the genre. One is the very earliest known Miracle of Mary manuscript (from the 1300s), one is a Second Gondarine style manuscript (at Princeton), and one illustrates many stories never illustrated before (at the British Library).";
