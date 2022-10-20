@@ -1,6 +1,7 @@
 import Typography from '@mui/material/Typography';
 
 export const StoryInformationWidget = (props: any) => {
+    const instance = props.instance;
     const story = props.story;
 
     // Function to write story type, if any
@@ -16,6 +17,7 @@ export const StoryInformationWidget = (props: any) => {
         if (collection != null) {
             return <> <Typography variant="body2"> <b>Collection:</b> {collection}</Typography> </>
         }
+        return;
     }
 
     // Function to write subjects, if any
@@ -39,6 +41,7 @@ export const StoryInformationWidget = (props: any) => {
         if (cycle_name != null) {
             return <> <Typography variant="body2"> <b>Cycle Name:</b> {cycle_name}</Typography> </>
         }
+        return;
     }
 
     // Function to write earliest attested instance of the story, if any
@@ -50,9 +53,9 @@ export const StoryInformationWidget = (props: any) => {
     }
 
     // Function to write earliest manuscripts in which story appears, if any
-    const ConstructEarliestManuscriptsInWhichStoryAppears = (gmp_manuscripts: string) => {
-        if (gmp_manuscripts != null) {
-            return <> <Typography variant="body2"> <b>Earliest Manuscripts in which Story Appears:</b> {gmp_manuscripts}</Typography> </>
+    const ConstructEarliestManuscriptsInWhichStoryAppears = (names_of_mss_with_earliest_attestation: string) => {
+        if (names_of_mss_with_earliest_attestation != null) {
+            return <> <Typography variant="body2"> <b>Earliest Manuscripts in which Story Appears:</b> {names_of_mss_with_earliest_attestation}</Typography> </>
         }
         return;
     }
@@ -62,6 +65,7 @@ export const StoryInformationWidget = (props: any) => {
         if (total_records != null) {
             return <> <Typography variant="body2"> <b>Total Manuscripts in which Story Appears:</b> {total_records} </Typography> </>
         }
+        return;
     }
 
     // Function to write number of inipits in pemm incipit tool, if any
@@ -72,13 +76,52 @@ export const StoryInformationWidget = (props: any) => {
         return;
     }
 
-    // Function to write incipits, if any
-    const ConstructIncipit = (canonical_incipit: boolean, incipit: string, recension_id: string, manuscript: string, folio_start: string, folio_end: string) => {
-        if (canonical_incipit == true && incipit != null && recension_id != null) {
-            return <> <Typography variant="body2"> <b>Incipit(s):</b> {incipit} ... From {manuscript}, f. {folio_start}-{folio_end}</Typography>
-                      <Typography variant="body2"> <b>Recension ID:</b> {recension_id}</Typography> </>
-        } else if (canonical_incipit == true && incipit != null) {
-            return <> <Typography variant="body2"> <b>Incipit(s):</b> {incipit} ... From {manuscript}, f. {folio_start}-{folio_end}</Typography> </>
+    // Function to write incipits, manuscript and folio, if any
+    const ConstructIncipit = (canonical_incipit: string, english_translation_manuscript_name: string, english_translation_manuscript_folio: string) => {
+        if (canonical_incipit != null && english_translation_manuscript_name != null && english_translation_manuscript_folio != null) {
+            return <> <Typography variant="body2"> <b>Incipit(s):</b> {canonical_incipit} ... From {english_translation_manuscript_name}, f. {english_translation_manuscript_folio}</Typography> </>
+        } else if (canonical_incipit != null) {
+            return <> <Typography variant="body2"> <b>Incipit(s):</b> {canonical_incipit} ... </Typography> </>
+        }
+        return;
+    }
+
+    // Function to write Macomber ID, if any
+    const ConstructMacomberID = (macomber_id: string) => {
+        if (macomber_id != null) {
+            return <> Macomber ID {macomber_id}; </>
+        }
+        return;
+    }
+
+    // Function to write Hamburg ID, if any
+    const ConstructHamburgID = (hamburg_id: string) => {
+        if (hamburg_id != null) {
+            return <> Beta maṣāḥǝft ID {hamburg_id}; </>
+        }
+        return;
+    }
+
+    // Function to write Clavis ID, if any
+    const ConstructClavisId = (clavis_id: string) => {
+        if (clavis_id != null) {
+            return <> Clavis ID {clavis_id}; </>
+        }
+        return;
+    }
+
+    // Function to write Cantigas ID, if any
+    const ConstructCantigasID = (csm_number: number) => {
+        if (csm_number != null) {
+            return <> Cantigas ID {csm_number}; </>
+        }
+        return;
+    }
+
+    // Function to write Poncelet ID, if any
+    const ConstructPonceletID = (poncelet_number: number) => {
+        if (poncelet_number != null) {
+            return <> Poncelet ID {poncelet_number}; </>
         }
         return;
     }
@@ -86,8 +129,9 @@ export const StoryInformationWidget = (props: any) => {
     // Function to write id numbers (hamburg id, clavis id, csm number, poncelet number, macomber id), if any
     const ConstructIDNumbers = (hamburg_id: string, clavis_id: string, csm_number: number, poncelet_number: number, macomber_id: string) => {
         if (hamburg_id != null || clavis_id != null || macomber_id != null || csm_number != null || poncelet_number != null) {
-            return <> <Typography variant="body2"> <b>ID Numbers:</b> Macomber ID {macomber_id}; Beta maṣāḥǝft ID {hamburg_id}, Clavis ID {clavis_id}; Cantigas ID {csm_number}; Poncelet ID {poncelet_number}</Typography> </>
+            return <> <Typography variant="body2"> <b>ID Numbers:</b> {ConstructMacomberID(macomber_id)} {ConstructHamburgID(hamburg_id)} {ConstructClavisId(clavis_id)} {ConstructCantigasID(csm_number)} {ConstructPonceletID(poncelet_number)}</Typography> </>
         }
+        return;
     }
 
     // Function to write translation source, if any
@@ -111,15 +155,15 @@ export const StoryInformationWidget = (props: any) => {
             <Typography variant="subtitle1"> <b>CONTENT INFORMATION</b> </Typography>
             <h2>{ConstructStoryType(story.type_of_story)}</h2>
             <h2>{ConstructCollection(story.collection)}</h2>
-            <h2>{ConstructSubjects(story.canonical_story_subjects)}</h2>
+            <h2>{ConstructSubjects(story.canonical_story_subject)}</h2>
             <h2>{ConstructKeywords(story.macomber_keywords)}</h2>
             <br></br>
             <Typography variant="subtitle1"> <b>TECHNICAL INFORMATION</b> </Typography>
-            <h2>{ConstructEarliestAttestedInstance(story.manuscript_date_range_start, story.manuscript_date_range_end)}</h2>
-            <h2>{ConstructEarliestManuscriptsInWhichStoryAppears(story.names_of_mms_with_earliest_attestation)}</h2>
+            <h2>{ConstructEarliestAttestedInstance(instance.manuscript_date_range_start, instance.manuscript_date_range_end)}</h2>
+            <h2>{ConstructEarliestManuscriptsInWhichStoryAppears(story.names_of_mss_with_earliest_attestation)}</h2>
             <h2>{ConstructTotalRecords(story.total_records)}</h2>
             <h2>{ConstructNumberOfIncipits(story.total_incipits_in_the_itool)}</h2>
-            <h2>{ConstructIncipit(story.story_instance_canonical_incipit, story.canonical_incipit, story.recension_id, story.manuscript, story.folio_start, story.folio_end)}</h2>
+            <h2>{ConstructIncipit(story.canonical_incipit, story.english_translation_manuscript_name, story.english_translation_manuscript_folio)}</h2>
             <h2>{ConstructIDNumbers(story.hamburg_id, story.clavis_id, story.csm_number, story.poncelet_number, story.macomber_id)}</h2>
         </>
     );

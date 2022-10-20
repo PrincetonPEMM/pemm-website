@@ -40,7 +40,7 @@ export const StoryTranslationAndCitation = (props: any) => {
     const ConstructAmharicCitation = (appears_in_amharic: boolean, tgs: string, tgs_folio_start: number) => {
         if (appears_in_amharic == true && tgs == "TGS (EOTC) 1968") {
             return <> <Typography variant="body2"> <div className='font-bold inline'>Amharic:</div> Täsfa Giyorgis, ed. <i>Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña</i> [the Miracles of Mary in Gəˁəz and Amharic: 111 Miracles]. 2nd ed. Addis Ababa, Ethiopia, 1968, page {tgs_folio_start}.</Typography> </>
-        } 
+        }
         else if (appears_in_amharic == true && tgs == "TGS (EOTC) 1971") {
             return <> <Typography variant="body2"> <div className='font-bold inline'>Amharic:</div> Täsfa Gäbrä Śəllase, ed. <i>Täˀammərä Maryam Bä-Gəˁəz Ənna Bä-Amarəñña</i> [the Miracles of Mary in Gəˁəz and Amharic: Part One: 270 Miracles]. Addis Ababa, Ethiopia: Täsfa Gäbrä Śəllase Printing Press, 1971, page {tgs_folio_start}.</Typography> </>
         }
@@ -75,7 +75,7 @@ export const StoryTranslationAndCitation = (props: any) => {
 
     // Function to write arabic citation, if any
     const ConstructArabicCitation = (appears_in_arabic: boolean) => {
-    }    
+    }
 
     // Function to write italian citation, if any
     const ConstructItalianCitation = (appears_in_italian: boolean) => {

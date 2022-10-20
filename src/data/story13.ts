@@ -18,25 +18,23 @@ export const STORY_13_TEST_DATA: Stories = {
   "summary_created_by": "Jason O. Seavey",
   "pemm_id": "13",
   "sum_of_countif_unique_manuscript": 52,
-  "manuscript_date_range_start": 1700,
-  "manuscript_date_range_end": 1799,
   "type_of_story": "Miracle of Mary",
   "collection": "Independent",
   "cycle_name": null,
-  "canonical_story_subjects": "Writing & Books",
+  "canonical_story_subject": "Writing & Books",
   "macomber_keywords": "Bishops, archbishops; Hildephonsus (St.) [Dakseyos]; Dexius; Miracles of Saint Mary; Toledo [Telteleya]",
   "canonical_incipit": "ተብህለ፡ ከመ፡ ሀሎ፡ በውስተ፡ ቤተ፡ ክርስቲያን፡ ዘጥልጥልያ፡ ኤጲስ፡ ቆጶስ፡ ዘስሙ፡ ደቅስዮስ፡ ወኮነ፡ ብእሴ፡ ቡሩከ፡ ወኄረ፡ ወፈራሄ፡ እግዚአብሔር",
   "story_instance_canonical_incipit": true,
   "total_incipits_in_the_itool": 128,
   "english_translation_source": "Budge, One Hundred, p. 1.",
-  "english_translation_manuscript_name": "Z-Paris (BNF) 63",
-  "english_translation_manuscript_folio": "120v-124r",
+  "english_translation_manuscript_name": "B-Oslo (SCOL) 248",
+  "english_translation_manuscript_folio": "3r-5r",
   "hamburg_id": "LIT3586Miracle",
   "clavis_id": "CAe 3586",
   "macomber_id": "13",
   "csm_number": 2,
   "poncelet_number": 117,
-  "names_of_mms_with_earliest_attestation": "BAdd (BL) 16192, BOr (BL) 650, BOr (BL) 652, EMML (HMML) 3536, EMML (HMML) 392, EMML (HMML) 5105, EMML (HMML) 7772, EMML (HMML) 8739, EMML (HMML) 8970, EMML (HMML) 9002, B-Mc (McCarthy) 1574, Davies (HMML) Marara, DL-E (Brown) 14",
+  "names_of_mss_with_earliest_attestation": "BAdd (BL) 16192, BOr (BL) 650, BOr (BL) 652, EMML (HMML) 3536, EMML (HMML) 392, EMML (HMML) 5105, EMML (HMML) 7772, EMML (HMML) 8739, EMML (HMML) 8970, EMML (HMML) 9002, B-Mc (McCarthy) 1574, Davies (HMML) Marara, DL-E (Brown) 14",
   "canonical_story_place": null,
   "canonical_story_place_type": null,
   "readings_dates": "Month of Terr (according to ESP (UH) SM-010, f. 9v); Reading of Daqseyos (according to ESP (UH) DMB-003, f. 23r and ESP (UH) QDQ-003, f. 93v); 22 Tahsas (according to EMML (HMML) 5492, f. 24v)",
@@ -49,6 +47,11 @@ export const STORY_13_TEST_DATA: Stories = {
   "manuscript": "Z-Paris (BNF) 63",
   "folio_start": "120v",
   "folio_end": "124r",
+};
+
+export const STORY_13_TEST_INSTANCE: Instances = {
+  "manuscript_date_range_start": 1700,
+  "manuscript_date_range_end": 1799,
 };
 
 export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
