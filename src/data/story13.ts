@@ -39,6 +39,7 @@ export const STORY_13_TEST_DATA: Stories = {
   "names_of_mms_with_earliest_attestation": "BAdd (BL) 16192, BOr (BL) 650, BOr (BL) 652, EMML (HMML) 3536, EMML (HMML) 392, EMML (HMML) 5105, EMML (HMML) 7772, EMML (HMML) 8739, EMML (HMML) 8970, EMML (HMML) 9002, B-Mc (McCarthy) 1574, Davies (HMML) Marara, DL-E (Brown) 14",
   "canonical_story_place": null,
   "canonical_story_place_type": null,
+  "readings_dates": "Month of Terr (according to ESP (UH) SM-010, f. 9v); Reading of Daqseyos (according to ESP (UH) DMB-003, f. 23r and ESP (UH) QDQ-003, f. 93v); 22 Tahsas (according to EMML (HMML) 5492, f. 24v)",
   "english_translation_author": "Rowan Williams",
   "tgs": "TGS (EOTC) 2014",
   "tgs_folio_start": 39,
