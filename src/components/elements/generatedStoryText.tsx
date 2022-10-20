@@ -114,9 +114,9 @@ export const GeneratedStoryText = (props: any) => {
   const ConstructLifeMiracleSentence = (type_of_story: string) => {
 
     if (type_of_story == 'Life of Mary') {
-      return <>This story is a <u>life miracle</u>: it takes place during Our Lady Mary's lifetime, not after it.</>
+      return <>This story is a <u>life miracle</u>: it takes place during Our Lady Mary&apos;s lifetime, not after it.</>
     }
-    return <>This story is a <u>post-life miracle</u>: it does not take place during Our Lady Mary's lifetime, but after it.</>;
+    return <>This story is a <u>post-life miracle</u>: it does not take place during Our Lady Mary&apos;s lifetime, but after it.</>;
   }
 
   // function to write story setting sentence, if any
@@ -145,7 +145,7 @@ export const GeneratedStoryText = (props: any) => {
         <h2 style={{textIndent:"10px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
       </div>
       <div style={{ marginTop: "10px" }}>
-        <small >* A "PEMM manuscript" is defined as any Gəˁəz Marian manuscript that PEMM has catalogued. For more information, see About page.</small>
+        <small >* A &quot;PEMM manuscript&quot; is defined as any Gəˁəz Marian manuscript that PEMM has catalogued. For more information, see About page.</small>
       </div>
     </>
   );
