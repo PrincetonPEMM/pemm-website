@@ -8,20 +8,20 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { useState } from 'react';
 
-const STORY_IMAGE = "/stories.jpeg";
+const STORY_IMAGE = "/featured_stories.jpeg";
 const STORY_TITLE = "Stories";
 const STORY_SUMMARY = "Stories about the Virgin Mary in Ethiopia, Eritrea, and Egypt are vivid, profound, and sometimes historically valuable. The staff of PEMM has selected three stories that best represent the genre";
 const STORY_DESCRIPTION = "Stories about the Virgin Mary in Ethiopia, Eritrea, and Egypt are vivid, profound, and sometimes historically valuable. The staff of PEMM has selected three stories that best represent the genre (from among the 506 translations of 753 stories in the PEMM database). One is about a girl's education (from Egypt), one is about kindness to animals (from Ethiopia), and one is about a speaking icon (from Ethiopia)";
 const STORY_LINK="/stories";
 const STORY_BACKGROUND_COLOR = "#eba81a"; // FIX COLOR
 const STORY_CONTENT = [
-  {'title' : 'Healed Daughter', 'id': '111', 'illustration': '/stories.jpeg'},
-  {'title' : 'Thirsty Dog', 'id': '236', 'illustration': '/stories.jpeg'},
-  {'title': 'Ethiopian King', 'id': '319', 'illustration': '/stories.jpeg'},
+  {'title' : 'Healed Daughter', 'id': '111', 'illustration': '/healed_daughter.jpeg'},
+  {'title' : 'Thirsty Dog', 'id': '236', 'illustration': '/thirsty_dog.png'},
+  {'title': 'Ethiopian King', 'id': '319', 'illustration': '/ethiopian_king.png'},
 ] // CAN EACH HAVE ITS OWN ASSOCIATED BACKGROUND IMAGE????
 // WHERE TO FIND STORY ILLUSTRATION
 
-const PAINTINGS_IMAGE = "/paintings.jpeg";
+const PAINTINGS_IMAGE = "/featured_paintings.png";
 const PAINTINGS_TITLE = "Paintings";
 const PAINTINGS_SUMMARY = "Miracle of Mary manuscripts from Ethiopia sometimes having paintings, also called illuminations or miniatures. The staff of PEMM has selected three paintings that best represent the genre (from among the 1,201 paintings in the PEMM database).";
 const PAINTINGS_DESCRIPTION = "Miracle of Mary manuscripts from Ethiopia sometimes having paintings, also called illuminations or miniatures. The staff of PEMM has selected three paintings that best represent the genre. The first is from one of the earliest manuscripts (1400), the second is a [something], and the third is from one of the most recent manuscripts (19xx)";
@@ -33,7 +33,7 @@ const PAINTINGS_CONTENT = [
   {'title': 'Newest - 20th C', 'id': '158', 'illustration': '/stories.jpeg'},
 ]; // FILL IN
 
-const MANUSCRIPTS_IMAGE = "/manuscripts.jpeg";
+const MANUSCRIPTS_IMAGE = "/featured_manuscripts.png";
 const MANUSCRIPTS_TITLE = "Manuscripts";
 const MANUSCRIPTS_SUMMARY = "Miracle of Mary manuscripts from Ethiopia are among the most spectacular of Ethiopia's parchment manuscripts. The staff of PEMM has selected three manuscirpts that best represent the genre (from among its 491 manuscripts)";
 const MANUSCRIPTS_DESCRIPTION = "Miracle of Mary manuscripts from Ethiopia are among the most spectacular of Ethiopia's parchment manuscripts. The staff of PEMM has selected three manuscirpts that best represent the genre. One is the very earliest known Miracle of Mary manuscript (from the 1300s), one is a Second Gondarine style manuscript (at Princeton), and one illustrates many stories never illustrated before (at the British Library).";
