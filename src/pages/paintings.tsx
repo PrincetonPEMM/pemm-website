@@ -49,7 +49,7 @@ const PaintingsPage: NextPage = ({ data }: InferGetStaticPropsType<typeof getSta
   if (imageUris.length === 0 || paintings.length === 0) { 
     return (
       <div className='h-screen'>
-        <Alert severity="error">Something went wrong, we can't find our paintings 😲</Alert>
+        <Alert severity="error">Something went wrong, we can&apos;t find our paintings 😲</Alert>
       </div>
     );
   }
