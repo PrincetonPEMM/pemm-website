@@ -62,7 +62,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
             imageUris.push({"original": images[i].image_link, "thumbnail": images[i].image_link});
           }
       }
-      console.log("Helloooooo", imageUris);
       var story: Stories = {};
       if (process.env['ENVIRONMENT'] == "DEV") {
         story = STORY_13_TEST_DATA;
@@ -173,7 +172,6 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof ge
           </div>
 
           <div className="w-1/4 flex flex-col">
-          CIAOOOO { data.imageUris.toString()}
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
             {!data.imageUris || data.imageUris.length === 0 && <Image src={DEFAULT_IMAGE} width={500} height={700}/>}
 
