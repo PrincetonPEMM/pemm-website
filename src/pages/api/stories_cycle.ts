@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type {Stories } from '../../../components/types/stories';
+import type { Stories } from '../../components/types/stories';
 import AWS from 'aws-sdk';
 import Lambda from "aws-sdk/clients/lambda";
 import {AWSError} from 'aws-sdk/lib/error';

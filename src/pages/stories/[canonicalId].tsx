@@ -59,9 +59,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
                 original = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
                 thumbnail = breakup[0] + "full" + breakup[1] + "90," + breakup[2];
             }
-            imageUris.push({"original": original, "thumbnail": thumbnail});
+            imageUris.push({"original": images[i].image_link, "thumbnail": images[i].image_link});
           }
       }
+      console.log("Helloooooo", imageUris);
       var story: Stories = {};
       if (process.env['ENVIRONMENT'] == "DEV") {
         story = STORY_13_TEST_DATA;
@@ -89,7 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         all_stories = TEST_DATA;
       }
       else {
-        const stories_dat = await axios(process.env.REACT_APP_API + 'stories/stories_cycle/');
+        const stories_dat = await axios(process.env.REACT_APP_API + 'stories_cycle/');
         all_stories = await stories_dat.data;
       }
 
@@ -107,7 +108,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           data: {
             imageUris: imageUris,
             story: story,
-            all_stories: all_stories,
+            all_stories: [],
             instance: instance,
             instances: instances
           }
@@ -172,6 +173,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof ge
           </div>
 
           <div className="w-1/4 flex flex-col">
+          CIAOOOO { data.imageUris.toString()}
             {data.imageUris && data.imageUris.length > 0 && <ImageGallery items={data.imageUris} />}
             {!data.imageUris || data.imageUris.length === 0 && <Image src={DEFAULT_IMAGE} width={500} height={700}/>}
 
