@@ -51,14 +51,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       let imageUris = [];
       for (let i = 0; i < images.length; i++) {
           if (images[i].image_link) {
-            let breakup = images[i].image_link!.split("full");
-            let original = images[i].image_link;
-            let thumbnail = images[i].image_link;
-            if (breakup.length === 3) {
-                //TODO: Update this and use a more standardized way to format how to display the image
-                original = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
-                thumbnail = breakup[0] + "full" + breakup[1] + "90," + breakup[2];
-            }
             imageUris.push({"original": images[i].image_link, "thumbnail": images[i].image_link});
           }
       }
