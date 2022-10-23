@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         all_stories = TEST_DATA;
       }
       else {
-        const stories_dat = await axios(process.env.REACT_APP_API + 'stories/');
+        const stories_dat = await axios(process.env.REACT_APP_API + 'stories/stories_cycle/');
         all_stories = await stories_dat.data;
       }
 
