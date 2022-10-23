@@ -20,7 +20,7 @@ export type Stories = {
     summary_created_by?: string | null,
     canonical_story_place?: string | null,
     canonical_story_place_type?: string | null,
-    pemm_id?: string | null,
+    pemm_id?: number | null,
     sum_of_countif_unique_manuscript?: number | null,
     readings_dates?: string | null,
     manuscript_date_range_start?: number | null,
