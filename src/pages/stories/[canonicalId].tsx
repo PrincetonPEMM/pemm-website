@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           data: {
             imageUris: imageUris,
             story: story,
-            all_stories: [],
+            all_stories: all_stories,
             instance: instance,
             instances: instances
           }
