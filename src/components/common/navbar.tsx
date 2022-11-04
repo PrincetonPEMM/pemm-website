@@ -98,6 +98,7 @@ const NavBar = () => {
                             flexGrow: 1, 
                             display: { xs: 'none', md: 'flex', lg: 'flex' }
                         }}>
+                        <Typography variant='h3'>THIS SITE STILL UNDER DEVELOPMENT</Typography>
                         <Link href='/paintings'>
                             <Button color="primary" className={navigatorStyle}>
                                 <Typography fontWeight={"bold"} textTransform={"capitalize"}>
