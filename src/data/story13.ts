@@ -1,4 +1,4 @@
-import type {Paintings} from '../components/types/paintings';
+import type { Paintings } from '../components/types/paintings';
 import type { Stories } from '../components/types/stories';
 import type { Instances } from '../components/types/instances';
 
@@ -49,11 +49,6 @@ export const STORY_13_TEST_DATA: Stories = {
   "folio_end": "124r",
 };
 
-export const STORY_13_TEST_INSTANCE: Instances = {
-  "manuscript_date_range_start": 1700,
-  "manuscript_date_range_end": 1799,
-};
-
 export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
   {
     "manuscript": "Z-Paris (BNF) 63",
@@ -63,6 +58,8 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": null,
     "scan_start": null,
     "date_range_mean": 1750,
+    "manuscript_date_range_start": 1737,
+    "manuscript_date_range_end": 1765,
   },
   {
     "manuscript": "Z-Paris (BNF) 62",
@@ -72,6 +69,8 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": null,
     "scan_start": null,
     "date_range_mean": 1550,
+    "manuscript_date_range_start": 1737,
+    "manuscript_date_range_end": 1765,
   },
   {
     "manuscript": "Z-Paris (BNF) 60",
@@ -81,6 +80,8 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": null,
     "scan_start": null,
     "date_range_mean": 1650,
+    "manuscript_date_range_start": 1737,
+    "manuscript_date_range_end": 1746,
   },
   {
     "manuscript": "YOr-Jerusalem (NLI) 14",
@@ -90,6 +91,8 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": "22r",
     "scan_start": null,
     "date_range_mean": 1900,
+    "manuscript_date_range_start": 1750,
+    "manuscript_date_range_end": 1765,
   },
   {
     "manuscript": "VOHD (HMML) 63",
@@ -99,6 +102,8 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": "5r",
     "scan_start": "9b",
     "date_range_mean": 1650,
+    "manuscript_date_range_start": 1737,
+    "manuscript_date_range_end": 1740,
   },
   {
     "manuscript": "VOHD (HMML) 118",
@@ -108,6 +113,8 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": "13r",
     "scan_start": "17b",
     "date_range_mean": 1600,
+    "manuscript_date_range_start": 1737,
+    "manuscript_date_range_end": 1755,
   },
   {
     "manuscript": "VOHD (HMML) 105",
@@ -117,19 +124,24 @@ export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
     "folio_start": "18v",
     "scan_start": "19a",
     "date_range_mean": 1750,
+    "manuscript_date_range_start": 1900,
+    "manuscript_date_range_end": 1735,
   }
 ]
 
-export const STORY_13_IMAGE_TEST_DATA: Paintings[] = 
+export const STORY_13_IMAGE_TEST_DATA: Paintings[] =
   [
     {
-      "image_link": "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000027/full/full/0/default.jpg"},
+      "image_link": "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000027/full/full/0/default.jpg"
+    },
     {
       "image_link":
-        "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004e/full/full/0/default.jpg"},
+        "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004e/full/full/0/default.jpg"
+    },
     {
       "image_link":
-        "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004f/full/full/0/default.jpg"},
+        "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054923333.0x00004f/full/full/0/default.jpg"
+    },
     {
       "image_link":
         "https://api.bl.uk/image/iiif/ark:/81055/vdc_100054933823.0x000028/full/full/0/default.jpg"
