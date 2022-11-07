@@ -1,7 +1,8 @@
 import Typography from '@mui/material/Typography';
+import { Instances } from '../types/instances';
 
 export const StoryInformationWidget = (props: any) => {
-    const instance = props.instance;
+    const INSTANCES: Instances[] = props.instances;
     const story = props.story;
 
     // Function to write story type, if any
@@ -44,12 +45,53 @@ export const StoryInformationWidget = (props: any) => {
         return;
     }
 
-    // Function to write earliest attested instance of the story, if any
-    const ConstructEarliestAttestedInstance = (manuscript_date_range_start: number, manuscript_date_range_end: number) => {
-        if (manuscript_date_range_start != null && manuscript_date_range_end != null) {
-            return <> <Typography variant="body2"> <b>Earliest Attested Instance of Story:</b> {manuscript_date_range_start}-{manuscript_date_range_end}  </Typography> </>
+    // Function to find maximum date range end, if any
+    function FindMaximumDateRangeEnd(instances: Instances[]) {
+        var maxValue = Number.MIN_VALUE;
+        if (instances) {
+            for (var i = 0; i < instances.length; i++) {
+                let date_range_end = instances[i].manuscript_date_range_end;
+                if (date_range_end) {
+                    if (date_range_end > maxValue) {
+                        maxValue = date_range_end;
+                    }
+                }
+            }
         }
-        return;
+        return maxValue;
+    }
+
+    // Function to find minimum date range start, if any
+    function FindMinimumDateRangeStart(instances: Instances[]) {
+        var minValue = Number.MAX_VALUE;
+        if (instances) {
+            for (var i = 0; i < instances.length; i++) {
+                let date_range_start = instances[i].manuscript_date_range_start;
+                if (date_range_start) {
+                    if (date_range_start < minValue) {
+                        minValue = date_range_start;
+                    }
+                }
+            }
+        }
+        return minValue;
+    }
+
+    // Function to write the minimum (earliest year) manuscript date range start
+    const MinDateRangeStart = (instances: Instances[]) => {
+        var minValue = FindMinimumDateRangeStart(instances);
+        return <> {minValue} </>;
+    }
+
+    // Function to write the maximum (latest year) manuscript date range end
+    const MaxDateRangeEnd = (instances: Instances[]) => {
+        var maxValue = FindMaximumDateRangeEnd(instances);
+        return <> {maxValue} </>;
+    }
+
+    // Function to write the earliest attested instance of the story with the manuscript date range start and end
+    const ConstructEarliestAttestedInstanceOfTheStory = (instances: Instances[]) => {
+        return <> <Typography variant="body2"> <b>Earliest Attested Instance of the Story:</b> {MinDateRangeStart(instances)}-{MaxDateRangeEnd(instances)} </Typography> </>
     }
 
     // Function to write earliest manuscripts in which story appears, if any
@@ -84,6 +126,13 @@ export const StoryInformationWidget = (props: any) => {
             return <> <Typography variant="body2"> <b>Incipit(s):</b> {canonical_incipit} ... </Typography> </>
         }
         return;
+    }
+
+    // Function to write PEMM ID, if any
+    const ConstructPEMMID = (pemm_id: number) => {
+        if (pemm_id != null) {
+            return <> PEMM ID {pemm_id}; </>
+        }
     }
 
     // Function to write Macomber ID, if any
@@ -127,9 +176,9 @@ export const StoryInformationWidget = (props: any) => {
     }
 
     // Function to write id numbers (hamburg id, clavis id, csm number, poncelet number, macomber id), if any
-    const ConstructIDNumbers = (hamburg_id: string, clavis_id: string, csm_number: number, poncelet_number: number, macomber_id: string) => {
-        if (hamburg_id != null || clavis_id != null || macomber_id != null || csm_number != null || poncelet_number != null) {
-            return <> <Typography variant="body2"> <b>ID Numbers:</b> {ConstructMacomberID(macomber_id)} {ConstructHamburgID(hamburg_id)} {ConstructClavisId(clavis_id)} {ConstructCantigasID(csm_number)} {ConstructPonceletID(poncelet_number)}</Typography> </>
+    const ConstructIDNumbers = (pemm_id: number, hamburg_id: string, clavis_id: string, csm_number: number, poncelet_number: number, macomber_id: string) => {
+        if (pemm_id != null || hamburg_id != null || clavis_id != null || macomber_id != null || csm_number != null || poncelet_number != null) {
+            return <> <Typography variant="body2"> <b>ID Numbers:</b> {ConstructPEMMID(pemm_id)} {ConstructMacomberID(macomber_id)} {ConstructHamburgID(hamburg_id)} {ConstructClavisId(clavis_id)} {ConstructCantigasID(csm_number)} {ConstructPonceletID(poncelet_number)}</Typography> </>
         }
         return;
     }
@@ -159,12 +208,12 @@ export const StoryInformationWidget = (props: any) => {
             <h2>{ConstructKeywords(story.macomber_keywords)}</h2>
             <br></br>
             <Typography variant="subtitle1"> <b>TECHNICAL INFORMATION</b> </Typography>
-            <h2>{ConstructEarliestAttestedInstance(instance.manuscript_date_range_start, instance.manuscript_date_range_end)}</h2>
+            <h2>{ConstructEarliestAttestedInstanceOfTheStory(INSTANCES)}</h2>
             <h2>{ConstructEarliestManuscriptsInWhichStoryAppears(story.names_of_mss_with_earliest_attestation)}</h2>
             <h2>{ConstructTotalRecords(story.total_records)}</h2>
             <h2>{ConstructNumberOfIncipits(story.total_incipits_in_the_itool)}</h2>
             <h2>{ConstructIncipit(story.canonical_incipit, story.english_translation_manuscript_name, story.english_translation_manuscript_folio)}</h2>
-            <h2>{ConstructIDNumbers(story.hamburg_id, story.clavis_id, story.csm_number, story.poncelet_number, story.macomber_id)}</h2>
+            <h2>{ConstructIDNumbers(story.pemm_id, story.hamburg_id, story.clavis_id, story.csm_number, story.poncelet_number, story.macomber_id)}</h2>
         </>
     );
 };
