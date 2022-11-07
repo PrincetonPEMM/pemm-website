@@ -10,7 +10,7 @@ import { CycleHyperlink } from '../../components/elements/cycleHyperlink';
 import { StoryInformationWidget } from '../../components/elements/storyInformationWidget';
 import { StoryTranslationAndCitation } from '../../components/elements/storyTranslationAndCitation';
 import { ManuscriptInformationBox } from '../../components/elements/manuscriptInformationBox';
-import { STORY_13_TEST_DATA, STORY_13_TEST_INSTANCE, STORY_13_IMAGE_TEST_DATA, STORY_13_INSTANCE_TEST_DATA } from '../../data/story13';
+import { STORY_13_TEST_DATA, STORY_13_IMAGE_TEST_DATA, STORY_13_INSTANCE_TEST_DATA } from '../../data/story13';
 import { TEST_DATA } from '../../data/stories';
 import { STATIC_PAGES } from '../../data/story_ids';
 import Typography from '@mui/material/Typography';
@@ -64,17 +64,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
           story = story_res.data[0];
         }
       }
-      
-      var instance: Instances = {};
-      if (process.env['ENVIRONMENT'] == "DEV") {
-        instance = STORY_13_TEST_INSTANCE;
-      }
-      else {
-        const instance_res = await axios(process.env.REACT_APP_API + 'instances/' + canonicalId);
-        if (instance_res.data.length > 0) {
-          instance = instance_res.data[0];
-        }
-      }
 
       var all_stories: Stories[] = [];
       if (process.env['ENVIRONMENT'] == "DEV") {
@@ -100,7 +89,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
             imageUris: imageUris,
             story: story,
             all_stories: all_stories,
-            instance: instance,
             instances: instances
           }
         }
@@ -111,7 +99,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
             data: {
               imageUris: [],
               story: {},
-              instance: {},
               all_stories: [],
               instances: []
             }
@@ -169,7 +156,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof ge
 
             <div className="">
               <StoryInformationWidget story={data.story}
-                                      instance = {data.instance}/>
+                                      instances = {data.instances}/>
             </div>
           </div>
 
@@ -224,7 +211,7 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof ge
           <TabPanel value={value} index={1}>
             <div className="overflow-hidden m-1">
               <StoryInformationWidget story={data.story}
-                                      instance = {data.instance}/>
+                                      instances = {data.instances}/>
             </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
