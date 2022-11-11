@@ -133,19 +133,19 @@ export const GeneratedStoryText = (props: any) => {
   return (
     <>
       <div>
-        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript* in which this story appears is from&nbsp; 
+        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript<sup>1</sup> in which this story appears is from&nbsp; 
           {story.earliest_attestation}. </h2>
-        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}%
+        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}%
           of PEMM manuscripts with five stories or more.</h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
-        <h2 style={{textIndent:"10px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
+        <h2 style={{textIndent:"20px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
       </div>
-      <div style={{ marginTop: "10px" }}>
-        <small >* A &quot;PEMM manuscript&quot; is defined as any Gəˁəz Marian manuscript that PEMM has catalogued. For more information, see About page.</small>
+      <div style={{ marginTop: "10px", textIndent:"20px" }}>
+        <small ><sup>1</sup> A &quot;PEMM manuscript&quot; is defined as any Gəˁəz Marian manuscript that PEMM has catalogued. For more information, see About page.</small>
       </div>
     </>
   );
