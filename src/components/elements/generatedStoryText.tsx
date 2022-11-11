@@ -6,16 +6,16 @@ export const GeneratedStoryText = (props: any) => {
   const DetermineStoryAge = (earliest_attest: number) => {
     let age;
 
-    if (earliest_attest === 14 || earliest_attest === 15) {
+    if (earliest_attest >= 1300 || earliest_attest < 1500) {
       age = 'very old';
     }
-    else if (earliest_attest === 16 || earliest_attest === 17) {
+    else if (earliest_attest >= 1500 || earliest_attest < 1800) {
       age = 'old';
     }
-    else if (earliest_attest === 18) {
+    else if (earliest_attest >= 1800 || earliest_attest < 1950) {
       age = 'recent';
     }
-    else {
+    else if (earliest_attest >= 1950) {
       age = 'very recent';
     }
     return age;
@@ -133,10 +133,10 @@ export const GeneratedStoryText = (props: any) => {
   return (
     <>
       <div>
-        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript* in which this story appears is from the
-          {WriteEarliestGMP(story.earliest_attestation)}. </h2>
-        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}
-          percent of PEMM manuscripts with five stories or more.</h2>
+        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript* in which this story appears is from&nbsp; 
+          {story.earliest_attestation}. </h2>
+        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}%
+          of PEMM manuscripts with five stories or more.</h2>
         <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
         <h2 style={{textIndent:"10px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
         <h2 style={{textIndent:"10px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
