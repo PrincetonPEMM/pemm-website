@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 
-const Manuscripts: NextPage = () => {
+const ManuscriptsPage: NextPage = () => {
   return (
     <div>
         <h1>
@@ -10,4 +10,4 @@ const Manuscripts: NextPage = () => {
   )
 }
 
-export default Manuscripts
+export default ManuscriptsPage
