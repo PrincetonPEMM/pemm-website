@@ -2,6 +2,7 @@ import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from '
 import Box from '@mui/material/Box';
 import type {Manuscripts} from '../../components/types/manuscripts';
 import { MANUSCRIPT_1_TEST_DATA } from '../../data/manuscript1';
+import { GeneratedManuscriptText } from '../../components/elements/generatedManuscriptText';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 
@@ -44,9 +45,14 @@ const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<ty
         display: { xs: 'none', md: 'flex', lg: 'flex' }
         }}>
         <div className='m-4 w-3/4'>
-          <Typography variant="h3">{data.manuscript.manuscript_name}</Typography>
+          <Typography variant="h3">{data.manuscript.manuscript_full_name}</Typography>
         </div>
+
+        <div className="w-1/2 flex flex-col">
+            <GeneratedManuscriptText manuscript={data.manuscript}/>
+          </div>
       </Box>
+
       <Box sx={{ 
             flexGrow: 1, 
             display: { xs: 'flex', md: 'none', lg: 'none' }
