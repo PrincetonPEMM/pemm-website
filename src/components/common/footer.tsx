@@ -152,7 +152,7 @@ const Footer = () => {
             <div>
               <p className="text-white w-60 inline-flex flex-col gap-y-3">
               <Link href='/'>
-                  <Button>
+                  <Button className='p-0'>
                     Incipit Tool
                   </Button>
                 </Link>
