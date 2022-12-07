@@ -150,7 +150,7 @@ const Footer = () => {
               Research Tools
             </Typography>
             <div>
-              <p className="text-white w-60 inline-flex flex-col gap-y-3">
+              <p className="text-white w-60 inline-flex flex-col">
               <Link href='/'>
                   <Button className = 'p-0'>
                     Incipit Tool
@@ -193,13 +193,13 @@ const Footer = () => {
                 </Link>
 
                 <Link href='/research/bibliography'>
-                  <Button className = 'p-0'>
+                  <Button className = 'p-0' >
                   Bibliography
                   </Button>
                 </Link>
 
                 <Link href='/research/using-site'>
-                  <Button className = 'p-0'>
+                  <Button className = 'p-0' >
                   Using the Site
                   </Button>
                 </Link>
