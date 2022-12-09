@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Chip } from '@mui/material';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import { theme } from '../../styles/theme';
 
 const placeOfOriginMap : {[key: string]: any} = {
@@ -56,6 +57,16 @@ const placeOfOriginMap : {[key: string]: any} = {
       {
         chips && 
         chips.map((origin: string, index: number) => {
+          console.log(origin, index);
+          if (['Africa', 'Europe', 'Levant'].includes(origin)) {
+            return (<Chip key={index}
+              size="small"
+              label={origin}
+              onClick={filterTable}
+              icon={<GpsFixedIcon />}
+              color={chipColors[index] === theme.palette.secondary.main ? "secondary" : "warning"}
+              className="m-1" />);
+          }
           return (<Chip key={index}
                 size="small"
                 label={origin}
