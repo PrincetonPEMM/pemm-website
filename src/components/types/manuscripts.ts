@@ -5,6 +5,6 @@ export type Manuscripts = {
     century?: string | null,
     total_stories?: number | null,
     provenance?: string | null,
-    total_paintings?: number | null,
+    total_paintings?: string | null,
     link_to_digital_copy?: string | null
 }
