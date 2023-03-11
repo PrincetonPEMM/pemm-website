@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    /* background-color: #221f21; */
+    background-image: linear-gradient(#221f21, transparent);
+    color: #e7e3dc;
+    width: 100%;
+    /* opacity: 0.6; */
+    padding-bottom: 90px;
+}
+.navLinks {
+    opacity: 1;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-top: 4vw;
+}
+li {
+    margin: 1vw;
+}
+.navLinks {
+    text-decoration: none;
+    color: white;
+}
+.noneHomeNav {
+    color: black;
+    background-color: #e7e3dc;
+}
+.logoImg {
+    height: 40px;
+    z-index: -1;
+}
+
+.PEMMCountry {
+    font-size: 12px;
+    width: 165px;
+    margin-left: -5px;
+}
+.rightUL {
+    position: relative;
+    bottom: -33px;
+}
+.logoImgHome {
+    filter: invert(100%) sepia(1%) saturate(2242%) hue-rotate(266deg)
+    brightness(100%) contrast(126%);
+}
