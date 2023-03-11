@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 function Footer() {
   return (
-    <footer className="">
+    <footer className="homeClass">
       <ul className="first-footer-child">
         <li className="firstList">
           <Image
