@@ -8,7 +8,6 @@ import Image from 'next/image'
 function HomePageNav() {
   let setActiveNavBar = (e) => {
     let navId = e.target.id;
-    console.log(navId);
     if (navId.startsWith("home")) {
       $("Footer").addClass("homeClass");
       $("nav").removeClass("noneHomeNav");
