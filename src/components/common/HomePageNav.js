@@ -1,73 +1,61 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
+import React from "react";
 import navbar_logo from '../../../public/navbar_logo.png'
 import Link from 'next/link'
 import Image from 'next/image'
 
-
 function HomePageNav() {
-  let setActiveNavBar = (e) => {
-    let navId = e.target.id;
-    if (navId.startsWith("home")) {
-      $("Footer").addClass("homeClass");
-      $("nav").removeClass("noneHomeNav");
-      $(".navLinks").removeClass("noneHomeNav");
-      $("#homeImg").addClass("logoImgHome");
-      $(".footerLogo").addClass("logoImgHome");
-    } else {
-      $(".footerLogo").addClass("logoImgHome");
-      $("#homeImg").removeClass("logoImgHome");
-      $(".navLinks").addClass("noneHomeNav");
-      $("footer").removeClass("homeClass");
-      $("nav").addClass("noneHomeNav");
-    }
-  };
-  // next js,tailwind,
-  useEffect(() => {
-    $(".navLinks").on("click", setActiveNavBar);
-  }, []);
   return (
     <nav>
       <ul id="navToHome">
         <li>
-          <Link className="navLinks" id="homeLogo" href="/">
+          <Link id="homeLogo" href="/">
             <Image
                 alt="PEMM Logo"
                 id="homeImg"
                 className="logoImg"
-                height={75}
-                width={500}
+                height={97.5}
+                width={650}
                 src={navbar_logo}
             />
           </Link>
         </li>
       </ul>
       <ul className="rightUL">
-        <li>
-          <Link className="navLinks" id="navToStories" href="/stories">
-            Stories
-          </Link>
-        </li>
-        <li>
-          <Link className="navLinks" id="navToPaintings" href="/paintings">
-            Paintings
-          </Link>
-        </li>
-        <li>
-          <Link className="navLinks" id="navToManuscript" href="/manuscript">
-            Manuscript
-          </Link>
-        </li>
-        <li>
-          <Link className="navLinks" id="navToResearch" href="/research">
-            Research Tools
-          </Link>
-        </li>
-        <li>
-          <Link className="navLinks" id="navToAbout" href="/about">
-            About
-          </Link>
-        </li>
+        <div className="navLinks">
+          <li>
+              <Link id="navToStories" href="/stories">
+                  Stories
+              </Link>
+          </li>
+        </div>
+        <div className="navLinks">
+          <li>
+              <Link id="navToPaintings" href="/paintings">
+                Paintings
+              </Link>
+          </li>
+        </div>
+        <div className="navLinks">
+          <li>
+            <Link id="navToManuscript" href="/manuscript">
+              Manuscript
+            </Link>
+          </li>
+        </div>
+        <div className="navLinks">
+          <li>
+            <Link id="navToResearch" href="/research">
+              Research Tools
+            </Link>
+          </li>
+        </div>
+        <div className="navLinks">
+          <li>
+            <Link id="navToAbout" href="/about">
+              About
+            </Link>
+          </li>
+        </div>
       </ul>
       <style jsx>{`
         * {
@@ -78,12 +66,11 @@ function HomePageNav() {
             display: flex;
             justify-content: space-between;
             position: absolute;
-            /* background-color: #221f21; */
             background-image: linear-gradient(#221f21, transparent);
             color: #e7e3dc;
             width: 100%;
-            /* opacity: 0.6; */
             padding-bottom: 90px;
+            z-index: 4;
         }
         .navLinks {
             opacity: 1;
@@ -100,6 +87,10 @@ function HomePageNav() {
         .navLinks {
             text-decoration: none;
             color: white;
+            font-family: "Noto Serif", serif;
+            font-family: "Nunito", sans-serif;
+            font-family: "Source Serif Pro", serif;
+            font-size: 25px;
         }
         .noneHomeNav {
             color: black;
@@ -110,11 +101,6 @@ function HomePageNav() {
             z-index: -1;
         }
         
-        .PEMMCountry {
-            font-size: 12px;
-            width: 165px;
-            margin-left: -5px;
-        }
         .rightUL {
             position: relative;
             bottom: -33px;
