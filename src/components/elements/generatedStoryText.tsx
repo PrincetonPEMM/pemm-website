@@ -84,6 +84,7 @@ export const GeneratedStoryText = (props: any) => {
     if (total_paintings === 0) {
       return <> This story is <u>not illustrated</u> in PEMM manuscripts.</>;
     }
+    
     if (socum_num == null){
       return <> This story is <u>frequently illustrated</u>, with a total of {total_paintings} paintings.</>
     }
@@ -99,7 +100,6 @@ export const GeneratedStoryText = (props: any) => {
       '153', '154', '16', '46', '43', '48', '59', '57', '61', '68', '82', '83', '99', '103', '112',
       '158', '140', '142', '7', '125', '152', '148', '236'];
 
-    // figure out name of total paintings field in api & socum_num
     if(macomber_id == null || total_paintings == null){
       return <></>
     }
@@ -142,16 +142,16 @@ export const GeneratedStoryText = (props: any) => {
   return (
     <>
       <div>
-        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript* in which this story appears is from around 
-          {' ' + story.earliest_attestation}. </h2>
-        <h2 style={{textIndent:"10px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>, appearing in {Math.round((story.total_records / total_manuscripts_num) * 100) + ' '}
-          percent of PEMM manuscripts with five stories or more.</h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructIllustrationSentences(story.pemm_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
-        <h2 style={{textIndent:"10px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
-        <h2 style={{textIndent:"10px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
+        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript<sup>1</sup> in which this story appears is from around&nbsp; 
+          {story.earliest_attestation}. </h2>
+        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100 * 100)/ 100}%
+          of PEMM manuscripts with five stories or more.</h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
+        <h2 style={{textIndent:"20px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
       </div>
       <div style={{ marginTop: "10px", textIndent:"20px" }}>
         <small ><sup>1</sup> A &quot;PEMM manuscript&quot; is defined as any Gəˁəz Marian manuscript that PEMM has catalogued. For more information, see About page.</small>
