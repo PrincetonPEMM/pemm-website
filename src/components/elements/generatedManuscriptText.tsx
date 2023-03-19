@@ -8,25 +8,28 @@ export const GeneratedManuscriptText = (props: any) => {
     const DetermineManuscriptDateBasis = (manuscript_date_note: string) => {
 
         if (manuscript_date_note == "Date from ms (colophon)") {
-            return <>This date is precise, based on the scribe noting the date in the manuscript. </>
+            return <> This date is precise, based on the scribe noting the date in the manuscript. </>
         }
         else if (manuscript_date_note == "Date from king's name") {
-            return <>This date is estimated, based on the reigning Ethiopian king's name appearing in the manuscript. </>
+            return <> This date is estimated, based on the reigning Ethiopian king's name appearing in the manuscript. </>
         }
         else if (manuscript_date_note == "Date from ms (paleography)") {
-            return <>This date is estimated, based on paleography (a study of the manuscript's letter shapes). </>
+            return <> This date is estimated, based on paleography (a study of the manuscript's letter shapes). </>
         }
         else if (manuscript_date_note == "Date from cataloger") {
-            return <>This date is estimated, based on a print or electronic catalog entry about the manuscript. </>
+            return <> This date is estimated, based on a print or electronic catalog entry about the manuscript. </>
         }
         else if (manuscript_date_note == "Date from JRB and SGD") {
-            return <>This date is estimated, based on paleography, a study of the manuscript's letter shapes by Jeremy Brown and Stephen Delamarter. </>
+            return <> This date is estimated, based on paleography, a study of the manuscript's letter shapes by Jeremy Brown and Stephen Delamarter. </>
         }
 
-        return <>This date is estimated based on various methods. </>;
+        return <> This date is estimated based on various methods. </>;
     }
 
     const DetermineTotalStoriesSection = (total_stories: number) => {
+        if(total_stories == null){
+            return <></>
+        }
 
         if (total_stories <= 1) {
             if (total_stories != 0) {
@@ -76,6 +79,10 @@ export const GeneratedManuscriptText = (props: any) => {
     const DetermineColorPaintingsSentence = (tm_story_paintings: string, scans_of_manuscript_in_color: string, link_to_digital_copy: string) => {
 
         if (tm_story_paintings == 'Yes' || tm_story_paintings == 'Related Images') {
+            if(scans_of_manuscript_in_color == null){
+                return <></>
+            }
+
             if (scans_of_manuscript_in_color == 'Yes') {
                 if (link_to_digital_copy != null) {
                     return <>Fortunately, these paintings are digitized and available online in color. To view the manuscript online, go to the
@@ -104,31 +111,72 @@ export const GeneratedManuscriptText = (props: any) => {
         let lines = null
         let folio_start = null
 
+        // Determines sentence #1
+        let num = 0
         if (total_folios != null) {
             folios = <> <b>{total_folios}</b> folios</>
+            num++
         }
 
         if (total_pages != null) {
-            pages = <>, <b>{total_pages}</b> pages</>
+            if (num == 0){
+                pages = <><b>{total_pages}</b> pages</>
+            }
+            else{
+                if (total_scans == null){
+                    pages = <> and <b>{total_pages}</b> pages</>
+                }
+                else{
+                    pages = <>, <b>{total_pages}</b> pages</>
+                }
+            }
+            num++
         }
 
         if (total_scans != null) {
-            scans = <>, and <b>{total_scans}</b> scans</>
+            if(num == 0){
+                scans = <><b>{total_scans}</b> scans</>
+            }
+            else if(num == 1){
+                scans = <>and <b>{total_scans}</b> scans</>
+            }
+            else{
+                scans = <>, and <b>{total_scans}</b> scans</>
+            }
+
+        }
+        
+        let s1 = null
+        if ((scans != null ) || (pages != null) || (folios != null)){
+            s1 = <>This manuscript has a total of {folios}{pages}{scans}. </>
         }
 
+
+        // Determines sentence #2
         if (columns_per_page != null) {
             columns = <><b>{columns_per_page}</b> columns per page</>
         }
 
         if (line_range_per_column != null) {
-            lines = <> and approximately <b>{line_range_per_column}</b> lines per column</>
+            if (columns_per_page!= null){
+                lines = <> and approximately <b>{line_range_per_column}</b> lines per column</>
+            }
+            else{
+                lines = <> approximately <b>{line_range_per_column}</b> lines per column</>
+            }
         }
 
+        let s2 = null
+        if ((columns != null) || (lines != null)){
+            s2 =<>It has {columns} {lines}. </>
+        }
+       
+        // Determines sentence #3
         if (folio_start_of_the_tm_part != null) {
             folio_start = <> The Marian miracle stories begin on folio <b>{folio_start_of_the_tm_part}</b> of the whole manuscript.</>
         }
 
-        return <>This manuscript has a total of {folios}{pages}{scans}. It has {columns} {lines}. {folio_start}</>
+        return <>{s1} {s2} {folio_start}</>
     }
 
     // duplicate/missing_scans/rebound_in_disorder= COLUMN DOESNT EXIST IN SHEET --> USE UNDERSCORES AND NOT "/"
@@ -173,22 +221,22 @@ export const GeneratedManuscriptText = (props: any) => {
     return (
         <>
             <div>
-                <h2>
+                {manuscript.language && manuscript.date_range_start && manuscript.date_range_end && <h2>
                     This <b>{manuscript.language}</b> language manuscript was created between <b>{manuscript.date_range_start}</b> and <b>{manuscript.date_range_end}</b>.
                     {DetermineManuscriptDateBasis(manuscript.date_note)}
-                </h2>
-                <h2>
-                    This manuscript was cataloged, digitized, or purchased in (and thus may have been created in or near) [CANT FIND PROVENANCE COLUMN] in [OR PLACE_RECORDED COLUMN].
-                </h2>
+                </h2>}
+                {manuscript.provenance && manuscript.place_recorded && <h2>
+                    This manuscript was cataloged, digitized, or purchased in (and thus may have been created in or near) {manuscript.provenance} in {manuscript.place_recorded}.
+                </h2>}
                 <h2>
                     {DetermineTotalStoriesSection(manuscript.total_stories)}
                 </h2>
-                <h2>
+                {manuscript.tm_story_paintings && manuscript.total_tm_paintings && <h2>
                     {DeterminePaintingsSentence(manuscript.tm_story_paintings, manuscript.total_tm_paintings)}
-                </h2>
+                </h2> &&
                 <h2>
                     {DetermineColorPaintingsSentence(manuscript.tm_story_paintings, manuscript.scans_of_manuscript_in_color, manuscript.link_to_digital_copy)}
-                </h2>
+                </h2>}
                 <h2>
                     {DetermineFoliosSentence(manuscript.total_folios, manuscript.total_pages, manuscript.total_scans, manuscript.columns_per_page, manuscript.line_range_per_column, manuscript.folio_start_of_the_tm_part, "")}
                 </h2>
