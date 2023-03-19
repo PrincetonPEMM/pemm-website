@@ -1,44 +1,38 @@
-import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import type { NextPage, GetStaticProps, InferGetStaticPropsType} from 'next'
 import React from 'react';
 import type {Paintings} from '../components/types/paintings';
 import ImagesComponent from '../components/elements/imagesComponent';
 import axios from 'axios';
-import useSWR from 'swr'
-import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
 
 function  getImageUrisFromPaintings(paintings: Paintings[]) : string[] {
     let imageUris: string[] = [];
     for (let i = 0; i < paintings.length; i++) {
       if (paintings[i].image_link) {
-      let breakup = paintings[i].image_link!.split("full");
-      if (breakup.length === 3) {
-        //TODO: Update this and use a more standardized way to format how to display the image
-        paintings[i].image_link = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
-      }
-      imageUris.push(paintings[i].image_link!);
+        imageUris.push(paintings[i].image_link!);
     }
   }
   return imageUris;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const res = await axios(process.env.REACT_APP_API + 'images/');
     const paintings: Paintings[] = await res.data;
-    let imageUris = getImageUrisFromPaintings(paintings.slice(0, 10));
+    let imageUris = getImageUrisFromPaintings(paintings);
 
     return {
       props: {
-        server_data: {
+        data: {
           imageUris: imageUris,
-          paintings: paintings.slice(0, 10)
+          paintings: paintings
         }
       }
     }
   } catch {
       return {
         props: {
-          server_data: {
+          data: {
             imageUris: [],
             paintings: []
           }
@@ -47,18 +41,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const PaintingsPage: NextPage = ({ server_data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const PaintingsPage: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
-  const { data, error } = useSWR(process.env.REACT_APP_API + 'images/', axios);
-  let imageUris : string[] = server_data.imageUris;
-  let paintings : Paintings[] = server_data.paintings;
-  if (data) {
-    paintings = data?.data;
-    imageUris = getImageUrisFromPaintings(paintings);
+  let imageUris : string[] = data.imageUris;
+  let paintings : Paintings[] = data.paintings;
+
+  if (imageUris.length === 0 || paintings.length === 0) { 
+    return (
+      <div className='h-screen'>
+        <Alert severity="error">Something went wrong, we can&apos;t find our paintings 😲</Alert>
+      </div>
+    );
   }
-
-  if (error) return <div>failed to load</div>
-  if (!data && imageUris.length === 0 && paintings.length === 0) return <div className='h-screen'><CircularProgress color="warning" /></div>
 
   return (
     <div>

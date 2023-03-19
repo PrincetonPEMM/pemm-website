@@ -12,6 +12,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref,
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const NavBar = () => {
   const navigatorStyle = "font-serif p-2 cursor-pointer mx-8";
@@ -25,6 +33,8 @@ const NavBar = () => {
       setAnchorElNav(null);
     };
     return (
+    <>
+        <Alert severity="warning" className='m-1'>THIS SITE STILL UNDER DEVELOPMENT</Alert>
         <AppBar position="static" color="secondary">
             <Container maxWidth="xl"
                 sx={{
@@ -130,6 +140,7 @@ const NavBar = () => {
                 </Toolbar>
             </Container>
         </AppBar>
+    </>
 
     )
 }

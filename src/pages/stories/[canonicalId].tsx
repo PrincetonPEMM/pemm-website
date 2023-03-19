@@ -51,15 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       let imageUris = [];
       for (let i = 0; i < images.length; i++) {
           if (images[i].image_link) {
-            let breakup = images[i].image_link!.split("full");
-            let original = images[i].image_link;
-            let thumbnail = images[i].image_link;
-            if (breakup.length === 3) {
-                //TODO: Update this and use a more standardized way to format how to display the image
-                original = breakup[0] + "full" + breakup[1] + "400," + breakup[2];
-                thumbnail = breakup[0] + "full" + breakup[1] + "90," + breakup[2];
-            }
-            imageUris.push({"original": original, "thumbnail": thumbnail});
+            imageUris.push({"original": images[i].image_link, "thumbnail": images[i].image_link});
           }
       }
       var story: Stories = {};
@@ -78,7 +70,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         all_stories = TEST_DATA;
       }
       else {
-        const stories_dat = await axios(process.env.REACT_APP_API + 'stories/');
+        const stories_dat = await axios(process.env.REACT_APP_API + 'stories_cycle/');
         all_stories = await stories_dat.data;
       }
 
@@ -163,7 +155,8 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof ge
             {!data.imageUris || data.imageUris.length === 0 && <Image src={DEFAULT_IMAGE} width={500} height={700}/>}
 
             <div className="">
-              <StoryInformationWidget story={data.story}/>
+              <StoryInformationWidget story={data.story}
+                                      instances = {data.instances}/>
             </div>
           </div>
 
@@ -217,7 +210,8 @@ const StoriesDetailPage: NextPage = ({ data }: InferGetStaticPropsType<typeof ge
           </TabPanel>
           <TabPanel value={value} index={1}>
             <div className="overflow-hidden m-1">
-              <StoryInformationWidget story={data.story}/>
+              <StoryInformationWidget story={data.story}
+                                      instances = {data.instances}/>
             </div>
           </TabPanel>
           <TabPanel value={value} index={2}>

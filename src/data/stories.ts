@@ -13,7 +13,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "311",
+    "pemm_id": 311,
     "cycle_name": null,
     "type_of_story": 'Miracle of Mary'
   },
@@ -29,7 +29,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": true,
-    "pemm_id": "1.1",
+    "pemm_id": 1.1,
     "cycle_name": 'VisionTheophilus',
     "type_of_story": 'Life of Mary'
   },
@@ -45,7 +45,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": false,
     "appears_in_arabic": true,
-    "pemm_id": "1.2",
+    "pemm_id": 1.2,
     "cycle_name": 'VisionTheophilus',
     "type_of_story": 'Life of Mary'
   },
@@ -61,7 +61,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": false,
     "appears_in_arabic": true,
-    "pemm_id": "1.3",
+    "pemm_id": 1.3,
     "cycle_name": 'VisionTheophilus',
     "type_of_story": 'Life of Mary'
   },
@@ -77,7 +77,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "10",
+    "pemm_id": 10,
     "cycle_name": null,
     "type_of_story": 'Miracle of Mary'
   },
@@ -93,7 +93,7 @@ export const TEST_DATA: Stories[] = [
     "theme": "Unrepentant sinners forgiven",
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "100",
+    "pemm_id": 100,
     "cycle_name": 'The Thieves and the Miraculous Spring',
     "type_of_story": 'Life of Mary'
   },
@@ -109,7 +109,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "646",
+    "pemm_id": 646,
     "cycle_name": null,
     "type_of_story": 'Life of Mary'
   },
@@ -125,7 +125,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "644",
+    "pemm_id": 644,
     "cycle_name": null,
     "type_of_story": 'Miracle of Mary'
   },
@@ -141,7 +141,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "645",
+    "pemm_id": 645,
     "cycle_name": 'Saint Thecla and Abba Esi',
     "type_of_story": 'Miracle of Mary'
   },
@@ -157,7 +157,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "695",
+    "pemm_id": 695,
     "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
     "type_of_story": 'Miracle of Mary'
   },
@@ -173,7 +173,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "696",
+    "pemm_id": 696,
     "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
     "type_of_story": 'Miracle of Mary'
   },
@@ -189,7 +189,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "697",
+    "pemm_id": 697,
     "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
     "type_of_story": 'Miracle of Mary'
   },
@@ -205,7 +205,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "698",
+    "pemm_id": 698,
     "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
     "type_of_story": 'Miracle of Mary'
   },
@@ -221,7 +221,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "699",
+    "pemm_id": 699,
     "cycle_name": 'Gabra Maryam of Däbrä Zämäddo',
     "type_of_story": 'Miracle of Mary'
   },
@@ -237,7 +237,7 @@ export const TEST_DATA: Stories[] = [
     "theme": null,
     "has_english_translation": false,
     "appears_in_arabic": false,
-    "pemm_id": "104",
+    "pemm_id": 104,
     "cycle_name": null,
     "type_of_story": 'Miracle of Mary'
   },
@@ -253,7 +253,7 @@ export const TEST_DATA: Stories[] = [
     "theme": "Unrepentant sinners forgiven",
     "has_english_translation": true,
     "appears_in_arabic": false,
-    "pemm_id": "101",
+    "pemm_id": 101,
     "cycle_name": 'The Thieves and the Miraculous Spring',
     "type_of_story": 'Miracle of Mary'
   }

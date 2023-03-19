@@ -8,6 +8,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import Chip from '@mui/material/Chip';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import { useState } from 'react';
 
 function ImagesComponent(currentItems: any) {
@@ -43,6 +45,8 @@ function ImagesComponent(currentItems: any) {
       <>
         { 
           images.map(function(image, i){
+            const canonical_story_id = findPainting(image)?.canonical_story_id;
+            const is_blank_canonical_story_id : boolean = canonical_story_id === '0';
             return (
               <div className={imageStyles} key={i}> 
                 <Card sx={{ maxWidth: 345 }}>
@@ -57,9 +61,15 @@ function ImagesComponent(currentItems: any) {
                     }
                   </CardContent>
                   <CardActions>
-                    <Link href={"stories/" + findPainting(image)?.canonical_story_id}>
-                      <ReadMoreIcon className="cursor-pointer"/>
-                    </Link>
+                    { is_blank_canonical_story_id === false &&
+                      <Link href={"stories/" + canonical_story_id}>
+                        <Tooltip title="Read Story">
+                          <IconButton>
+                            <ReadMoreIcon className="cursor-pointer"/>
+                          </IconButton>
+                        </Tooltip>
+                      </Link>
+                    }
                   </CardActions>
                 </Card>
               </div>
