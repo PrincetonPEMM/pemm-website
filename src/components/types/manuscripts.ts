@@ -25,6 +25,7 @@ export type Manuscripts = {
     print_cataloger_name?: string | null, 
     pemm_volunteer_name?: string | null,
     catalog?: string| null,
-    
+    century?: string | null,
+    total_paintings?: string | null,
 
   }

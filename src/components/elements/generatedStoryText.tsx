@@ -6,13 +6,13 @@ export const GeneratedStoryText = (props: any) => {
   const DetermineStoryAge = (earliest_attest: number) => {
     let age;
 
-    if (earliest_attest >= 1300 || earliest_attest < 1500) {
+    if (earliest_attest >= 1300 && earliest_attest < 1500) {
       age = 'very old';
     }
-    else if (earliest_attest >= 1500 || earliest_attest < 1800) {
+    else if (earliest_attest >= 1500 && earliest_attest < 1800) {
       age = 'old';
     }
-    else if (earliest_attest >= 1800 || earliest_attest < 1950) {
+    else if (earliest_attest >= 1800 && earliest_attest < 1950) {
       age = 'recent';
     }
     else if (earliest_attest >= 1950) {
@@ -24,7 +24,7 @@ export const GeneratedStoryText = (props: any) => {
   // function to convert earliest attestation to earliest GMP
   const WriteEarliestGMP = (earliest_attest: number) => {
     let new_format = ((earliest_attest - 1) * 100).toString();
-    return new_format.concat('s');
+    return new_format;
   }
 
   // function to determine story popularity
@@ -84,6 +84,11 @@ export const GeneratedStoryText = (props: any) => {
     if (total_paintings === 0) {
       return <> This story is <u>not illustrated</u> in PEMM manuscripts.</>;
     }
+    
+    if (socum_num == null){
+      return <> This story is <u>frequently illustrated</u>, with a total of {total_paintings} paintings.</>
+    }
+
     return <> This story is <u>frequently illustrated</u>: it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_paintings} paintings.</>
   }
 
@@ -94,6 +99,9 @@ export const GeneratedStoryText = (props: any) => {
     let id_list: string[] = ['13', '187', '161', '162', '163', '19', '27', '33', '54',
       '153', '154', '16', '46', '43', '48', '59', '57', '61', '68', '82', '83', '99', '103', '112',
       '158', '140', '142', '7', '125', '152', '148', '236'];
+    if(macomber_id == null || total_paintings == null){
+      return <></>
+    }
 
     if (id_list.includes(macomber_id)) {
       return <> {ConstructPaintingSentences(total_paintings, socum_num)}</>
@@ -133,9 +141,9 @@ export const GeneratedStoryText = (props: any) => {
   return (
     <>
       <div>
-        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript<sup>1</sup> in which this story appears is from&nbsp; 
+        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript<sup>1</sup> in which this story appears is from around&nbsp; 
           {story.earliest_attestation}. </h2>
-        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100)}%
+        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100 * 100)/ 100}%
           of PEMM manuscripts with five stories or more.</h2>
         <h2 style={{textIndent:"20px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
         <h2 style={{textIndent:"20px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>

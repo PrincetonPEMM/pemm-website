@@ -150,71 +150,71 @@ const Footer = () => {
               Research Tools
             </Typography>
             <div>
-              <p className="text-white w-60 inline-flex flex-col gap-y-3">
+              <p className="text-white w-60 inline-flex flex-col">
               <Link href='/'>
-                  <Button>
+                  <Button className = 'p-0'>
                     Incipit Tool
                   </Button>
                 </Link>
                 <Link href='/research/arabic-manuscripts'>
-                  <Button>
+                  <Button className = 'p-0'>
                     Arabic Manuscripts
                   </Button>
                 </Link>
                 <Link href='/research/arabic-stories'>
-                  <Button>
+                  <Button className = 'p-0'>
                     Arabic Stories
                   </Button>
                 </Link>
                 <Link href='/maps'>
-                  <Button>
+                  <Button className = 'p-0'>
                     Maps
                   </Button>
                 </Link>
                 <Link href='/research/spellings'>
-                  <Button>
+                  <Button className = 'p-0'>
                     Interchangeable Spellings of Ethiopic Terms
                   </Button>
                 </Link>
                 <Link href='/research/research-posts'>
-                  <Button>
+                  <Button className = 'p-0'>
                   Research Posts
                   </Button>
                 </Link>
                 <Link href='/research/macomber'>
-                  <Button>
+                  <Button className = 'p-0'>
                   Macomber Handlist 
                   </Button>
                 </Link>
                 <Link href='/research/repositories'>
-                  <Button>
+                  <Button className = 'p-0'>
                   List of Repositories
                   </Button>
                 </Link>
 
                 <Link href='/research/bibliography'>
-                  <Button>
+                  <Button className = 'p-0' >
                   Bibliography
                   </Button>
                 </Link>
 
                 <Link href='/research/using-site'>
-                  <Button>
+                  <Button className = 'p-0' >
                   Using the Site
                   </Button>
                 </Link>
                 <Link href='https://github.com/PrincetonPEMM/pemm-website'>
-                  <Button>
+                  <Button className = 'p-0'>
                   PEMM Github Repository
                   </Button>
                 </Link>
                 <Link href='/about/terms-of-use'>
-                  <Button>
+                  <Button className = 'p-0'>
                   Terms of Use
                   </Button>
                 </Link>
                 <Link href='https://accessibility.princeton.edu/help'>
-                  <Button>
+                  <Button className = 'p-0'>
                   Accessibility
                   </Button>
                 </Link>

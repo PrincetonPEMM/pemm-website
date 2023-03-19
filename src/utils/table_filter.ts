@@ -88,12 +88,12 @@ export class TableFilter {
 
     filterCenturyOfOrigin() {
       if (this.filterData["centuryRange"][0] !== 0 || this.filterData["centuryRange"][1] !== 100) {
-        const startRange =  (this.filterData["centuryRange"][0] * 7) + 1300;
-        const endRange = (this.filterData["centuryRange"][1] * 7) + 1300;
+        const startRange =  (this.filterData["centuryRange"][0] * 8.25) + 1200;
+        const endRange = (this.filterData["centuryRange"][1] * 8.25) + 1200;
         this.filteredTableData = this.filteredTableData.filter(story => 
           story.earliest_attestation &&
-          story.earliest_attestation*100 >= startRange &&
-          (story.earliest_attestation-1)*100 <= endRange
+          story.earliest_attestation >= startRange &&
+          (story.earliest_attestation-1) <= endRange
         );
       }
     }
