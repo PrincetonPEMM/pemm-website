@@ -22,7 +22,6 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 const NavBar = () => {
-    const navigatorStyle = "font-serif p-2 cursor-pointer mx-8";
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -113,7 +112,7 @@ const NavBar = () => {
                                 open={Boolean(anchorElPaintings)}
                                 onClose={handleClose}
                             >
-                                <Link href="/paintings/all">
+                                <Link href="/paintings">
                                     <MenuItem onClick={handleClose} sx={menuStyles}>All Paintings</MenuItem>
                                 </Link>
                                 <Link href="/paintings/story">
@@ -224,7 +223,7 @@ const NavBar = () => {
                                     </Link>
                                 </MenuItem>
                                 <MenuItem onClick={handleCloseNavMenu}>
-                                    <Link href="/paintings/all">
+                                    <Link href="/paintings">
                                         <Typography textAlign="center" color="primary">
                                             Paintings
                                         </Typography>
