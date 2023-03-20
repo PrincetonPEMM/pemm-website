@@ -45,24 +45,24 @@ export const StoryInformationWidget = (props: any) => {
         return;
     }
 
-    // Function to find maximum date range end, if any
-    function FindMaximumDateRangeEnd(instances: Instances[]) {
-        var maxValue = Number.MIN_VALUE;
+    // // Function to find date range end, if any
+    function FindDateRangeEnd(instances: Instances[]) {
+        var minValue = Number.MAX_VALUE;
         if (instances) {
             for (var i = 0; i < instances.length; i++) {
                 let date_range_end = instances[i].manuscript_date_range_end;
                 if (date_range_end) {
-                    if (date_range_end > maxValue) {
-                        maxValue = date_range_end;
+                    if (date_range_end < minValue) {
+                        minValue = date_range_end;
                     }
                 }
             }
         }
-        return maxValue;
+        return minValue;
     }
 
-    // Function to find minimum date range start, if any
-    function FindMinimumDateRangeStart(instances: Instances[]) {
+    // Function to find date range start, if any
+    function FindDateRangeStart(instances: Instances[]) {
         var minValue = Number.MAX_VALUE;
         if (instances) {
             for (var i = 0; i < instances.length; i++) {
@@ -77,21 +77,21 @@ export const StoryInformationWidget = (props: any) => {
         return minValue;
     }
 
-    // Function to write the minimum (earliest year) manuscript date range start
-    const MinDateRangeStart = (instances: Instances[]) => {
-        var minValue = FindMinimumDateRangeStart(instances);
+    // Function to write the minimum manuscript date range start
+    const ConstructDateRangeStart = (instances: Instances[]) => {
+        var minValue = FindDateRangeStart(instances);
         return <> {minValue} </>;
     }
 
-    // Function to write the maximum (latest year) manuscript date range end
-    const MaxDateRangeEnd = (instances: Instances[]) => {
-        var maxValue = FindMaximumDateRangeEnd(instances);
-        return <> {maxValue} </>;
+    // Function to write the minimum manuscript date range end
+    const ConstructDateRangeEnd = (instances: Instances[]) => {
+        var minValue = FindDateRangeEnd(instances);
+        return <> {minValue} </>;
     }
 
     // Function to write the earliest attested instance of the story with the manuscript date range start and end
     const ConstructEarliestAttestedInstanceOfTheStory = (instances: Instances[]) => {
-        return <> <Typography variant="body2"> <b>Earliest Attested Instance of the Story:</b> {MinDateRangeStart(instances)}-{MaxDateRangeEnd(instances)} </Typography> </>
+        return <> <Typography variant="body2"> <b>Earliest Attested Instance of the Story:</b> {ConstructDateRangeStart(instances)}-{ConstructDateRangeEnd(instances)} </Typography> </>
     }
 
     // Function to write earliest manuscripts in which story appears, if any

@@ -215,41 +215,98 @@ const NavBar = () => {
                                 open={Boolean(anchorElNav)}
                                 onClose={handleCloseNavMenu}
                             >
-                                <MenuItem onClick={handleCloseNavMenu}>
+                                <div>
                                     <Link href="/stories">
-                                        <Typography textAlign="center" color="primary">
-                                            Stories
-                                        </Typography>
+                                        <Button style={{ textTransform: 'none', width: '100%' }} color="primary">Stories</Button>
                                     </Link>
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    <Link href="/paintings">
-                                        <Typography textAlign="center" color="primary">
-                                            Paintings
-                                        </Typography>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseNavMenu}>
+                                </div>
+
+                                <div>
+                                    <Button style={{ textTransform: 'none', width: '100%' }} color="primary" onClick={handleClickPaintings}>
+                                        Paintings
+                                    </Button>
+                                    <Menu
+                                        anchorEl={anchorElPaintings}
+                                        open={Boolean(anchorElPaintings)}
+                                        onClose={handleClose}
+                                    >
+                                        <Link href="/paintings">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>All Paintings</MenuItem>
+                                        </Link>
+                                        <Link href="/paintings/story">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Paintings by Story</MenuItem>
+                                        </Link>
+                                        <Link href="/paintings/manuscript">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Paintings by Manuscripts</MenuItem>
+                                        </Link>
+                                    </Menu>
+                                </div>
+
+                                <div>
                                     <Link href="/manuscripts">
-                                        <Typography textAlign="center" color="primary">
-                                            Manuscripts
-                                        </Typography>
+                                        <Button style={{ textTransform: 'none', width: '100%' }} color="primary">Manuscripts</Button>
                                     </Link>
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    <Link href="/research/incipit-tool">
-                                        <Typography textAlign="center" color="primary">
-                                            Research Tools
-                                        </Typography>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    <Link href="/about/mission">
-                                        <Typography textAlign="center" color="primary">
-                                            About
-                                        </Typography>
-                                    </Link>
-                                </MenuItem>
+                                </div>
+
+                                <div>
+                                    <Button style={{ textTransform: 'none', width: '100%' }} color="primary" onClick={handleClickResearch}>
+                                        Research Tools
+                                    </Button>
+                                    <Menu
+                                        anchorEl={anchorElResearch}
+                                        open={Boolean(anchorElResearch)}
+                                        onClose={handleClose}
+                                    >
+                                        <Link href="/research/incipit-tool">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Incipit Tool</MenuItem>
+                                        </Link>
+                                        <Link href="/research/arabic-manuscripts">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Arabic Manuscripts</MenuItem>
+                                        </Link>
+                                        <Link href="/research/arabic-stories">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Arabic Stories</MenuItem>
+                                        </Link>
+                                        <Link href="/research/maps">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Maps</MenuItem>
+                                        </Link>
+                                        <Link href="/research/spellings">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Interchangeable Spellings of Ethiopic Terms</MenuItem>
+                                        </Link>
+                                        <Link href="/research/research-posts">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Research Posts</MenuItem>
+                                        </Link>
+                                        <Link href="/research/macomber">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Macomber Handlist</MenuItem>
+                                        </Link>
+                                        <Link href="/research/repositories">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>List of Repositories</MenuItem>
+                                        </Link>
+                                        <Link href="/research/bibliography">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Bibliography</MenuItem>
+                                        </Link>
+                                    </Menu>
+                                </div>
+
+                                <div>
+                                    <Button style={{ textTransform: 'none', width: '100%' }} color="primary" onClick={handleClickAbout}>
+                                        About
+                                    </Button>
+                                    <Menu
+                                        anchorEl={anchorElAbout}
+                                        open={Boolean(anchorElAbout)}
+                                        onClose={handleClose}
+                                    >
+                                        <Link href="/about/people">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>People</MenuItem>
+                                        </Link>
+                                        <Link href="/about/mission">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Mission</MenuItem>
+                                        </Link>
+                                        <Link href="/about/connect">
+                                            <MenuItem onClick={handleClose} sx={menuStyles}>Connect</MenuItem>
+                                        </Link>
+                                    </Menu>
+                                </div>
                             </Menu>
                         </Box>
                     </Box>
