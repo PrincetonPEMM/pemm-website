@@ -8,7 +8,7 @@ export const StoryTranslationAndCitation = (props: any) => {
 
         let translation_date = null
         for (let tran of translations){
-            if (tran.language_translated_to == "English"){
+            if (tran.language_translated_to.toLowerCase() == "english"){
                 translation_date = tran.translation_as_of_date
                 break
             }
