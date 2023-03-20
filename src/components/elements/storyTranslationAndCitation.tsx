@@ -129,11 +129,6 @@ export const StoryTranslationAndCitation = (props: any) => {
             <div className='mt-5'>
                 {ConstructOtherTranslations(story.appears_in_arabic, story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.print_version)}
             </div>
-            {}
-            {/* {ConstructAmharicCitation(story.appears_in_amharic, story.tgs, story.tgs_folio_start)}
-            {ConstructFrenchCitation(story.appears_in_french, story.colin_item)}
-            {ConstructItalianCitation(story.appears_in_italian)}
-            {ConstructGeEzPrintEdition(story.print_version)} */}
             {NewConstructTranslationCitations(story.translations)}
         </>
     );
