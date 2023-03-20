@@ -4,9 +4,18 @@ export const StoryTranslationAndCitation = (props: any) => {
     const story = props.story;
 
     // Function to write english translation author, if any
-    const ConstructEnglishTranslationAuthor = (english_translation_author: string, english_translation_manuscript_name: string, english_translation_manuscript_folio: string) => {
+    const ConstructEnglishTranslationAuthor = (english_translation_author: string, english_translation_manuscript_name: string, english_translation_manuscript_folio: string, translations: any) => {
+
+        let translation_date = null
+        for (let tran of translations){
+            if (tran.language_translated_to == "English"){
+                translation_date = tran.translation_as_of_date
+                break
+            }
+        }
+
         if (english_translation_author != null) {
-            return <> <Typography variant="body2"> Translated by {english_translation_author} from {english_translation_manuscript_name}, f. {english_translation_manuscript_folio}.</Typography> </>
+            return <> <Typography variant="body2"> Translated by {english_translation_author} from {english_translation_manuscript_name}, f. {english_translation_manuscript_folio}, in {translation_date}.</Typography> </>
         }
         return;
     }
@@ -121,7 +130,7 @@ export const StoryTranslationAndCitation = (props: any) => {
     return (
         <>
             <Typography variant="subtitle1" fontWeight="bold"> TRANSLATION </Typography>
-            {ConstructEnglishTranslationAuthor(story.english_translation_author, story.english_translation_manuscript_name, story.english_translation_manuscript_folio)}
+            {ConstructEnglishTranslationAuthor(story.english_translation_author, story.english_translation_manuscript_name, story.english_translation_manuscript_folio, story.translations)}
             {ConstructEnglishTranslation(story.english_translation)}
             <div className='mt-5'>
                 {ConstructTranslationCitation(story.english_translation_author, story.macomber_id, story.macomber_title)}
