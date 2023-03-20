@@ -45,24 +45,20 @@ export const StoryInformationWidget = (props: any) => {
         return;
     }
 
-    // Function to find date range end, if any
+    // // Function to find date range end, if any
     function FindDateRangeEnd(instances: Instances[]) {
-        var maxValue = Number.MIN_VALUE;
+        var minValue = Number.MAX_VALUE;
         if (instances) {
-            var minStartDate = FindDateRangeStart(instances);
             for (var i = 0; i < instances.length; i++) {
-                let date_range_start = instances[i].manuscript_date_range_start;
                 let date_range_end = instances[i].manuscript_date_range_end;
-                if (date_range_start && date_range_start === minStartDate) {
-                    if (date_range_end) {
-                        if (date_range_end > maxValue) {
-                            maxValue = date_range_end;
-                        }
+                if (date_range_end) {
+                    if (date_range_end < minValue) {
+                        minValue = date_range_end;
                     }
                 }
             }
         }
-        return maxValue;
+        return minValue;
     }
 
     // Function to find date range start, if any
@@ -81,16 +77,16 @@ export const StoryInformationWidget = (props: any) => {
         return minValue;
     }
 
-    // Function to write the minimum (earliest year) manuscript date range start
+    // Function to write the minimum manuscript date range start
     const ConstructDateRangeStart = (instances: Instances[]) => {
         var minValue = FindDateRangeStart(instances);
         return <> {minValue} </>;
     }
 
-    // Function to write the maximum (latest year) manuscript date range end
+    // Function to write the minimum manuscript date range end
     const ConstructDateRangeEnd = (instances: Instances[]) => {
-        var maxValue = FindDateRangeEnd(instances);
-        return <> {maxValue} </>;
+        var minValue = FindDateRangeEnd(instances);
+        return <> {minValue} </>;
     }
 
     // Function to write the earliest attested instance of the story with the manuscript date range start and end
