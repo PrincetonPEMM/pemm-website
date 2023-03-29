@@ -7,15 +7,17 @@ export const StoryTranslationAndCitation = (props: any) => {
     const ConstructEnglishTranslationAuthor = (translation_author: string, translation_source_manuscript_name: string, translation_source_manuscript_folio: string, translations: any) => {
 
         let translation_date = null
-        for (let tran of translations){
-            if (tran.language_translated_to.toLowerCase() == "english"){
-                translation_date = tran.translation_as_of_date
-                break
+        if (translations != null){
+            for (let tran of translations){
+                if (tran.language_translated_to.toLowerCase() == "english"){
+                    translation_date = <>, in {tran.translation_as_of_date}</>
+                    break
+                }
             }
         }
 
         if (translation_author != null) {
-            return <> <Typography variant="body2"> Translated by {translation_author} from {translation_source_manuscript_name}, f. {translation_source_manuscript_folio}, in {translation_date}.</Typography> </>
+            return <> <Typography variant="body2"> Translated by {translation_author} from {translation_source_manuscript_name}, f. {translation_source_manuscript_folio}{translation_date}.</Typography> </>
         }
         return;
     }
@@ -42,31 +44,33 @@ export const StoryTranslationAndCitation = (props: any) => {
     const NewConstructTranslationCitations = (translations: any) => {
         let citations = []
         let translation_status_options: string[] = ["Published translation", "Complete Translation", "Complete Unpublished Translation"]
-       
-        for(let tran of translations){
-            if (!tran.canonical_translation_recension){
-                if (translation_status_options.includes(tran.translation_status)){
-                    let p1 = <><b>{tran.language_translated_to}: </b></>
-                    let p2 = <>{tran.translation_author}. {tran.translation_as_of_date}. {tran.published_translation_book_title}</>
-                    
-                    let p3 = null
-                    if(tran.published_translation_book_page_span){
-                        p3 = <>, pages {tran.published_translation_book_page_span}. </>
-                    }
-                    else if(tran.published_translation_book_item){
-                        p3 = <>, item {tran.published_translation_book_item}. </>
-                    }
 
-                    let p4 = null
-                    if (tran.translation_source_manuscript_name && tran.translation_source_manuscript_folio){
-                        p4 = <>From {tran.translation_source_manuscript_name}, {tran.translation_source_manuscript_folio}</>
-                    }
+        if (translations != null){
+            for(let tran of translations){
+                if (!tran.canonical_translation_recension){
+                    if (translation_status_options.includes(tran.translation_status)){
+                        let p1 = <><b>{tran.language_translated_to}: </b></>
+                        let p2 = <>{tran.translation_author}. {tran.translation_as_of_date}. {tran.published_translation_book_title}</>
+                        
+                        let p3 = null
+                        if(tran.published_translation_book_page_span){
+                            p3 = <>, pages {tran.published_translation_book_page_span}. </>
+                        }
+                        else if(tran.published_translation_book_item){
+                            p3 = <>, item {tran.published_translation_book_item}. </>
+                        }
     
-                    citations.push(<h2>{p1}{p2}{p3}{p4}</h2>)
+                        let p4 = null
+                        if (tran.translation_source_manuscript_name && tran.translation_source_manuscript_folio){
+                            p4 = <>From {tran.translation_source_manuscript_name}, {tran.translation_source_manuscript_folio}</>
+                        }
+        
+                        citations.push(<h2>{p1}{p2}{p3}{p4}</h2>)
+                    }
                 }
             }
         }
-        
+       
         return citations
     }
 
@@ -135,9 +139,9 @@ export const StoryTranslationAndCitation = (props: any) => {
             <div className='mt-5'>
                 {ConstructTranslationCitation(story.translation_author, story.macomber_id, story.macomber_title)}
             </div>
-            <div className='mt-5'>
+            { <div className='mt-5'>
                 {ConstructOtherTranslations(story.appears_in_arabic, story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.print_version)}
-            </div>
+            </div> }
             {NewConstructTranslationCitations(story.translations)}
         </>
     );
