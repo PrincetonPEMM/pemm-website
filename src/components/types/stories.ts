@@ -3,6 +3,7 @@ export type Stories = {
     macomber_title?: string | null,
     english_translation?: string | null,
     total_story_id_paintings?: number | null,
+    total_paintings?: number | null,
     origin?: string | null,
     non_life_miracle?: boolean | null,
     earliest_attestation?: number | null,
