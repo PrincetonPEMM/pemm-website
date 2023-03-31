@@ -80,16 +80,16 @@ export const GeneratedStoryText = (props: any) => {
   }
 
   // function to write painting sentences, if any
-  const ConstructPaintingSentences = (total_paintings: number, socum_num: number) => {
-    if (total_paintings === 0) {
+  const ConstructPaintingSentences = (total_story_id_paintings: number, socum_num: number) => {
+    if (total_story_id_paintings === 0) {
       return <> This story is <u>not illustrated</u> in PEMM manuscripts.</>;
     }
     
     if (socum_num == null){
-      return <> This story is <u>frequently illustrated</u>, with a total of {total_paintings} paintings.</>
+      return <> This story is <u>frequently illustrated</u>, with a total of {total_story_id_paintings} paintings.</>
     }
 
-    return <> This story is <u>frequently illustrated</u>: it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_paintings} paintings.</>
+    return <> This story is <u>frequently illustrated</u>: it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_story_id_paintings} paintings.</>
   }
 
 
@@ -145,7 +145,7 @@ export const GeneratedStoryText = (props: any) => {
           {story.earliest_attestation}. </h2>
         <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100 * 100)/ 100}%
           of PEMM manuscripts with five stories or more.</h2>
-        <h2 style={{textIndent:"20px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_paintings, story.sum_of_countif_unique_manuscript)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_story_id_paintings, story.total_manuscripts_with_story_id_illustrated)} </h2>
         <h2 style={{textIndent:"20px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
         <h2 style={{textIndent:"20px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
         <h2 style={{textIndent:"20px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
