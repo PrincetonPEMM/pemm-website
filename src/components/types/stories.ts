@@ -48,4 +48,5 @@ export type Stories = {
     manuscript?: string | null,
     folio_start?: string | null,
     folio_end?: string | null,
+    translations?: Array<any> | null,
   }
