@@ -227,7 +227,7 @@ export const GeneratedManuscriptText = (props: any) => {
        </>
 
        if (link_to_digital_copy == null){
-        p2 = <>To view the manuscript online, go here <a href="">{link_to_digital_copy}</a>.</>
+        p2 = <>To view the manuscript online, go here <a href={link_to_digital_copy}>{link_to_digital_copy}</a>.</>
        }
        else{
         p2 = <>{link_to_digital_copy_note_external}</>
@@ -241,12 +241,11 @@ export const GeneratedManuscriptText = (props: any) => {
             let p1 = null
             let p2 = null
      
-            p1 = <>This manuscript is held in the repository of {institution_name} in their {collection_name} 
-            in {institution_city_state}, {institution_country}. 
+            p1 = <>This manuscript is held in the repository of {institution_name} in their {collection_name} in {institution_city_state}, {institution_country}. 
             </>
      
             if (link_to_digital_copy == null){
-             p2 = <>To view the manuscript online, go here <a href="">{link_to_digital_copy}</a>.</>
+             p2 = <>To view the manuscript online, go here <a href={link_to_digital_copy}>{link_to_digital_copy}</a>.</>
             }
             else{
              p2 = <>{link_to_digital_copy_note_external}</>
@@ -276,9 +275,11 @@ export const GeneratedManuscriptText = (props: any) => {
                 <h2>
                     {DetermineTotalStoriesSection(manuscript.total_stories)}
                 </h2>
-                {manuscript.tm_story_paintings && manuscript.total_tm_paintings && <h2>
+                {manuscript.tm_story_paintings && manuscript.total_tm_paintings && 
+                <h2>
                     {DeterminePaintingsSentence(manuscript.tm_story_paintings, manuscript.total_tm_paintings)}
-                </h2> &&
+                </h2>}
+                {manuscript.tm_story_paintings && manuscript.total_tm_paintings &&
                 <h2>
                     {DetermineColorPaintingsSentence(manuscript.tm_story_paintings, manuscript.scans_of_manuscript_in_color, manuscript.link_to_digital_copy)}
                 </h2>}
