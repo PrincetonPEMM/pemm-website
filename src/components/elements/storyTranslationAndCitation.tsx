@@ -4,9 +4,20 @@ export const StoryTranslationAndCitation = (props: any) => {
     const story = props.story;
 
     // Function to write english translation author, if any
-    const ConstructEnglishTranslationAuthor = (english_translation_author: string, english_translation_manuscript_name: string, english_translation_manuscript_folio: string) => {
-        if (english_translation_author != null) {
-            return <> <Typography variant="body2"> Translated by {english_translation_author} from {english_translation_manuscript_name}, f. {english_translation_manuscript_folio}.</Typography> </>
+    const ConstructEnglishTranslationAuthor = (translation_author: string, translation_source_manuscript_name: string, translation_source_manuscript_folio: string, translations: any) => {
+
+        let translation_date = null
+        if (translations != null){
+            for (let tran of translations){
+                if (tran.language_translated_to.toLowerCase() == "english"){
+                    translation_date = <>, in {tran.translation_as_of_date}</>
+                    break
+                }
+            }
+        }
+
+        if (translation_author != null) {
+            return <> <Typography variant="body2"> Translated by {translation_author} from {translation_source_manuscript_name}, f. {translation_source_manuscript_folio}{translation_date}.</Typography> </>
         }
         return;
     }
@@ -20,18 +31,53 @@ export const StoryTranslationAndCitation = (props: any) => {
     }
 
     // Function to write translation citation, if any
-    const ConstructTranslationCitation = (english_translation_author: string, macomber_id: string, macomber_title: string) => {
+    const ConstructTranslationCitation = (translation_author: string, macomber_id: string, macomber_title: string) => {
         const last_modified_date = new Date();
-        if (english_translation_author != null && macomber_id != null && macomber_title != null) {
-            return <> <Typography variant="subtitle1" fontWeight="bold"> TO CITE THIS TRANSLATION </Typography> <Typography variant="body2"> {english_translation_author}. &quot;ID {macomber_id}: {macomber_title}.&quot; In <i>Täˀammərä Maryam (Miracle of Mary) Stories</i>, edited by Wendy Laura Belcher, Jeremy Brown, Mehari Worku, and Dawit Muluneh. Princeton: Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary project. http://pemm.princeton.edu/story-detail/{macomber_id}. Last modified: {last_modified_date.toLocaleDateString().replace(/\//ig, '.')}.</Typography> </>
+        if (translation_author != null && macomber_id != null && macomber_title != null) {
+            return <> <Typography variant="subtitle1" fontWeight="bold"> TO CITE THIS TRANSLATION </Typography> 
+            <Typography variant="body2"> {translation_author}. &quot;ID {macomber_id}: {macomber_title}.&quot; In <i>Täˀammərä Maryam (Miracle of Mary) Stories</i>, edited by Wendy Laura Belcher, Jeremy Brown, Mehari Worku, and Dawit Muluneh. Princeton: Princeton Ethiopian, Eritrean, and Egyptian Miracles of Mary project. http://pemm.princeton.edu/story-detail/{macomber_id}. Last modified: {last_modified_date.toLocaleDateString().replace(/\//ig, '.')}.</Typography> </>
         }
         return;
+    }
+
+    // Function to write translation citation using translation sheet data, if any
+    const NewConstructTranslationCitations = (translations: any) => {
+        let citations = []
+        let translation_status_options: string[] = ["Published translation", "Complete Translation", "Complete Unpublished Translation"]
+
+        if (translations != null){
+            for(let tran of translations){
+                if (!tran.canonical_translation_recension){
+                    if (translation_status_options.includes(tran.translation_status)){
+                        let p1 = <><b>{tran.language_translated_to}: </b></>
+                        let p2 = <>{tran.translation_author}. {tran.translation_as_of_date}. {tran.published_translation_book_title}</>
+                        
+                        let p3 = null
+                        if(tran.published_translation_book_page_span){
+                            p3 = <>, pages {tran.published_translation_book_page_span}. </>
+                        }
+                        else if(tran.published_translation_book_item){
+                            p3 = <>, item {tran.published_translation_book_item}. </>
+                        }
+    
+                        let p4 = null
+                        if (tran.translation_source_manuscript_name && tran.translation_source_manuscript_folio){
+                            p4 = <>From {tran.translation_source_manuscript_name}, {tran.translation_source_manuscript_folio}</>
+                        }
+        
+                        citations.push(<h2>{p1}{p2}{p3}{p4}</h2>)
+                    }
+                }
+            }
+        }
+       
+        return citations
     }
 
     // Function to write other citations, if any
     const ConstructOtherTranslations = (appears_in_arabic: boolean, appears_in_french: boolean, appears_in_amharic: boolean, appears_in_latin: boolean, appears_in_italian: boolean, print_version: string) => {
         if (appears_in_arabic != false || appears_in_french != false || appears_in_amharic != false || appears_in_latin != false || appears_in_italian != false || print_version != null) {
-            return <> <Typography variant="subtitle1" fontWeight="bold"> OTHER TRANSLATIONS & EDITIONS </Typography></>
+            return <> <Typography variant="subtitle1" fontWeight="bold"> OTHER TRANSLATIONS & EDITIONS OF THIS STORY</Typography></>
         }
         return;
     }
@@ -88,18 +134,15 @@ export const StoryTranslationAndCitation = (props: any) => {
     return (
         <>
             <Typography variant="subtitle1" fontWeight="bold"> TRANSLATION </Typography>
-            {ConstructEnglishTranslationAuthor(story.english_translation_author, story.english_translation_manuscript_name, story.english_translation_manuscript_folio)}
+            {ConstructEnglishTranslationAuthor(story.translation_author, story.translation_source_manuscript_name, story.translation_source_manuscript_folio, story.translations)}
             {ConstructEnglishTranslation(story.english_translation)}
             <div className='mt-5'>
-                {ConstructTranslationCitation(story.english_translation_author, story.macomber_id, story.macomber_title)}
+                {ConstructTranslationCitation(story.translation_author, story.macomber_id, story.macomber_title)}
             </div>
-            <div className='mt-5'>
+            { <div className='mt-5'>
                 {ConstructOtherTranslations(story.appears_in_arabic, story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.print_version)}
-            </div>
-            {ConstructAmharicCitation(story.appears_in_amharic, story.tgs, story.tgs_folio_start)}
-            {ConstructFrenchCitation(story.appears_in_french, story.colin_item)}
-            {ConstructItalianCitation(story.appears_in_italian)}
-            {ConstructGeEzPrintEdition(story.print_version)}
+            </div> }
+            {NewConstructTranslationCitations(story.translations)}
         </>
     );
 };

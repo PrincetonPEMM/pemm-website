@@ -2,6 +2,7 @@ export type Stories = {
     macomber_id?: string | null,
     macomber_title?: string | null,
     english_translation?: string | null,
+    total_story_id_paintings?: number | null,
     total_paintings?: number | null,
     origin?: string | null,
     non_life_miracle?: boolean | null,
@@ -21,7 +22,7 @@ export type Stories = {
     canonical_story_place?: string | null,
     canonical_story_place_type?: string | null,
     pemm_id?: number | null,
-    sum_of_countif_unique_manuscript?: number | null,
+    total_manuscripts_with_story_id_illustrated?: number | null,
     readings_dates?: string | null,
     manuscript_date_range_start?: number | null,
     manuscript_date_range_end?: number | null,
@@ -48,4 +49,5 @@ export type Stories = {
     manuscript?: string | null,
     folio_start?: string | null,
     folio_end?: string | null,
+    translations?: Array<any> | null,
   }
