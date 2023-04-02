@@ -226,7 +226,7 @@ export const GeneratedManuscriptText = (props: any) => {
        is held of this manuscript is held by {digital_repository} in {digital_repository__city} , {digital_repository_country}. 
        </>
 
-       if (link_to_digital_copy == null){
+       if (link_to_digital_copy != null){
         p2 = <>To view the manuscript online, go here <a href={link_to_digital_copy}>{link_to_digital_copy}</a>.</>
        }
        else{
@@ -244,7 +244,7 @@ export const GeneratedManuscriptText = (props: any) => {
             p1 = <>This manuscript is held in the repository of {institution_name} in their {collection_name} in {institution_city_state}, {institution_country}. 
             </>
      
-            if (link_to_digital_copy == null){
+            if (link_to_digital_copy != null){
              p2 = <>To view the manuscript online, go here <a href={link_to_digital_copy}>{link_to_digital_copy}</a>.</>
             }
             else{
