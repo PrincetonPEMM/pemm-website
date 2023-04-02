@@ -2,7 +2,7 @@ import type { Manuscripts } from '../components/types/manuscripts';
 
 export const MANUSCRIPT_1_TEST_DATA: Manuscripts = {
     "manuscript_id": 1,
-    "manuscript_name" : "Armagh (ARL) P001947393",
+    "manuscript_name" : "AMED-DC (LOC) 6",
     "manuscript_full_name" : "Library of Congress, African and Middle Eastern Division, African Manuscripts, Manuscript No. 6",
     "language": "Gəˁəz (classical Ethiopic)",
     "date_range_start": 1508,
@@ -25,6 +25,18 @@ export const MANUSCRIPT_1_TEST_DATA: Manuscripts = {
    "pemm_cataloger_name": "Jeremy R. Brown", 
    "print_cataloger_name": "E.A.W. Budge and W.F. Macomber", 
    "pemm_volunteer_name": "Chiara Lombardi",
-   "catalog": "Dillmann, C. F. A. 1847. Catalogus codicum manuscriptorum orientalium qui in Museo Britannico asservantur, III: Codices Aethiopicos amplectens (n.p.: E Museo Britannico, 1847) , page 48ab"
+   "catalog": "Dillmann, C. F. A. 1847. Catalogus codicum manuscriptorum orientalium qui in Museo Britannico asservantur, III: Codices Aethiopicos amplectens (n.p.: E Museo Britannico, 1847) , page 48ab",
+   "collections_sheet_relevant" : true,
+   "location_of_ms_imaging": "Library of Congress",
+   "location_of_ms_imaging_city": "Washington, District of Columbia",
+   "location_of_ms_imaging_country": "United States of America",
+   "digital_repository": null,  // collections sheet
+   "digital_repository__city": null,  // collections sheet
+   "digital_repository_country": null,  // collections sheet
+   "link_to_digital_copy_note_external": null,
+   "institution_name": "Library of Congress",  // collections sheet
+   "collection_name": "African and Middle Eastern Division, African Manuscripts", // collections sheet
+   "institution_city_state": "Washington, DC",  // collections sheet
+   "institution_country": "USA",  // collections sheet
 
   };

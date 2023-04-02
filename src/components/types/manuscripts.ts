@@ -27,5 +27,16 @@ export type Manuscripts = {
     catalog?: string| null,
     century?: string | null,
     total_paintings?: string | null,
-
+    collections_sheet_relevant?: boolean | null,
+    location_of_ms_imaging?: string | null,
+    location_of_ms_imaging_city?: string | null,
+    location_of_ms_imaging_country?: string | null,
+    digital_repository?: string | null,  // collections sheet
+    digital_repository__city?: string | null,  // collections sheet
+    digital_repository_country?: string | null,  // collections sheet
+    link_to_digital_copy_note_external?: string | null,
+    institution_name?: string | null,  // collections sheet
+    collection_name?: string | null, // collections sheet
+    institution_city_state?: string | null,  // collections sheet
+    institution_country?: string | null,  // collections sheet
   }

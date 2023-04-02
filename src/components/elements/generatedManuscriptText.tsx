@@ -41,7 +41,7 @@ export const GeneratedManuscriptText = (props: any) => {
             return <>This manuscript has fewer Marian miracle stories than most, only <b>{total_stories}</b>. </>
         }
         else if (total_stories < 99) {
-            return <>This manuscript has an average number of Marian miracle stories: <b>{total_stories}</b>. </>
+            return <>This manuscript has a typical number of Marian miracle stories: <b>{total_stories}</b>. </>
         }
         else if (total_stories < 199) {
             return <>This manuscript has a high number of Marian miracle stories: <b>{total_stories}</b>.</>
@@ -216,6 +216,45 @@ export const GeneratedManuscriptText = (props: any) => {
         return <> {s1} {s2}</>
     }
 
+    const DetermineCreatedPlaceParagraph = (location_of_ms_imaging: string, location_of_ms_imaging_city: string, location_of_ms_imaging_country: string,
+        digital_repository: string, digital_repository__city: string, digital_repository_country: string, link_to_digital_copy: string, link_to_digital_copy_note_external: string) => {
+       let p1 = null
+       let p2 = null
+
+       p1 = <>This manuscript's last known location (i.e., where it was microfilmed or digitized at some point in the past forty years) 
+       is the repository of {location_of_ms_imaging} in {location_of_ms_imaging_city}, {location_of_ms_imaging_country}. A digital copy 
+       is held of this manuscript is held by {digital_repository} in {digital_repository__city} , {digital_repository_country}. 
+       </>
+
+       if (link_to_digital_copy == null){
+        p2 = <>To view the manuscript online, go here <a href="">{link_to_digital_copy}</a>.</>
+       }
+       else{
+        p2 = <>{link_to_digital_copy_note_external}</>
+       }
+        
+        return <>{p1}{p2}</>
+    }
+
+    const DetermineCurrentLocationParagraph = (institution_name: string, collection_name: string, institution_city_state: string, institution_country: string,  link_to_digital_copy: string,
+        link_to_digital_copy_note_external: string) => {
+            let p1 = null
+            let p2 = null
+     
+            p1 = <>This manuscript is held in the repository of {institution_name} in their {collection_name} 
+            in {institution_city_state}, {institution_country}. 
+            </>
+     
+            if (link_to_digital_copy == null){
+             p2 = <>To view the manuscript online, go here <a href="">{link_to_digital_copy}</a>.</>
+            }
+            else{
+             p2 = <>{link_to_digital_copy_note_external}</>
+            }
+             
+             return <>{p1}{p2}</>     
+    }
+
     // parts n, m, p instructions are missing from issue post
     // WHERE TO GET UPLOAD DATE + TOTAL NUM OF MANUSCRIPTS
     return (
@@ -225,6 +264,12 @@ export const GeneratedManuscriptText = (props: any) => {
                     This <b>{manuscript.language}</b> language manuscript was created between <b>{manuscript.date_range_start}</b> and <b>{manuscript.date_range_end}</b>.
                     {DetermineManuscriptDateBasis(manuscript.date_note)}
                 </h2>}
+                {manuscript.collections_sheet_relevant ? DetermineCurrentLocationParagraph(manuscript.institution_name, manuscript.collection_name,
+                manuscript.institution_city_state, manuscript.institution_country, manuscript.link_to_digital_copy, manuscript.link_to_digital_copy_note_external) : 
+                DetermineCreatedPlaceParagraph(manuscript.location_of_ms_imaging, manuscript.location_of_ms_imaging_city, manuscript.location_of_ms_imaging_country,
+                    manuscript.digital_repository, manuscript.digital_repository__city, manuscript.digital_repository_country, manuscript.link_to_digital_copy, 
+                    manuscript.link_to_digital_copy_note_external)
+                }
                 {manuscript.provenance && manuscript.place_recorded && <h2>
                     This manuscript was cataloged, digitized, or purchased in (and thus may have been created in or near) {manuscript.provenance} in {manuscript.place_recorded}.
                 </h2>}
