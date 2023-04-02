@@ -254,6 +254,29 @@ export const GeneratedManuscriptText = (props: any) => {
              return <>{p1}{p2}</>     
     }
 
+    const DetermineMSNameAbbrevSection = (manuscript_name: string, hamburg_ms_id: string, Collection_shelfmark: string, source: string) => {
+            let p1, p2, p3, p4, p5 = null
+
+            if (manuscript_name){
+                p1 = <><h2><b>PEMM Manuscript Abbreviation:</b> {manuscript_name}</h2></>
+            }
+
+            if (hamburg_ms_id){
+                p2 = <><h2><b>Beta Maṣāḥǝft Manuscript Abbreviation:</b> {hamburg_ms_id}.</h2></>
+            }
+
+            if(Collection_shelfmark){
+                p4 = <><h2><b>Institutional Shelfmark:</b> {Collection_shelfmark}</h2></>
+            }
+
+            if(source){
+                p5 = <><h2><b>Additional Cataloging or Archive Information:</b> {source}</h2></>
+
+            }
+
+             return  <>{p1}{p2}{p3}{p4}{p5}</>
+    }
+
     // parts n, m, p instructions are missing from issue post
     // WHERE TO GET UPLOAD DATE + TOTAL NUM OF MANUSCRIPTS
     return (
@@ -291,6 +314,9 @@ export const GeneratedManuscriptText = (props: any) => {
                 </h2>
                 <h2>
                     {DetermineCatalogerSentence(manuscript.pemm_cataloger_name, manuscript.print_cataloger_name, manuscript.pemm_volunteer_name)}
+                </h2>
+                <h2>
+                    {DetermineMSNameAbbrevSection(manuscript.manuscript_name, manuscript.hamburg_ms_id, manuscript.Collection_shelfmark, manuscript.source)}
                 </h2>
                 <h2>
                     {manuscript.catalog != null ? <> This manuscript has a print catalog: <b>{manuscript.catalog}</b></> : <></>}

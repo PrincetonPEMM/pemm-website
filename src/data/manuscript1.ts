@@ -38,5 +38,9 @@ export const MANUSCRIPT_1_TEST_DATA: Manuscripts = {
    "collection_name": "African and Middle Eastern Division, African Manuscripts", // collections sheet
    "institution_city_state": "Washington, DC",  // collections sheet
    "institution_country": "USA",  // collections sheet
+   "hamburg_ms_id": null, 
+   "Macomber_Catalog_Collection_Abbreviation": null, // collections sheet --> HAVE TO CHANGE '/' to '_' IN SHEET
+   "Collection_shelfmark": "Library of Congress African Collection", // collections sheet
+   "source": "See one at https://www.loc.gov/item/2021356021/", // collections sheet
 
   };
