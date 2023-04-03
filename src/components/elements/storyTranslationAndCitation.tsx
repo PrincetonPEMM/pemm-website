@@ -9,8 +9,8 @@ export const StoryTranslationAndCitation = (props: any) => {
         let translation_date = null
         if (translations != null){
             for (let tran of translations){
-                if (tran.language_translated_to &&
-                    tran.language_translated_to.toLowerCase() == "english"){
+                if (!tran.language_translated_to) continue;
+                if (tran.language_translated_to.toLowerCase() == "english"){
                     translation_date = <>, in {tran.translation_as_of_date}</>
                     break
                 }
