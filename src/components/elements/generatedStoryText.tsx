@@ -55,7 +55,7 @@ export const GeneratedStoryText = (props: any) => {
       }
     }
     else{
-      p2 = <>appearing in {((total_records / total_num_manuscripts_with_ms_status_complete) * 100).toPrecision(5)}% of PEMM manuscripts</>
+      p2 = <>appearing in {((total_records / total_num_manuscripts_with_ms_status_complete) * 100).toPrecision(5)}% of PEMM manuscripts with five stories or more</>
       if (total_records >= 300) {
         p1 = <>extremely popular</>
       }
