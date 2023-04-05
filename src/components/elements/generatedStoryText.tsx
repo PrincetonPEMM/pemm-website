@@ -1,3 +1,5 @@
+import { Person2 } from "@mui/icons-material";
+
 export const GeneratedStoryText = (props: any) => {
   const story = props.story;
   const total_manuscripts_num = 481;
@@ -28,28 +30,47 @@ export const GeneratedStoryText = (props: any) => {
   }
 
   // function to determine story popularity
-  const DetermineStoryPopularity = (total_records: number) => {
-    let popularity;
+  const DetermineStoryPopularity = (total_records: number, total_num_manuscripts_with_ms_status_complete: number) => {
+    let p1 = null
+    let p2 = null
 
-    if (total_records >= 300) {
-      popularity = 'extremely popular';
+    if(total_records == null){
+      return <></>
     }
-    else if (total_records >= 200) {
-      popularity = 'very popular';
+
+    if (total_records < 10){
+      p2 = <>only {total_records} of the PEMM manuscripts</>
+
+      if (total_records >= 6){
+        p1 = <>somewhat rare</>
+      }
+      else if(total_records >= 3){
+        p1 = <>quite rare</>
+      }
+      else if(total_records == 2){
+        p1 = <>extremely rare</>
+      }
+      else{
+        p1 = <>uniquely rare</>
+      }
     }
-    else if (total_records >= 50) {
-      popularity = 'popular';
+    else{
+      p2 = <>appearing in {((total_records / total_num_manuscripts_with_ms_status_complete) * 100).toPrecision(5)}% of PEMM manuscripts</>
+      if (total_records >= 300) {
+        p1 = <>extremely popular</>
+      }
+      else if (total_records >= 200) {
+        p1 = <>very popular</>
+      }
+      else if (total_records >= 50) {
+        p1 = <>popular</>
+      }
+      else{
+        p1 = <>somewhat popular</>
+      }
     }
-    else if (total_records >= 10) {
-      popularity = 'somewhat popular';
-    }
-    else if (total_records >= 3) {
-      popularity = 'rare';
-    }
-    else {
-      popularity = 'very rare';
-    }
-    return popularity;
+    // return popularity;
+    return <>This story is <u>{p1}</u>: appearing in {p2}.</>
   }
 
   // function to write translation availability sentences
@@ -149,8 +170,7 @@ export const GeneratedStoryText = (props: any) => {
       <div>
         <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryAge(story.earliest_attestation)}</u>: the earliest PEMM manuscript<sup>1</sup> in which this story appears is from around&nbsp; 
           {story.earliest_attestation}. </h2>
-        <h2 style={{textIndent:"20px"}}>This story is <u>{DetermineStoryPopularity(story.total_records)}</u>: appearing in {Math.round((story.total_records / total_manuscripts_num) * 100 * 100)/ 100}%
-          of PEMM manuscripts with five stories or more.</h2>
+        <h2 style={{textIndent:"20px"}}>{DetermineStoryPopularity(story.total_records, 641)}</h2>
         <h2 style={{textIndent:"20px"}}>{ConstructIllustrationSentences(story.macomber_id, story.total_story_id_paintings, story.total_manuscripts_with_story_id_illustrated)} </h2>
         <h2 style={{textIndent:"20px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
         <h2 style={{textIndent:"20px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
