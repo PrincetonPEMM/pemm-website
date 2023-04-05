@@ -80,16 +80,22 @@ export const GeneratedStoryText = (props: any) => {
   }
 
   // function to write painting sentences, if any
-  const ConstructPaintingSentences = (total_story_id_paintings: number, socum_num: number) => {
+  const ConstructPaintingSentences = (total_story_id_paintings: number, socum_num: number, recognized_id: boolean) => {
     if (total_story_id_paintings === 0) {
       return <> This story is <u>not illustrated</u> in PEMM manuscripts.</>;
     }
+
+    if (recognized_id){
+      if (socum_num == null){
+        return <> This story is among the thirty-two Täˀammərä Maryam stories that are most <u>frequently illustrated</u>, with a total of {total_story_id_paintings} paintings.</>
+      }
+      return <>This story is among the thirty-two Täˀammərä Maryam stories that are most <u>frequently illustrated</u>: it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_story_id_paintings} paintings.</> 
+    }
     
     if (socum_num == null){
-      return <> This story is <u>frequently illustrated</u>, with a total of {total_story_id_paintings} paintings.</>
+      return <>This story is <u>sometimes illustrated</u>, with a total of {total_story_id_paintings} painting(s).</>
     }
-
-    return <> This story is <u>frequently illustrated</u>: it is illustrated in {socum_num} PEMM manuscripts, with a total of {total_story_id_paintings} paintings.</>
+  return <> This story is <u>sometimes illustrated</u>: it is illustrated in {socum_num} PEMM manuscript(s), with a total of {total_story_id_paintings} painting(s).</>
   }
 
 
@@ -104,9 +110,9 @@ export const GeneratedStoryText = (props: any) => {
     }
 
     if (id_list.includes(macomber_id)) {
-      return <> {ConstructPaintingSentences(total_paintings, socum_num)}</>
+      return <> {ConstructPaintingSentences(total_paintings, socum_num, true)}</>
     }
-    return <>{ConstructPaintingSentences(total_paintings, socum_num)}</>;
+    return <>{ConstructPaintingSentences(total_paintings, socum_num, false)}</>;
   }
 
   // function to write read aloud sentence, if any
