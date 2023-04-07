@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/system";
 import MobileHomePage from "../components/common/MobileHomePage";
+import $ from "jquery";
+import indexcss from "./index.module.css";
+import HomePageSlider from "../components/common/HomePageSlider";
 
 const STORY_IMAGE = "/featured_stories.jpeg";
 const STORY_SUMMARY =
@@ -15,6 +18,15 @@ const MANUSCRIPTS_SUMMARY =
   "Miracle of Mary manuscripts from Ethiopia are among the most spectacular of Ethiopia's parchment manuscripts. The staff of PEMM has selected three manuscirpts that best represent the genre (from among its 491 manuscripts)";
 
 function Home() {
+  const [Slides, setSlides] = useState("");
+  let showTarget = (clickedDiv) => {
+    $(".HomePageSlider").show();
+    setSlides(<HomePageSlider target={clickedDiv} />);
+  };
+  useEffect(() => {
+    let targetClass = document.getElementsByClassName("HomePageSlider")[0];
+    if (targetClass != null) targetClass.scrollIntoView();
+  }, [Slides]);
   return (
     <>
       {/* Desktop Home Page */}
@@ -23,77 +35,45 @@ function Home() {
           display: { xs: "none", md: "block", lg: "block" },
         }}
       >
-        <div className="bodyImages">
-          <img src={STORY_IMAGE} alt="" />
-          <img src={MANUSCRIPTS_IMAGE} alt="" />
-          <img src={PAINTINGS_IMAGE} alt="" />
+        <div className={indexcss.bodyImages}>
+          <div className={indexcss.bgImg1}>
+            <div className={indexcss.Shadow}>
+              <div
+                className={indexcss.STORY_SUMMARY + " " + indexcss.STORY}
+                onClick={() => showTarget("STORY_SUMMARY")}
+              >
+                <div className={indexcss.Featured}>Featured</div>
+                <div className={indexcss.title}>Stories </div>
+                <div className={indexcss.detailes}>{STORY_SUMMARY}</div>
+              </div>
+            </div>
+          </div>
+          <div className={indexcss.bgImg2}>
+            <div className={indexcss.Shadow}>
+              <div
+                className={indexcss.PAINTINGS_SUMMARY + " " + indexcss.STORY}
+                onClick={() => showTarget("PAINTINGS_SUMMARY")}
+              >
+                <div className={indexcss.Featured}>Featured</div>
+                <div className={indexcss.title}>Manuscripts </div>
+                <div className={indexcss.detailes}>{PAINTINGS_SUMMARY}</div>
+              </div>
+            </div>
+          </div>
+          <div className={indexcss.bgImg3}>
+            <div className={indexcss.Shadow}>
+              <div
+                className={indexcss.MANUSCRIPTS_SUMMARY + " " + indexcss.STORY}
+                onClick={() => showTarget("MANUSCRIPTS_SUMMARY")}
+              >
+                <div className={indexcss.Featured}>Featured</div>
+                <div className={indexcss.title}>Paintings </div>
+                <div className={indexcss.detailes}>{MANUSCRIPTS_SUMMARY}</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <section>
-          <div>
-            <div className="Featured">Featured</div>
-            <div className="title">Stories </div>
-            <div className="detailes">{STORY_SUMMARY}</div>
-          </div>
-          <div>
-            <div className="Featured">Featured</div>
-            <div className="title">Manuscripts </div>
-            <div className="detailes">{PAINTINGS_SUMMARY}</div>
-          </div>
-          <div>
-            <div className="Featured">Featured</div>
-            <div className="title">Paintings </div>
-            <div className="detailes">{MANUSCRIPTS_SUMMARY}</div>
-          </div>
-        </section>
-        <style jsx>{`
-          .bodyImages {
-            display: flex;
-            width: 100%;
-            margin: 0 auto;
-            justify-content: center;
-          }
-          .bodyImages img {
-            width: 33%;
-            margin-bottom: -60vw;
-            z-index: -1;
-          }
-          section {
-            z-index: 3;
-            display: flex;
-            justify-content: center;
-
-            height: 58vw;
-            opacity: 0.8;
-            padding-top: 2vw;
-            width: 100%;
-            background-image: linear-gradient(
-              to top,
-              #221f21,
-              transparent,
-              #221f21
-            );
-          }
-          section div {
-            flex: 1;
-            padding-left: 20px;
-            color: white;
-            font-family: "Maghfirea", sans-serif;
-          }
-          .Featured {
-            padding-top: 25vw;
-            font-size: 40px;
-          }
-          section .title {
-            font-size: 80px;
-          }
-          .detailes {
-            text-align: left;
-            font-size: 25px;
-          }
-        `}</style>
       </Box>
-
-      {/* Mobile Home Page */}
       <Box
         sx={{
           display: { xs: "block", md: "none", lg: "none" },
@@ -101,8 +81,8 @@ function Home() {
       >
         <MobileHomePage />
       </Box>
+      {Slides}
     </>
   );
 }
-
 export default Home;
