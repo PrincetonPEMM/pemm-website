@@ -8,7 +8,12 @@ module.exports = {
     'repository.library.brown.edu',
     'pemm-data-migration.s3.amazonaws.com',
     'ethiopic-manuscripts.s3.amazonaws.com',
-    'gundagunde.digital.utsc.utoronto.ca'],
+    'gundagunde.digital.utsc.utoronto.ca',
+    'ia903203.us.archive.org',
+    'www.bombeck.de',
+    'ethiopia.deeds.utoronto.ca',
+    'sites.hampshire.edu'
+    ],
   },
   env: {
     REACT_APP_API: process.env.REACT_APP_API,
