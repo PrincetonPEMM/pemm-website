@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(data.manuscript);
+  // console.log(data.manuscript);
   return (
     <div>
       <Box sx={{
