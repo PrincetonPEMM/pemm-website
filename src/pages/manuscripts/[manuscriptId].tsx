@@ -39,7 +39,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  // console.log(data.manuscript);
   return (
     <div>
       <Box sx={{
@@ -55,7 +54,12 @@ const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<ty
             <GeneratedManuscriptText manuscript={data.manuscript} />
           </div>
         </div>
+      </Box>
 
+      <Box sx={{
+        flexGrow: 1,
+        display: { xs: 'none', md: 'flex', lg: 'flex' }
+      }}>
         <div className='m-4 w-3/4'>
           <Typography variant="h3">{data.manuscript.manuscript_name}</Typography>
           <ManuscriptCatalogedMiracleRecords manuscript={data.manuscript} />
@@ -66,12 +70,20 @@ const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<ty
         flexGrow: 1,
         display: { xs: 'flex', md: 'none', lg: 'none' }
       }}>
-        <div className='m-4'>
-          <Typography variant="h6">{data.manuscript.manuscript_name}</Typography>
-        </div>
 
-        <div className="w-1/2 flex flex-col">
+        <div className="m-2 w-full flex flex-col">
+          <Typography variant="h4">{data.manuscript.manuscript_full_name}</Typography>
           <GeneratedManuscriptText manuscript={data.manuscript} />
+        </div>
+      </Box>
+
+      <Box sx={{
+        flexGrow: 1,
+        display: { xs: 'flex', md: 'none', lg: 'none' }
+      }}>
+        <div className='m-2 w-full'>
+          <Typography variant="h4">{data.manuscript.manuscript_name}</Typography>
+          <ManuscriptCatalogedMiracleRecords manuscript={data.manuscript} />
         </div>
       </Box>
     </div>
