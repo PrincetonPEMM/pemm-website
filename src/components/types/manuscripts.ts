@@ -1,3 +1,5 @@
+import { Instances } from "./instances";
+
 export type Manuscripts = {
     manuscript_id?: number | null,
     manuscript_name?: string | null,
@@ -43,4 +45,5 @@ export type Manuscripts = {
     Macomber_Catalog_Collection_Abbreviation?: string | null, // collections sheet --> HAVE TO CHANGE '/' to '_' IN SHEET
     Collection_shelfmark?: string | null, // collections sheet
     source?: string | null, // collections sheet
-  }
+    story_instances?: Instances[] | null;
+};

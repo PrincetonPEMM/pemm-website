@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import type { Manuscripts } from '../../components/types/manuscripts';
 import { MANUSCRIPT_1_TEST_DATA } from '../../data/manuscript1';
 import { GeneratedManuscriptText } from '../../components/elements/generatedManuscriptText';
+import ManuscriptCatalogedMiracleRecords from "../../components/elements/manuscriptCatalogedMiracleRecords";
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 
@@ -38,12 +39,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  // console.log(data.manuscript);
   return (
     <div>
       <Box sx={{
         flexGrow: 1,
         display: { xs: 'none', md: 'flex', lg: 'flex' }
       }}>
+
         <div className="flex space-x-10 flex-wrap ml-2">
           <div className='m-4 w-3/4'>
             <Typography variant="h3">{data.manuscript.manuscript_full_name}</Typography>
@@ -51,6 +54,11 @@ const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<ty
           <div className="w-1/2 flex flex-col">
             <GeneratedManuscriptText manuscript={data.manuscript} />
           </div>
+        </div>
+
+        <div className='m-4 w-3/4'>
+          <Typography variant="h3">{data.manuscript.manuscript_name}</Typography>
+          <ManuscriptCatalogedMiracleRecords manuscript={data.manuscript} />
         </div>
       </Box>
 

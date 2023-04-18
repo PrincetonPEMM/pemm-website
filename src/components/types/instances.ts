@@ -19,4 +19,9 @@ export type Instances = {
     story_century?: number | null,
     manuscript_date_range_start?: number | null,
     manuscript_date_range_end?: number | null,
+    macomber_title?: string | null,
+    confidence_score?: string | null,
+    location_in_ms?: string | null,
+    no_of_paintings_per_story_instance?: number | null,
+    story_instance_id?: number | null,
 }
