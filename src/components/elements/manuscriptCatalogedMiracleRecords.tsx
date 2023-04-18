@@ -122,7 +122,7 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   }}
                   align="left">
                   <Link href={"/stories/" + row.canonical_story_id}>
-                    <a>{row.story_instance_id}</a>
+                    <a>{row.canonical_story_id}</a>
                   </Link>
                 </TableCell>
                 <TableCell
