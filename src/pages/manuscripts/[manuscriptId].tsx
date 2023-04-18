@@ -16,7 +16,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     } else {
       const res = await axios(process.env.REACT_APP_API + 'manuscripts/' + manuscriptId);
       if (res.data.length > 0) {
-        manuscript = res.data[0];
+        if (res.data[0].length > 0) {
+          if (res.data[0].length > 0) {
+            manuscript = res.data[0][0];
+          }
+        }
       }
     }
 
