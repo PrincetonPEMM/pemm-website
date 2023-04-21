@@ -56,8 +56,8 @@ const PaintingsPage: NextPage = ({
     );
   }
 
-  let [searchResult, setSearchResult] = useState<any>([]);
-  let [searchImageUri, setSearchImageUri] = useState<any>([]);
+  let [searchResult, setSearchResult] = useState<any[]>([]);
+  let [searchImageUri, setSearchImageUri] = useState<any[]>([]);
 
   let hundleSearch = async (e: any) => {
     let searchValue = e.target.value,
@@ -72,10 +72,17 @@ const PaintingsPage: NextPage = ({
         searchUri.push(image_link);
         console.log("manuscript == ", manuscript);
       } else {
+        // push has to be only one
+        let pushCounter = 0;
         episode_keywords?.map((episodeItem) => {
           if (episodeItem.toLowerCase()?.includes(searchValue.toLowerCase())) {
-            choosenItems.push(item);
-            searchUri.push(image_link);
+            // push has to be done only once which is done when pushCounter is 0;
+            // if pushCounter>0 data is already pushed so no need to push again
+            if (pushCounter == 0) {
+              choosenItems.push(item);
+              searchUri.push(image_link);
+              pushCounter++;
+            }
           }
         });
       }

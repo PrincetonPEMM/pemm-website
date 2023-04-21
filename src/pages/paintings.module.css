@@ -6,7 +6,7 @@
 .searchInputWrapper {
   width: 80%;
   display: flex;
-  border: solid 3px green;
+  border: solid 3px #3c6f57;
   background-color: white;
   margin: auto;
   padding: 0 10px;
@@ -29,10 +29,11 @@
   display: flex;
   justify-content: center;
   margin: 10px auto;
+  display: none;
 }
 .buttonLists button {
   margin: 3px;
-  background-color: green;
+  background-color: #3c6f57;
   color: white;
   padding: 1px 10px;
 }
