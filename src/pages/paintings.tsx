@@ -70,7 +70,6 @@ const PaintingsPage: NextPage = ({
       if (manuscript?.includes(searchValue.toLowerCase())) {
         choosenItems.push(item);
         searchUri.push(image_link);
-        console.log("manuscript == ", manuscript);
       } else {
         // push has to be only one
         let pushCounter = 0;
@@ -89,7 +88,6 @@ const PaintingsPage: NextPage = ({
     });
     setSearchImageUri(searchUri);
     setSearchResult(choosenItems);
-    let REACT_APP_API = "https://ethiopicmary.com/api/";
   };
   return (
     <div className="paintingWrapper">
