@@ -5,6 +5,7 @@ import type { Paintings } from "../components/types/paintings";
 import ImagesComponent from "../components/elements/imagesComponent";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
+import Image from 'next/image'
 
 function getImageUrisFromPaintings(paintings: Paintings[]): string[] {
   let imageUris: string[] = [];
@@ -45,6 +46,8 @@ const PaintingsPage: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   let imageUris: string[] = data.imageUris;
   let paintings: Paintings[] = data.paintings;
+  let [searchResult, setSearchResult] = useState<Paintings[]>([]);
+  let [searchImageUri, setSearchImageUri] = useState<string[]>([]);
 
   if (imageUris.length === 0 || paintings.length === 0) {
     return (
@@ -56,8 +59,6 @@ const PaintingsPage: NextPage = ({
     );
   }
 
-  let [searchResult, setSearchResult] = useState<any[]>([]);
-  let [searchImageUri, setSearchImageUri] = useState<any[]>([]);
 
   let hundleSearch = async (e: any) => {
     let searchValue = e.target.value,
@@ -89,16 +90,17 @@ const PaintingsPage: NextPage = ({
     setSearchImageUri(searchUri);
     setSearchResult(choosenItems);
   };
+
   return (
     <div className="paintingWrapper">
       <div className={stylePaintings.empitySpace}></div>
       <div className={stylePaintings.searchInputWrapper}>
-        <img src="./icons8-search.svg" alt="" />
+        <Image src="/icons8-search.svg" width={20} height={20} alt="" />
         <input
           type="search"
           onInput={hundleSearch}
           className={stylePaintings.searchInput}
-          placeholder="search what u want."
+          placeholder="Search"
         />
       </div>
       <div className={stylePaintings.buttonLists}>
@@ -130,7 +132,7 @@ const PaintingsPage: NextPage = ({
           <span className={stylePaintings.span}>sometext</span>
         </button>
       </div>
-      {console.log("searchResult is = ", searchResult)}
+
       <div className="flex flex-wrap justify-center">
         {searchImageUri?.length > 0 ? (
           <ImagesComponent images={searchImageUri} paintings={searchResult} />
