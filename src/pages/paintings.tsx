@@ -60,14 +60,20 @@ const PaintingsPage: NextPage = ({
   }
 
 
-  let hundleSearch = async (e: any) => {
-    let searchValue = e.target.value,
-      searchUri: any[] = [];
-    let choosenItems: any[] = [];
+  let hundleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    let searchValue = e.currentTarget.value,
+    searchUri: string[] = [];
+    let choosenItems: Paintings[] = [];
     paintings?.map((item) => {
-      let episode_keywords = item.episode_keywords,
-        manuscript: any = item.manuscript?.toLowerCase();
-      let image_link = item.image_link;
+      let episode_keywords = item.episode_keywords;
+      let manuscript: string = '';
+      if(item.manuscript) {
+        manuscript = item.manuscript?.toLowerCase();
+      }
+      let image_link = '';
+      if (item.image_link) {
+        image_link = item.image_link;
+      }
       if (manuscript?.includes(searchValue.toLowerCase())) {
         choosenItems.push(item);
         searchUri.push(image_link);
