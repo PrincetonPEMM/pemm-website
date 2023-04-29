@@ -20,12 +20,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const res = await axios(process.env.REACT_APP_API + "images/");
     const paintings: Paintings[] = await res.data;
-    let imageUris = getImageUrisFromPaintings(paintings);
+    let myMock: Paintings[] = [
+      {
+        image_link:
+          "https://ethiopic-manuscripts.s3.amazonaws.com/EMML+Mss/EMML+22/EMML_22_203.jpg",
+        painting_date: 1421,
+        is_black_and_white: true,
+        painting_available: true,
+        type_of_story: "blab abababa",
+        canonical_story_id: "" + Math.random(),
+        manuscript: "lorem ipsum",
+        episode_keywords: ["qolo", "abeba"],
+        painting_id: 23,
+      },
+    ];
+    // let imageUris = getImageUrisFromPaintings(paintings);
+    let imageUris = getImageUrisFromPaintings(myMock);
     return {
       props: {
         data: {
           imageUris: imageUris,
-          paintings: paintings,
+          // paintings: paintings,
+          paintings: myMock,
         },
       },
     };
@@ -62,18 +78,10 @@ const PaintingsPage: NextPage = ({
     );
   }
 
-  // <<<<<<< HEAD
-  //   let hundleSearch = async (e: any) => {
-  //     let searchValue = e.target.value,
-  //       searchUri: any[] = [];
-  //     let choosenItems: any[] = [];
-  // =======
-
   let hundleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     let searchValue = e.currentTarget.value,
       searchUri: string[] = [];
     let choosenItems: Paintings[] = [];
-    // >>>>>>> 5d858129941ececba8d37e53e4c0794e42d19a82
     paintings?.map((item) => {
       let episode_keywords = item.episode_keywords;
       let manuscript: string = "";
@@ -106,9 +114,28 @@ const PaintingsPage: NextPage = ({
     setSearchImageUri(searchUri);
     setSearchResult(choosenItems);
   };
-  // <<<<<<< HEAD
+
+  let [searchItemResult, setSearchItemResult] = useState<Paintings[]>([]);
+  let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
+  // searchItemResult,searchItemImageUri
   let searchByDateOfPaintings = (e: any) => {
     console.log("paintings ======= ", paintings);
+    let Year: any = e.target.innerText.replace("s", "");
+    let searchedItems: Paintings[] = [],
+      SearchedImgURL: any[] = [];
+    Year = Number(Year);
+
+    paintings.map((item) => {
+      console.log(item.painting_date);
+      let painting_date = Number(item.painting_date);
+      let image_link: String | undefined = item.image_link;
+      if (painting_date <= Year + 99 && painting_date >= Year) {
+        searchedItems.push(item);
+        SearchedImgURL.push(image_link);
+      }
+      setSearchItemResult(searchedItems), setSearchItemImageUri(SearchedImgURL);
+    });
+
     return;
     if (e.target.innerText == "1300s") {
     } else if (e.target.innerText == "1400s") {
@@ -120,9 +147,6 @@ const PaintingsPage: NextPage = ({
     } else if (e.target.innerText == "2000s") {
     }
   };
-  // =======
-
-  // >>>>>>> 5d858129941ececba8d37e53e4c0794e42d19a82
   return (
     <div className="paintingWrapper">
       <div className={stylePaintings.empitySpace}></div>
@@ -230,13 +254,24 @@ const PaintingsPage: NextPage = ({
           <span className={stylePaintings.span}>some text</span>
         </button>} */}
       </div>
-
+      {console.log("searchItemResult", searchItemResult)}
+      {console.log("searchItemImageUri", searchItemImageUri)}
       <div className="flex flex-wrap justify-center">
-        {searchImageUri?.length > 0 ? (
+        {searchItemResult?.length > 0 ? (
+          <ImagesComponent
+            images={searchItemImageUri}
+            paintings={searchItemResult}
+          />
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="flex flex-wrap justify-center">
+        {/* {searchImageUri?.length > 0 ? (
           <ImagesComponent images={searchImageUri} paintings={searchResult} />
         ) : (
           <ImagesComponent images={imageUris} paintings={paintings} />
-        )}
+        )} */}
       </div>
     </div>
   );
