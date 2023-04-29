@@ -5,6 +5,7 @@ import type { Paintings } from "../components/types/paintings";
 import ImagesComponent from "../components/elements/imagesComponent";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
+import Image from "next/image";
 
 function getImageUrisFromPaintings(paintings: Paintings[]): string[] {
   let imageUris: string[] = [];
@@ -45,9 +46,11 @@ const PaintingsPage: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   let imageUris: string[] = data.imageUris;
   let paintings: Paintings[] = data.paintings;
-
   let [searchResult, setSearchResult] = useState<Paintings[]>([]);
-  let [searchImageUri, setSearchImageUri] = useState<Paintings[]>([]);
+  let [searchImageUri, setSearchImageUri] = useState<string[]>([]);
+
+  // let [searchResult, setSearchResult] = useState<Paintings[]>([]);
+  // let [searchImageUri, setSearchImageUri] = useState<Paintings[]>([]);
 
   if (imageUris.length === 0 || paintings.length === 0) {
     return (
@@ -59,14 +62,28 @@ const PaintingsPage: NextPage = ({
     );
   }
 
-  let hundleSearch = async (e: any) => {
-    let searchValue = e.target.value,
-      searchUri: any[] = [];
-    let choosenItems: any[] = [];
+  // <<<<<<< HEAD
+  //   let hundleSearch = async (e: any) => {
+  //     let searchValue = e.target.value,
+  //       searchUri: any[] = [];
+  //     let choosenItems: any[] = [];
+  // =======
+
+  let hundleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    let searchValue = e.currentTarget.value,
+      searchUri: string[] = [];
+    let choosenItems: Paintings[] = [];
+    // >>>>>>> 5d858129941ececba8d37e53e4c0794e42d19a82
     paintings?.map((item) => {
-      let episode_keywords = item.episode_keywords,
-        manuscript: any = item.manuscript?.toLowerCase();
-      let image_link = item.image_link;
+      let episode_keywords = item.episode_keywords;
+      let manuscript: string = "";
+      if (item.manuscript) {
+        manuscript = item.manuscript?.toLowerCase();
+      }
+      let image_link = "";
+      if (item.image_link) {
+        image_link = item.image_link;
+      }
       if (manuscript?.includes(searchValue.toLowerCase())) {
         choosenItems.push(item);
         searchUri.push(image_link);
@@ -89,6 +106,7 @@ const PaintingsPage: NextPage = ({
     setSearchImageUri(searchUri);
     setSearchResult(choosenItems);
   };
+  // <<<<<<< HEAD
   let searchByDateOfPaintings = (e: any) => {
     console.log("paintings ======= ", paintings);
     return;
@@ -102,16 +120,19 @@ const PaintingsPage: NextPage = ({
     } else if (e.target.innerText == "2000s") {
     }
   };
+  // =======
+
+  // >>>>>>> 5d858129941ececba8d37e53e4c0794e42d19a82
   return (
     <div className="paintingWrapper">
       <div className={stylePaintings.empitySpace}></div>
       <div className={stylePaintings.searchInputWrapper}>
-        <img src="./icons8-search.svg" alt="" />
+        <Image src="/icons8-search.svg" width={20} height={20} alt="" />
         <input
           type="search"
           onInput={hundleSearch}
           className={stylePaintings.searchInput}
-          placeholder="search what u want."
+          placeholder="Search"
         />
       </div>
       <div className={stylePaintings.buttonLists}>
@@ -209,7 +230,7 @@ const PaintingsPage: NextPage = ({
           <span className={stylePaintings.span}>some text</span>
         </button>} */}
       </div>
-      {console.log("searchResult is = ", searchResult)}
+
       <div className="flex flex-wrap justify-center">
         {searchImageUri?.length > 0 ? (
           <ImagesComponent images={searchImageUri} paintings={searchResult} />
