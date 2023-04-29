@@ -26,14 +26,16 @@
   outline: none;
 }
 .buttonLists {
-  display: flex;
-  justify-content: center;
-  margin: 10px auto;
-  display: none;
+  width: fit-content;
+  margin: auto;
 }
 .buttonLists button {
-  margin: 3px;
+  display: inline-block;
+  margin: 10px auto;
   background-color: #3c6f57;
+  margin-right: 3px;
+}
+.buttonLists button span {
   color: white;
   padding: 1px 10px;
 }
@@ -46,4 +48,14 @@
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   margin-left: 5px;
+}
+.dropdownList {
+  display: none;
+  position: absolute;
+  background-color: #3c6f57;
+}
+.buttonLists button:hover .dropdownList {
+  display: flex;
+  flex-direction: column;
+  z-index: 500;
 }

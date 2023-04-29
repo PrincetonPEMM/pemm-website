@@ -89,6 +89,17 @@ const PaintingsPage: NextPage = ({
     setSearchImageUri(searchUri);
     setSearchResult(choosenItems);
   };
+  let searchByDateOfPaintings = (e: any) => {
+    if (e.target.innerText == "1300s") {
+    } else if (e.target.innerText == "1400s") {
+    } else if (e.target.innerText == "1500s") {
+    } else if (e.target.innerText == "1600s") {
+    } else if (e.target.innerText == "1700s") {
+    } else if (e.target.innerText == "1800s") {
+    } else if (e.target.innerText == "1900s") {
+    } else if (e.target.innerText == "2000s") {
+    }
+  };
   return (
     <div className="paintingWrapper">
       <div className={stylePaintings.empitySpace}></div>
@@ -103,32 +114,98 @@ const PaintingsPage: NextPage = ({
       </div>
       <div className={stylePaintings.buttonLists}>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}>Date of Paintings</span>
+          <div className={stylePaintings.dropdownList}>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1300s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1400s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1500s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1600s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1700s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1800s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              1900s
+            </span>
+            <span
+              onClick={(Event) => {
+                searchByDateOfPaintings(Event);
+              }}
+            >
+              2000s
+            </span>
+          </div>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}> Paintings in Color</span>
+          <div className={stylePaintings.dropdownList}>
+            <span>Include B&W </span>
+            <span>Include not yet available</span>
+          </div>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}>Story Type</span>
+          <div className={stylePaintings.dropdownList}>
+            <span>Life of Mary</span>
+            <span>Miracle of Mary </span>
+          </div>
+        </button>
+        {/* {    <button>
+          <span className={stylePaintings.span}>some text</span>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}>some text</span>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}>some text</span>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}>some text</span>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
+          <span className={stylePaintings.span}>some text</span>
         </button>
         <button>
-          <span className={stylePaintings.span}>sometext</span>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>sometext</span>
-        </button>
+          <span className={stylePaintings.span}>some text</span>
+        </button>} */}
       </div>
       {console.log("searchResult is = ", searchResult)}
       <div className="flex flex-wrap justify-center">
