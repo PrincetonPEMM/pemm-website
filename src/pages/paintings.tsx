@@ -46,6 +46,9 @@ const PaintingsPage: NextPage = ({
   let imageUris: string[] = data.imageUris;
   let paintings: Paintings[] = data.paintings;
 
+  let [searchResult, setSearchResult] = useState<Paintings[]>([]);
+  let [searchImageUri, setSearchImageUri] = useState<Paintings[]>([]);
+
   if (imageUris.length === 0 || paintings.length === 0) {
     return (
       <div className="h-screen">
@@ -55,9 +58,6 @@ const PaintingsPage: NextPage = ({
       </div>
     );
   }
-
-  let [searchResult, setSearchResult] = useState<any[]>([]);
-  let [searchImageUri, setSearchImageUri] = useState<any[]>([]);
 
   let hundleSearch = async (e: any) => {
     let searchValue = e.target.value,
@@ -90,6 +90,8 @@ const PaintingsPage: NextPage = ({
     setSearchResult(choosenItems);
   };
   let searchByDateOfPaintings = (e: any) => {
+    console.log("paintings ======= ", paintings);
+    return;
     if (e.target.innerText == "1300s") {
     } else if (e.target.innerText == "1400s") {
     } else if (e.target.innerText == "1500s") {
