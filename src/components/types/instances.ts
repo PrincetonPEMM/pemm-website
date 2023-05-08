@@ -24,4 +24,5 @@ export type Instances = {
     location_in_ms?: string | null,
     no_of_paintings_per_story_instance?: number | null,
     story_instance_id?: number | null,
+    stanza?: string | null,
 }
