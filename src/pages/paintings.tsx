@@ -1,47 +1,48 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
-import React, { useState } from "react";
+import $ from "jquery";
+import React, { useEffect, useState } from "react";
 import stylePaintings from "./paintings.module.css";
 import type { Paintings } from "../components/types/paintings";
 import ImagesComponent from "../components/elements/imagesComponent";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 import Image from "next/image";
-
+import ArchiveOfPainting from "../components/elements/ArchiveOfPainting";
 function getImageUrisFromPaintings(paintings: Paintings[]): string[] {
   let imageUris: string[] = [];
-  for (let i = 0; i < paintings.length; i++) {
-    if (paintings[i].image_link) {
-      imageUris.push(paintings[i].image_link!);
-    }
-  }
+  // for (let i = 0; i < paintings.length; i++) {
+  //   if (paintings[i].image_link) {
+  //     imageUris.push(paintings[i].image_link!);
+  //   }
+  // }
   return imageUris;
 }
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const res = await axios(process.env.REACT_APP_API + "images/");
     const paintings: Paintings[] = await res.data;
-    let myMock: Paintings[] = [
-      {
-        image_link:
-          "https://ethiopic-manuscripts.s3.amazonaws.com/EMML+Mss/EMML+22/EMML_22_203.jpg",
-        painting_date: 1421,
-        is_black_and_white: true,
-        painting_available: true,
-        type_of_story: "blab abababa",
-        canonical_story_id: "" + Math.random(),
-        manuscript: "lorem ipsum",
-        episode_keywords: ["qolo", "abeba"],
-        painting_id: 23,
-      },
-    ];
-    // let imageUris = getImageUrisFromPaintings(paintings);
-    let imageUris = getImageUrisFromPaintings(myMock);
+    // let myMock: Paintings[] = [
+    //   {
+    //     image_link:
+    //       "https://ethiopic-manuscripts.s3.amazonaws.com/EMML+Mss/EMML+22/EMML_22_203.jpg",
+    //     painting_date: 1421,
+    //     is_black_and_white: true,
+    //     painting_available: true,
+    //     type_of_story: "blab abababa",
+    //     canonical_story_id: "" + Math.random(),
+    //     manuscript: "lorem ipsum louranmt",
+    //     episode_keywords: ["qolo", "abeba"],
+    //     painting_id: 23,
+    //   },
+    // ];
+    let imageUris = getImageUrisFromPaintings(paintings);
+    // let imageUris = getImageUrisFromPaintings(myMock);
     return {
       props: {
         data: {
           imageUris: imageUris,
-          // paintings: paintings,
-          paintings: myMock,
+          paintings: paintings,
+          // paintings: myMock,
         },
       },
     };
@@ -60,15 +61,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const PaintingsPage: NextPage = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  let imageUris: string[] = data.imageUris;
   let paintings: Paintings[] = data.paintings;
   let [searchResult, setSearchResult] = useState<Paintings[]>([]);
-  let [searchImageUri, setSearchImageUri] = useState<string[]>([]);
-
-  // let [searchResult, setSearchResult] = useState<Paintings[]>([]);
-  // let [searchImageUri, setSearchImageUri] = useState<Paintings[]>([]);
-
-  if (imageUris.length === 0 || paintings.length === 0) {
+  // let [searchImageUri, setSearchImageUri] = useState<string[]>([]);
+  if (paintings.length === 0) {
     return (
       <div className="h-screen">
         <Alert severity="error">
@@ -111,41 +107,205 @@ const PaintingsPage: NextPage = ({
         });
       }
     });
-    setSearchImageUri(searchUri);
+
     setSearchResult(choosenItems);
   };
-
   let [searchItemResult, setSearchItemResult] = useState<Paintings[]>([]);
   let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
-  // searchItemResult,searchItemImageUri
-  let searchByDateOfPaintings = (e: any) => {
-    console.log("paintings ======= ", paintings);
-    let Year: any = e.target.innerText.replace("s", "");
+
+  const [NoData, setNoData] = useState("initial");
+
+  let searchFromPaintings = (
+    searchYear: number,
+    searchColor: String,
+    storyType: String
+  ) => {
+    console.log("paintings", paintings);
     let searchedItems: Paintings[] = [],
       SearchedImgURL: any[] = [];
-    Year = Number(Year);
-
-    paintings.map((item) => {
-      console.log(item.painting_date);
+    let targetFilters: Paintings[] = [],
+      inputValue = (
+        document.getElementById("searchFieldInPaintings") as HTMLInputElement
+      ).value;
+    if (inputValue !== "") {
+      targetFilters = searchResult;
+    } else {
+      targetFilters = paintings;
+    }
+    targetFilters?.map((item) => {
+      // to be updated by image_link if it is null
+      if (item.image_link == null) {
+        item.image_link =
+          "https://ethiopic-manuscripts.s3.amazonaws.com/default_image.jpeg";
+      }
+      if (item.painting_date == null) return;
       let painting_date = Number(item.painting_date);
       let image_link: String | undefined = item.image_link;
-      if (painting_date <= Year + 99 && painting_date >= Year) {
+      if (searchYear != 0) {
+        if (painting_date <= searchYear + 99 && painting_date >= searchYear) {
+          searchedItems.push(item);
+          SearchedImgURL.push(image_link);
+        } else {
+        }
+      } else {
         searchedItems.push(item);
         SearchedImgURL.push(image_link);
       }
-      setSearchItemResult(searchedItems), setSearchItemImageUri(SearchedImgURL);
     });
+    console.log("searchedItems.length", searchedItems.length);
+    if (searchedItems.length <= 0) {
+      setNoData("No Data Found");
+    } else setNoData("");
+    let collectedItems: Paintings[] = [],
+      collectedImagesURL: any[] = [],
+      defaultImgsURL =
+        "https://ethiopic-manuscripts.s3.amazonaws.com/default_image.jpeg";
 
-    return;
-    if (e.target.innerText == "1300s") {
-    } else if (e.target.innerText == "1400s") {
-    } else if (e.target.innerText == "1500s") {
-    } else if (e.target.innerText == "1600s") {
-    } else if (e.target.innerText == "1700s") {
-    } else if (e.target.innerText == "1800s") {
-    } else if (e.target.innerText == "1900s") {
-    } else if (e.target.innerText == "2000s") {
+    if (searchColor != "default") {
+      searchedItems?.map((item) => {
+        let is_black_and_white = item.is_black_and_white;
+
+        if (searchColor == "Paintings in color only") {
+          if (is_black_and_white == false && item.painting_available == true) {
+            collectedItems.push(item);
+            collectedImagesURL.push(item.image_link);
+          }
+        } else if (searchColor == "Include B&W") {
+          if (item.painting_available == true) {
+            collectedItems.push(item);
+            collectedImagesURL.push(item.image_link);
+          } else {
+          }
+        } else if (searchColor == "Include image not available") {
+          collectedItems.push(item);
+          collectedImagesURL.push(item.image_link);
+        }
+      });
+      console.log("collectedItems.length", collectedItems.length);
+      if (collectedItems.length <= 0) {
+        setNoData("No Data Found");
+      } else setNoData("");
+      if (storyType == "default") {
+        setSearchItemResult(collectedItems);
+        setSearchItemImageUri(collectedImagesURL);
+        return;
+      }
     }
+    // filter by story type
+    if (storyType != "default") {
+      let byStoryItemCollector: Paintings[] = [],
+        storysArray: Paintings[] = [],
+        byStoryImagesURL: any[] = [];
+      if (searchColor != "default") {
+        byStoryItemCollector = collectedItems;
+      } else byStoryItemCollector = searchedItems;
+      console.log("byStoryItemCollector", byStoryItemCollector);
+      byStoryItemCollector?.map((item) => {
+        console.log();
+        if (storyType == item.type_of_story) {
+          console.log("item.type_of_story", item.type_of_story);
+          storysArray.push(item);
+          byStoryImagesURL.push(item.image_link);
+        } else {
+          console.log("wrong selection ");
+        }
+      });
+      setSearchItemResult(storysArray);
+      setSearchItemImageUri(byStoryImagesURL);
+      if (storysArray.length <= 0) {
+        setNoData("No Data Found");
+      } else setNoData("");
+      return;
+    }
+    console.log("searchedItems", searchedItems);
+    console.log("SearchedImgURL", SearchedImgURL);
+    // return;
+    setSearchItemResult(searchedItems);
+    setSearchItemImageUri(SearchedImgURL);
+  };
+  // searchItemResult,searchItemImageUri
+  let searchByDateOfPaintings = (e: any) => {
+    console.log(e.target.className);
+    let Year: any = e.target.value.replace("s", "");
+    Year = Number(Year);
+    let byColor = (
+      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+    ).value;
+    let byStory = (
+      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+    ).value;
+
+    searchFromPaintings(Year, byColor, byStory);
+    console.log("paintings", paintings);
+  };
+  let selectByStoryType = (e: any) => {
+    console.log(e.target.value);
+    let value = e.target.value;
+    console.log("searchItemResult", searchItemResult);
+    let byDate = (
+      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+    ).value;
+    let byColor = (
+      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+    ).value;
+    let Year: any = byDate.replace("s", "");
+    if (byDate == "default") Year = 0;
+    else Year = Number(Year);
+    searchFromPaintings(Year, byColor, value);
+  };
+  let selectPaintingsIncolor = (e: any) => {
+    let selectByDateOfPaintigs = (
+      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+    ).value;
+    // console.log(searchItemResult);
+    let Year: any = selectByDateOfPaintigs.replace("s", "");
+    console.log("Year", Year);
+    // return;
+    if (Year == "default") Year = 0;
+    else Year = Number(Year);
+    let value = e.target.value;
+    console.log(value);
+    // selectByDateOfPaintigs,selectByColorOfPaintigs,selectByStoryTypePaintigs
+    let byStory = (
+      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+    ).value;
+    searchFromPaintings(Year, value, byStory);
+  };
+  useEffect(() => {
+    let byColor = (
+        document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+      ).value,
+      byDate = (
+        document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+      ).value,
+      byStoryType = (
+        document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+      ).value,
+      year = 0;
+    if (byDate != "default") year = Number(byDate.replaceAll("s", ""));
+    // selectByDateOfPaintigs,selectByColorOfPaintigs,selectByStoryTypePaintigs
+    searchFromPaintings(year, byColor, byStoryType);
+  }, [, searchResult]);
+  let handleDefaultInputValues = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("e", e.target);
+    if (e.target) {
+    }
+    (
+      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+    ).value = "default";
+    (
+      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+    ).value = "Include B&W";
+    (
+      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+    ).value = "default";
+
+    searchFromPaintings(0, "Paintings in color only", "default");
+  };
+  let selectByArchives = (e: any) => {
+    console.log(e.target.value);
+
+    console.log(paintings);
   };
   return (
     <div className="paintingWrapper">
@@ -153,126 +313,114 @@ const PaintingsPage: NextPage = ({
       <div className={stylePaintings.searchInputWrapper}>
         <Image src="/icons8-search.svg" width={20} height={20} alt="" />
         <input
+          id="searchFieldInPaintings"
           type="search"
           onInput={hundleSearch}
           className={stylePaintings.searchInput}
           placeholder="Search"
         />
       </div>
-      <div className={stylePaintings.buttonLists}>
-        <button>
-          <span className={stylePaintings.span}>Date of Paintings</span>
-          <div className={stylePaintings.dropdownList}>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1300s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1400s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1500s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1600s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1700s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1800s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              1900s
-            </span>
-            <span
-              onClick={(Event) => {
-                searchByDateOfPaintings(Event);
-              }}
-            >
-              2000s
-            </span>
-          </div>
-        </button>
-        <button>
-          <span className={stylePaintings.span}> Paintings in Color</span>
-          <div className={stylePaintings.dropdownList}>
-            <span>Include B&W </span>
-            <span>Include not yet available</span>
-          </div>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>Story Type</span>
-          <div className={stylePaintings.dropdownList}>
-            <span>Life of Mary</span>
-            <span>Miracle of Mary </span>
-          </div>
-        </button>
-        {/* {    <button>
-          <span className={stylePaintings.span}>some text</span>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>some text</span>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>some text</span>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>some text</span>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>some text</span>
-        </button>
-        <button>
-          <span className={stylePaintings.span}>some text</span>
-        </button>} */}
+      <div className={stylePaintings.selectList}>
+        <select
+          id="selectByDateOfPaintigs"
+          className={stylePaintings.paintingSelection}
+          onChange={searchByDateOfPaintings}
+        >
+          <option value={"default"} className={stylePaintings.hiddenOption}>
+            Date of Paintings
+          </option>
+          {/* <div className={stylePaintings.dropdownList}> </div> */}
+          <option>1300s</option>
+          <option>1400s</option>
+          <option>1500s</option>
+          <option>1600s</option>
+          <option>1700s</option>
+          <option>1800s</option>
+          <option>1900s</option>
+          <option>2000s</option>
+        </select>
+        <select
+          id="selectByColorOfPaintigs"
+          className={stylePaintings.paintingSelection}
+          onChange={selectPaintingsIncolor}
+        >
+          <option value={"default"} className={stylePaintings.hiddenOption}>
+            Paintings in Color
+          </option>
+          <option selected value="Paintings in color only">
+            Paintings in color only
+          </option>
+          <option value="Include B&W">Include Black & White</option>
+          <option>Include image not available</option>
+        </select>
+        <select
+          className={stylePaintings.paintingSelection}
+          onChange={selectByStoryType}
+          id="selectByStoryTypePaintigs"
+        >
+          <option className={stylePaintings.hiddenOption} value={"default"}>
+            Story Type
+          </option>
+          <option value="Life of Mary">Life of Mary</option>
+          <option value="Miracle of Mary">Miracle of Mary</option>
+        </select>
+        <select
+          onChange={selectByArchives}
+          id="archiveOfPainting"
+          className={""}
+        >
+          {ArchiveOfPainting()?.map((item) => {
+            let x = ArchiveOfPainting().indexOf(item);
+            // console.log(x);
+            if (x == 0)
+              return (
+                <option
+                  key={x}
+                  className={stylePaintings.hiddenOption}
+                  value={"default"}
+                >
+                  {item}
+                </option>
+              );
+            return <option>{item}</option>;
+          })}
+        </select>
+
+        <div className={stylePaintings.default}>
+          <button
+            type="button"
+            name=""
+            id=""
+            onClick={handleDefaultInputValues}
+          >
+            Reset
+          </button>
+        </div>
       </div>
-      {console.log("searchItemResult", searchItemResult)}
-      {console.log("searchItemImageUri", searchItemImageUri)}
-      <div className="flex flex-wrap justify-center">
-        {searchItemResult?.length > 0 ? (
+
+      {NoData == "No Data Found" ? (
+        <div className={stylePaintings.noDataFound}>
+          <h3>No data found in your search.</h3>
+        </div>
+      ) : searchItemResult?.length > 0 ? (
+        <div className="flex flex-wrap justify-center">
           <ImagesComponent
             images={searchItemImageUri}
             paintings={searchItemResult}
           />
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="flex flex-wrap justify-center">
-        {/* {searchImageUri?.length > 0 ? (
-          <ImagesComponent images={searchImageUri} paintings={searchResult} />
-        ) : (
-          <ImagesComponent images={imageUris} paintings={paintings} />
-        )} */}
-      </div>
+        </div>
+      ) : (
+        ""
+        // <div className="flex flex-wrap justify-center">
+        //   {
+        //     imageUris?.length > 0
+        //       ? ""
+        // :  <ImagesComponent images={imageUris} paintings={paintings} />
+        //         ""
+        //     // <ImagesComponent images={searchImageUri} paintings={searchResult} />
+        //   }
+        // </div>
+      )}
     </div>
   );
 };

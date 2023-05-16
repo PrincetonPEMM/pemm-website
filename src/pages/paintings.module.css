@@ -25,37 +25,44 @@
 .searchInput:focus {
   outline: none;
 }
-.buttonLists {
+.selectList {
+  width: fit-content;
+  margin: auto;
+  /* background-color: #3c6f57; */
+  color: white;
+}
+.selectList select {
+  background-color: #3c6f57;
+  border: none;
+  padding: 10px;
+  margin: 5px 3px;
+  width: fit-content;
+}
+.selectList select:nth-child(4) {
+  width: 190px;
+}
+.selectList select option {
+  border: none;
+}
+.selectList select option:hover {
+  background-color: #eda545;
+  /* box-shadow: 0 0 10px 100px #eda545 inset; */
+}
+
+.hiddenOption {
+  display: none;
+}
+.noDataFound {
   width: fit-content;
   margin: auto;
 }
-.buttonLists button {
-  display: inline-block;
-  margin: 10px auto;
-  background-color: #3c6f57;
-  margin-right: 3px;
-}
-.buttonLists button span {
-  color: white;
-  padding: 1px 10px;
-}
-.span::after {
-  content: "";
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  margin-left: 5px;
-}
-.dropdownList {
-  display: none;
-  position: absolute;
-  background-color: #3c6f57;
-}
-.buttonLists button:hover .dropdownList {
+.default {
   display: flex;
-  flex-direction: column;
-  z-index: 500;
+  justify-content: center;
+}
+.default button {
+  background-color: #3c6f57;
+  padding: 6px 12px;
+  border-radius: 10px;
+  /* display: none; */
 }
