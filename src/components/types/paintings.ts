@@ -8,4 +8,5 @@ export type Paintings = {
   is_black_and_white?: boolean | null;
   painting_available?: boolean | null;
   type_of_story?: string | null;
+  archive_of_painting?: string | null;
 };

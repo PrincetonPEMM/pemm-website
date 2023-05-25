@@ -112,15 +112,14 @@ const PaintingsPage: NextPage = ({
   };
   let [searchItemResult, setSearchItemResult] = useState<Paintings[]>([]);
   let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
-
   const [NoData, setNoData] = useState("initial");
-
   let searchFromPaintings = (
     searchYear: number,
     searchColor: String,
     storyType: String
   ) => {
-    console.log("paintings", paintings);
+    // console.log("paintings", paintings);
+
     let searchedItems: Paintings[] = [],
       SearchedImgURL: any[] = [];
     let targetFilters: Paintings[] = [],
@@ -152,14 +151,12 @@ const PaintingsPage: NextPage = ({
         SearchedImgURL.push(image_link);
       }
     });
-    console.log("searchedItems.length", searchedItems.length);
-    if (searchedItems.length <= 0) {
-      setNoData("No Data Found");
-    } else setNoData("");
+    // console.log("searchedItems.length", searchedItems.length);
+    // if (searchedItems.length <= 0) {
+    //   setNoData("No Data Found");
+    // } else setNoData("");
     let collectedItems: Paintings[] = [],
-      collectedImagesURL: any[] = [],
-      defaultImgsURL =
-        "https://ethiopic-manuscripts.s3.amazonaws.com/default_image.jpeg";
+      collectedImagesURL: any[] = [];
 
     if (searchColor != "default") {
       searchedItems?.map((item) => {
@@ -181,49 +178,54 @@ const PaintingsPage: NextPage = ({
           collectedImagesURL.push(item.image_link);
         }
       });
-      console.log("collectedItems.length", collectedItems.length);
-      if (collectedItems.length <= 0) {
-        setNoData("No Data Found");
-      } else setNoData("");
-      if (storyType == "default") {
-        setSearchItemResult(collectedItems);
-        setSearchItemImageUri(collectedImagesURL);
-        return;
-      }
+      searchedItems = collectedItems;
+      SearchedImgURL = collectedImagesURL;
     }
     // filter by story type
+    let storysArray: Paintings[] = [],
+      byStoryImagesURL: any[] = [];
     if (storyType != "default") {
-      let byStoryItemCollector: Paintings[] = [],
-        storysArray: Paintings[] = [],
-        byStoryImagesURL: any[] = [];
-      if (searchColor != "default") {
-        byStoryItemCollector = collectedItems;
-      } else byStoryItemCollector = searchedItems;
-      console.log("byStoryItemCollector", byStoryItemCollector);
-      byStoryItemCollector?.map((item) => {
-        console.log();
+      searchedItems?.map((item) => {
         if (storyType == item.type_of_story) {
           console.log("item.type_of_story", item.type_of_story);
           storysArray.push(item);
           byStoryImagesURL.push(item.image_link);
         } else {
-          console.log("wrong selection ");
+          // console.log("wrong selection ");
         }
       });
-      setSearchItemResult(storysArray);
-      setSearchItemImageUri(byStoryImagesURL);
-      if (storysArray.length <= 0) {
-        setNoData("No Data Found");
-      } else setNoData("");
-      return;
+      searchedItems = storysArray;
+      SearchedImgURL = byStoryImagesURL;
     }
-    console.log("searchedItems", searchedItems);
-    console.log("SearchedImgURL", SearchedImgURL);
-    // return;
+    let archive_of_painting = (
+      document.getElementById("archive_of_painting") as HTMLInputElement
+    ).value;
+    if (archive_of_painting != "default") {
+      let archivedItems: Paintings[] = [],
+        archivedImgURL: any[] = [];
+      // console.log("searchedItems", searchedItems);
+      searchedItems.map((item) => {
+        if (archive_of_painting == item.archive_of_painting) {
+          // console.log(item);
+          archivedItems.push(item);
+          archivedImgURL.push(item.image_link);
+        }
+        // console.log("archivedItems", archivedItems);
+      });
+      searchedItems = archivedItems;
+      SearchedImgURL = archivedImgURL;
+      // setSearchItemResult(searchedItems);
+    }
+    console.log(searchedItems);
+    if (searchedItems.length <= 0) {
+      setNoData("No Data Found");
+      return;
+    } else setNoData("");
+
     setSearchItemResult(searchedItems);
     setSearchItemImageUri(SearchedImgURL);
   };
-  // searchItemResult,searchItemImageUri
+  // searchItemResult,searchItemImageUri,
   let searchByDateOfPaintings = (e: any) => {
     console.log(e.target.className);
     let Year: any = e.target.value.replace("s", "");
@@ -299,14 +301,29 @@ const PaintingsPage: NextPage = ({
     (
       document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
     ).value = "default";
+    (document.getElementById("archive_of_painting") as HTMLInputElement).value =
+      "default";
 
     searchFromPaintings(0, "Paintings in color only", "default");
   };
   let selectByArchives = (e: any) => {
-    console.log(e.target.value);
-
-    console.log(paintings);
+    console.log(e.target.className);
+    // selectByDateOfPaintigs
+    let Year: any = (
+      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+    ).value.replace("s", "");
+    if (Year == "default") Year = 0;
+    Year = Number(Year);
+    let byColor = (
+      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+    ).value;
+    let byStory = (
+      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+    ).value;
+    searchFromPaintings(Year, byColor, byStory);
+    console.log("paintings", paintings);
   };
+
   return (
     <div className="paintingWrapper">
       <div className={stylePaintings.empitySpace}></div>
@@ -365,8 +382,8 @@ const PaintingsPage: NextPage = ({
           <option value="Miracle of Mary">Miracle of Mary</option>
         </select>
         <select
+          id="archive_of_painting"
           onChange={selectByArchives}
-          id="archiveOfPainting"
           className={""}
         >
           {ArchiveOfPainting()?.map((item) => {
