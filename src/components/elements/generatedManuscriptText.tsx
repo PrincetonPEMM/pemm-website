@@ -235,10 +235,10 @@ export const GeneratedManuscriptText = (props: any) => {
        </>
 
        if (link_to_digital_copy != null){
-        p2 = <>To view the manuscript online, go <a href={link_to_digital_copy}><b>here</b></a>.</>
+        p2 = <> To view the manuscript online, go <a href={link_to_digital_copy}><b>here</b></a>.</>
        }
        else{
-        p2 = <>{link_to_digital_copy_note_external}</>
+        p2 = <> {link_to_digital_copy_note_external}</>
        }
         
         return <>{p1}{p2}</>
