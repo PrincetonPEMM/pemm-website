@@ -173,10 +173,7 @@ const PaintingsPage: NextPage = ({
         SearchedImgURL.push(image_link);
       }
     });
-    // console.log("searchedItems.length", searchedItems.length);
-    // if (searchedItems.length <= 0) {
-    //   setNoData("No Data Found");
-    // } else setNoData("");
+
     let collectedItems: Paintings[] = [],
       collectedImagesURL: any[] = [];
 
