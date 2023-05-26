@@ -11,16 +11,16 @@ export const GeneratedManuscriptText = (props: any) => {
             return <> This date is precise, based on the scribe noting the date in the manuscript. </>
         }
         else if (manuscript_date_note == "Date from king's name") {
-            return <> This date is estimated, based on the reigning Ethiopian king's name appearing in the manuscript. </>
+            return <> This date is estimated, based on the reigning Ethiopian king&apos;s name appearing in the manuscript. </>
         }
         else if (manuscript_date_note == "Date from ms (paleography)") {
-            return <> This date is estimated, based on paleography (a study of the manuscript's letter shapes). </>
+            return <> This date is estimated, based on paleography (a study of the manuscript&apos;s letter shapes). </>
         }
         else if (manuscript_date_note == "Date from catalog") {
             return <> This date is estimated, based on a print or electronic catalog entry about the manuscript. </>
         }
         else if (manuscript_date_note == "Date from JRB and SGD") {
-            return <> This date is estimated, based on paleography, a study of the manuscript's letter shapes by Jeremy Brown and Stephen Delamarter. </>
+            return <> This date is estimated, based on paleography, a study of the manuscript&apos;s letter shapes by Jeremy Brown and Stephen Delamarter. </>
         }
 
         return <> This date is estimated based on various methods. </>;
@@ -229,7 +229,7 @@ export const GeneratedManuscriptText = (props: any) => {
        let p1 = null
        let p2 = null
 
-       p1 = <>This manuscript's last known location (i.e., where it was microfilmed or digitized at some point in the past forty years) 
+       p1 = <>This manuscript&apos;s last known location (i.e., where it was microfilmed or digitized at some point in the past forty years) 
        is the repository of {location_of_ms_imaging} in {location_of_ms_imaging_city}, {location_of_ms_imaging_country}. A digital copy 
        of this manuscript is held by {digital_repository} in {digital_repository_city} , {digital_repository_country}. 
        </>

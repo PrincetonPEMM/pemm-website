@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import type { Manuscripts } from '../../components/types/manuscripts';
 import { MANUSCRIPT_1_TEST_DATA } from '../../data/manuscript1';
 import { GeneratedManuscriptText } from '../../components/elements/generatedManuscriptText';
+import ManuscriptCatalogedMiracleRecords from "../../components/elements/manuscriptCatalogedMiracleRecords";
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 
@@ -15,7 +16,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     } else {
       const res = await axios(process.env.REACT_APP_API + 'manuscripts/' + manuscriptId);
       if (res.data.length > 0) {
-        manuscript = res.data[0];
+        if (res.data[0].length > 0) {
+          if (res.data[0].length > 0) {
+            manuscript = res.data[0][0];
+          }
+        }
       }
     }
 
@@ -44,6 +49,7 @@ const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<ty
         flexGrow: 1,
         display: { xs: 'none', md: 'flex', lg: 'flex' }
       }}>
+
         <div className="flex space-x-10 flex-wrap ml-2">
           <div className='m-4 w-3/4'>
             <Typography variant="h3">{data.manuscript.manuscript_full_name}</Typography>
@@ -56,14 +62,32 @@ const ManuscriptDetailPage: NextPage = ({ data }: InferGetServerSidePropsType<ty
 
       <Box sx={{
         flexGrow: 1,
+        display: { xs: 'none', md: 'flex', lg: 'flex' }
+      }}>
+        <div className='m-4 w-3/4'>
+          <Typography variant="h3">{data.manuscript.manuscript_name}</Typography>
+          <ManuscriptCatalogedMiracleRecords manuscript={data.manuscript} />
+        </div>
+      </Box>
+
+      <Box sx={{
+        flexGrow: 1,
         display: { xs: 'flex', md: 'none', lg: 'none' }
       }}>
-        <div className='m-4'>
-          <Typography variant="h6">{data.manuscript.manuscript_name}</Typography>
-        </div>
 
-        <div className="w-1/2 flex flex-col">
+        <div className="m-2 w-full flex flex-col">
+          <Typography variant="h4">{data.manuscript.manuscript_full_name}</Typography>
           <GeneratedManuscriptText manuscript={data.manuscript} />
+        </div>
+      </Box>
+
+      <Box sx={{
+        flexGrow: 1,
+        display: { xs: 'flex', md: 'none', lg: 'none' }
+      }}>
+        <div className='m-2 w-full'>
+          <Typography variant="h4">{data.manuscript.manuscript_name}</Typography>
+          <ManuscriptCatalogedMiracleRecords manuscript={data.manuscript} />
         </div>
       </Box>
     </div>
