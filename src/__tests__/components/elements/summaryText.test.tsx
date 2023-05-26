@@ -26,7 +26,7 @@ describe('SummaryText Runs Properly', () => {
 
   it('renders the input summary plot', () => {
     const story: Stories = {
-      summary_plot: "This is a sample summary plot"
+      summary_plot: "This is a sample summary ploto"
     };
     const debug = render(<SummaryText story={story}/>);
 
