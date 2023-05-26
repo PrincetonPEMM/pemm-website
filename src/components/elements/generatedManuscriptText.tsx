@@ -72,7 +72,7 @@ export const GeneratedManuscriptText = (props: any) => {
                 return <>This manuscript has a lot of paintings of Marian miracle stories: <b>{total_tm_paintings}</b>. </>
             }
         }
-        else if (tm_story_paintings == 'Related Images') {
+        else if (tm_story_paintings == 'RelatedImages') {
             return <>This manuscript has no paintings of Marian miracle stories, but it does have <b>{total_tm_paintings}</b> paintings of Mary and events in her life. </>
         }
         return
@@ -86,7 +86,7 @@ export const GeneratedManuscriptText = (props: any) => {
             return
         }
 
-        if (tm_story_paintings == 'Yes' || tm_story_paintings == 'Related Images') {
+        if (tm_story_paintings == 'Yes' || tm_story_paintings == 'RelatedImages') {
             if(scans_of_manuscript_in_color == null){
                 return <></>
             }
