@@ -63,6 +63,24 @@ const PaintingsPage: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   let paintings: Paintings[] = data.paintings;
   let [searchResult, setSearchResult] = useState<Paintings[]>([]);
+  let [searchItemResult, setSearchItemResult] = useState<Paintings[]>([]);
+  let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
+  const [NoData, setNoData] = useState("initial");
+  useEffect(() => {
+    let byColor = (
+        document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+      ).value,
+      byDate = (
+        document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+      ).value,
+      byStoryType = (
+        document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+      ).value,
+      year = 0;
+    if (byDate != "default") year = Number(byDate.replaceAll("s", ""));
+    // selectByDateOfPaintigs,selectByColorOfPaintigs,selectByStoryTypePaintigs
+    searchFromPaintings(year, byColor, byStoryType);
+  }, [, searchResult]);
   // let [searchImageUri, setSearchImageUri] = useState<string[]>([]);
   if (paintings.length === 0) {
     return (
@@ -110,9 +128,6 @@ const PaintingsPage: NextPage = ({
 
     setSearchResult(choosenItems);
   };
-  let [searchItemResult, setSearchItemResult] = useState<Paintings[]>([]);
-  let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
-  const [NoData, setNoData] = useState("initial");
   let searchFromPaintings = (
     searchYear: number,
     searchColor: String,
@@ -273,21 +288,6 @@ const PaintingsPage: NextPage = ({
     ).value;
     searchFromPaintings(Year, value, byStory);
   };
-  useEffect(() => {
-    let byColor = (
-        document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
-      ).value,
-      byDate = (
-        document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
-      ).value,
-      byStoryType = (
-        document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
-      ).value,
-      year = 0;
-    if (byDate != "default") year = Number(byDate.replaceAll("s", ""));
-    // selectByDateOfPaintigs,selectByColorOfPaintigs,selectByStoryTypePaintigs
-    searchFromPaintings(year, byColor, byStoryType);
-  }, [, searchResult]);
   let handleDefaultInputValues = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log("e", e.target);
     if (e.target) {
@@ -399,7 +399,7 @@ const PaintingsPage: NextPage = ({
                   {item}
                 </option>
               );
-            return <option>{item}</option>;
+            return <option key={x}>{item}</option>;
           })}
         </select>
 
