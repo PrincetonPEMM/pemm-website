@@ -16,7 +16,7 @@ export const GeneratedManuscriptText = (props: any) => {
         else if (manuscript_date_note == "Date from ms (paleography)") {
             return <> This date is estimated, based on paleography (a study of the manuscript's letter shapes). </>
         }
-        else if (manuscript_date_note == "Date from cataloger") {
+        else if (manuscript_date_note == "Date from catalog") {
             return <> This date is estimated, based on a print or electronic catalog entry about the manuscript. </>
         }
         else if (manuscript_date_note == "Date from JRB and SGD") {
@@ -51,6 +51,10 @@ export const GeneratedManuscriptText = (props: any) => {
 
     const DeterminePaintingsSentence = (tm_story_paintings: string, total_tm_paintings: number) => {
 
+        if(tm_story_paintings == null || total_tm_paintings == null){
+            return
+        }
+
         if (tm_story_paintings == 'No') {
             return <>This manuscript has no paintings of Marian miracle stories.</>
         }
@@ -76,7 +80,11 @@ export const GeneratedManuscriptText = (props: any) => {
 
     // GO BACK BC LINK IS NEVER NULL --> ASK FOR NO LINK INDICATOR TO BE STANDARDIZED
     // GO BACK AND MAKE HYPERLINK DISTINGUISHABLE
-    const DetermineColorPaintingsSentence = (tm_story_paintings: string, scans_of_manuscript_in_color: string, link_to_digital_copy: string) => {
+    const DetermineColorPaintingsSentence = (tm_story_paintings: string, total_tm_paintings: string, scans_of_manuscript_in_color: string, link_to_digital_copy: string) => {
+       
+        if(tm_story_paintings == null || total_tm_paintings == null){
+            return
+        }
 
         if (tm_story_paintings == 'Yes' || tm_story_paintings == 'Related Images') {
             if(scans_of_manuscript_in_color == null){
@@ -138,7 +146,7 @@ export const GeneratedManuscriptText = (props: any) => {
                 scans = <><b>{total_scans}</b> scans</>
             }
             else if(num == 1){
-                scans = <>and <b>{total_scans}</b> scans</>
+                scans = <> and <b>{total_scans}</b> scans</>
             }
             else{
                 scans = <>, and <b>{total_scans}</b> scans</>
@@ -181,13 +189,13 @@ export const GeneratedManuscriptText = (props: any) => {
 
     // duplicate/missing_scans/rebound_in_disorder= COLUMN DOESNT EXIST IN SHEET --> USE UNDERSCORES AND NOT "/"
     const DeterminePageProblemSentence = (disordered_rebound: string, duplicate_or_missing: string) => {
-        if (disordered_rebound != null && duplicate_or_missing != null) {
+        if (disordered_rebound != null && duplicate_or_missing == 'Yes') {
             return <> Unfortunately, this manuscript was bound in disorder and digitized improperly so that some folios were skipped or duplicated.</>
         }
         else if (disordered_rebound != null) {
             return <> Unfortunately, this manuscript was bound in disorder.</>
         }
-        else if (duplicate_or_missing != null) {
+        else if (duplicate_or_missing == 'Yes') {
             return <> Unfortunately, this manuscript was digitized improperly and some folios were skipped or duplicated.</>
         }
         return
@@ -210,20 +218,20 @@ export const GeneratedManuscriptText = (props: any) => {
         }
 
         if (pemm_volunteer_name != null) {
-            s2 = <> <b>{pemm_volunteer_name}</b> provided assistance by typing incipits.</>
+            s2 = <>Assistance in the form of typing incipits was provided by <b>{pemm_volunteer_name}</b>.</>
         }
 
         return <> {s1} {s2}</>
     }
 
     const DetermineCreatedPlaceParagraph = (location_of_ms_imaging: string, location_of_ms_imaging_city: string, location_of_ms_imaging_country: string,
-        digital_repository: string, digital_repository__city: string, digital_repository_country: string, link_to_digital_copy: string, link_to_digital_copy_note_external: string) => {
+        digital_repository: string, digital_repository_city: string, digital_repository_country: string, link_to_digital_copy: string, link_to_digital_copy_note_external: string) => {
        let p1 = null
        let p2 = null
 
        p1 = <>This manuscript's last known location (i.e., where it was microfilmed or digitized at some point in the past forty years) 
        is the repository of {location_of_ms_imaging} in {location_of_ms_imaging_city}, {location_of_ms_imaging_country}. A digital copy 
-       is held of this manuscript is held by {digital_repository} in {digital_repository__city} , {digital_repository_country}. 
+       of this manuscript is held by {digital_repository} in {digital_repository_city} , {digital_repository_country}. 
        </>
 
        if (link_to_digital_copy != null){
@@ -262,7 +270,7 @@ export const GeneratedManuscriptText = (props: any) => {
             }
 
             if (hamburg_ms_id){
-                p2 = <><h2><b>Beta Maṣāḥǝft Manuscript Abbreviation:</b> {hamburg_ms_id}.</h2></>
+                p2 = <><h2><b>Beta Maṣāḥǝft Manuscript Abbreviation:</b> {hamburg_ms_id}</h2></>
             }
 
             if(Collection_shelfmark){
@@ -289,7 +297,7 @@ export const GeneratedManuscriptText = (props: any) => {
                 {manuscript.collections_sheet_relevant ? DetermineCurrentLocationParagraph(manuscript.institution_name, manuscript.collection_name,
                 manuscript.institution_city_state, manuscript.institution_country, manuscript.link_to_digital_copy, manuscript.link_to_digital_copy_note_external) : 
                 DetermineCreatedPlaceParagraph(manuscript.location_of_ms_imaging, manuscript.location_of_ms_imaging_city, manuscript.location_of_ms_imaging_country,
-                    manuscript.digital_repository, manuscript.digital_repository__city, manuscript.digital_repository_country, manuscript.link_to_digital_copy, 
+                    manuscript.digital_repository, manuscript.digital_repository_city, manuscript.digital_repository_country, manuscript.link_to_digital_copy, 
                     manuscript.link_to_digital_copy_note_external)
                 }
                 {manuscript.provenance && manuscript.place_recorded && <h2>
@@ -298,14 +306,8 @@ export const GeneratedManuscriptText = (props: any) => {
                 <h2>
                     {DetermineTotalStoriesSection(manuscript.total_stories)}
                 </h2>
-                {manuscript.tm_story_paintings && manuscript.total_tm_paintings && 
-                <h2>
-                    {DeterminePaintingsSentence(manuscript.tm_story_paintings, manuscript.total_tm_paintings)}
-                </h2>}
-                {manuscript.tm_story_paintings && manuscript.total_tm_paintings &&
-                <h2>
-                    {DetermineColorPaintingsSentence(manuscript.tm_story_paintings, manuscript.scans_of_manuscript_in_color, manuscript.link_to_digital_copy)}
-                </h2>}
+                <h2>{DeterminePaintingsSentence(manuscript.tm_story_paintings, manuscript.total_tm_paintings)}</h2>
+                <h2>{DetermineColorPaintingsSentence(manuscript.tm_story_paintings, manuscript.total_tm_paintings, manuscript.scans_of_manuscript_in_color, manuscript.link_to_digital_copy)}</h2>
                 <h2>
                     {DetermineFoliosSentence(manuscript.total_folios, manuscript.total_pages, manuscript.total_scans, manuscript.columns_per_page, manuscript.line_range_per_column, manuscript.folio_start_of_the_tm_part, "")}
                 </h2>
@@ -320,6 +322,11 @@ export const GeneratedManuscriptText = (props: any) => {
                 </h2>
                 <h2>
                     {manuscript.catalog != null ? <> This manuscript has a print catalog: <b>{manuscript.catalog}</b></> : <></>}
+                </h2>
+                <h2>
+                If a story in our database appears only once, in this manuscript, we mark it below, with a ☆ in the last column. 
+                If a story has a hymn at the end, we mark it with a ♫. If we are not entirely sure if this story is the one we say 
+                it is, we mark it with (?).
                 </h2>
 
             </div>
