@@ -148,7 +148,7 @@ const PaintingsPage: NextPage = ({
         SearchedImgURL.push(image_link);
       }
     });
-
+    console.log("searchedItems", searchedItems);
     let collectedItems: Paintings[] = [],
       collectedImagesURL: any[] = [];
 
@@ -204,6 +204,7 @@ const PaintingsPage: NextPage = ({
       searchedItems = archivedItems;
       SearchedImgURL = archivedImgURL;
     }
+
     if (searchedItems.length <= 0) {
       setNoData("No Data Found");
       return;
