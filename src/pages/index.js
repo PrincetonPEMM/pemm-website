@@ -20,6 +20,7 @@ const MANUSCRIPTS_SUMMARY =
 function Home() {
   const [Slides, setSlides] = useState("");
   let showTarget = (clickedDiv) => {
+    console.log();
     $(".HomePageSlider").show();
     setSlides(<HomePageSlider target={clickedDiv} />);
   };
@@ -40,11 +41,11 @@ function Home() {
             <div className={indexcss.Shadow}>
               <div
                 className={indexcss.STORY_SUMMARY + " " + indexcss.STORY}
-                onClick={() => showTarget("STORY_SUMMARY")}
+                onClick={() =>
+                  showTarget({ title: "STORY_SUMMARY", data: STORY_SUMMARY })
+                }
               >
-                <div className={indexcss.Featured}>Featured</div>
-                <div className={indexcss.title}>Stories </div>
-                <div className={indexcss.detailes}>{STORY_SUMMARY}</div>
+                {" "}
               </div>
             </div>
           </div>
@@ -52,23 +53,27 @@ function Home() {
             <div className={indexcss.Shadow}>
               <div
                 className={indexcss.PAINTINGS_SUMMARY + " " + indexcss.STORY}
-                onClick={() => showTarget("PAINTINGS_SUMMARY")}
-              >
-                <div className={indexcss.Featured}>Featured</div>
-                <div className={indexcss.title}>Manuscripts </div>
-                <div className={indexcss.detailes}>{PAINTINGS_SUMMARY}</div>
-              </div>
+                onClick={() =>
+                  showTarget({
+                    title: "PAINTINGS_SUMMARY",
+                    data: PAINTINGS_SUMMARY,
+                  })
+                }
+              ></div>
             </div>
           </div>
           <div className={indexcss.bgImg3}>
             <div className={indexcss.Shadow}>
               <div
                 className={indexcss.MANUSCRIPTS_SUMMARY + " " + indexcss.STORY}
-                onClick={() => showTarget("MANUSCRIPTS_SUMMARY")}
+                onClick={() =>
+                  showTarget({
+                    data: MANUSCRIPTS_SUMMARY,
+                    title: "MANUSCRIPTS_SUMMARY",
+                  })
+                }
               >
-                <div className={indexcss.Featured}>Featured</div>
-                <div className={indexcss.title}>Paintings </div>
-                <div className={indexcss.detailes}>{MANUSCRIPTS_SUMMARY}</div>
+                {" "}
               </div>
             </div>
           </div>
