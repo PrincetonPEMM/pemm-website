@@ -34,7 +34,7 @@ export type Manuscripts = {
     location_of_ms_imaging_city?: string | null,
     location_of_ms_imaging_country?: string | null,
     digital_repository?: string | null,  // collections sheet
-    digital_repository__city?: string | null,  // collections sheet
+    digital_repository_city?: string | null,  // collections sheet
     digital_repository_country?: string | null,  // collections sheet
     link_to_digital_copy_note_external?: string | null,
     institution_name?: string | null,  // collections sheet

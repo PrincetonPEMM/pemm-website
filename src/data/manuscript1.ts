@@ -31,7 +31,7 @@ export const MANUSCRIPT_1_TEST_DATA: Manuscripts = {
    "location_of_ms_imaging_city": "Washington, District of Columbia",
    "location_of_ms_imaging_country": "United States of America",
    "digital_repository": null,  // collections sheet
-   "digital_repository__city": null,  // collections sheet
+   "digital_repository_city": null,  // collections sheet
    "digital_repository_country": null,  // collections sheet
    "link_to_digital_copy_note_external": null,
    "institution_name": "Library of Congress",  // collections sheet
