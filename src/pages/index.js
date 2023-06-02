@@ -20,9 +20,9 @@ const MANUSCRIPTS_SUMMARY =
 function Home() {
   const [Slides, setSlides] = useState("");
   let showTarget = (clickedDiv) => {
-    console.log();
-    $(".HomePageSlider").show();
-    setSlides(<HomePageSlider target={clickedDiv} />);
+    console.log("Scroll down to requested section");
+    // $(".HomePageSlider").show();
+    // setSlides(<HomePageSlider target={clickedDiv} />);
   };
   useEffect(() => {
     let targetClass = document.getElementsByClassName("HomePageSlider")[0];

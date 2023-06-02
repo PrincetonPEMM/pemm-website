@@ -53,9 +53,6 @@
   -ms-overflow-style: none; /*Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 }
-.STORY:hover {
-  overflow-y: scroll;
-}
 .STORY::-webkit-scrollbar {
   width: 6px; /* width of the entire scrollbar */
 }
