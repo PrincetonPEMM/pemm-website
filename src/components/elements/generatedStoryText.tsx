@@ -74,33 +74,6 @@ export const GeneratedStoryText = (props: any) => {
   }
 
   // function to write translation availability sentences
-  // const ConstructTranslationSentence = (appears_in_french: boolean, appears_in_amharic: boolean,
-  //   appears_in_latin: boolean, appears_in_italian: boolean, english_translation: string) => {
-
-  //   let language_list: string[] = ['Gəˁəz'];
-
-  //   if (appears_in_french) {
-  //     language_list.push('French');
-  //   }
-  //   if (appears_in_amharic) {
-  //     language_list.push('Amharic');
-  //   }
-  //   if (appears_in_latin) {
-  //     language_list.push('Latin');
-  //   }
-  //   if (appears_in_italian) {
-  //     language_list.push('Italian');
-  //   }
-
-  //   // determines if english translation exists
-  //   if ((english_translation != null) && (english_translation.toLowerCase() != 'summary only')) {
-  //     language_list.push('English');
-  //   }
-
-  //   return <>This story is available in the following <u>languages</u>: {language_list.join(", ")}. </>
-  // }
-
-  // function to write translation availability sentences
   const ConstructNewTranslationSentence = (all_translations: Array<any>) => {
     let all_languages: string[] = [];
 
