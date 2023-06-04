@@ -74,30 +74,56 @@ export const GeneratedStoryText = (props: any) => {
   }
 
   // function to write translation availability sentences
-  const ConstructTranslationSentence = (appears_in_french: boolean, appears_in_amharic: boolean,
-    appears_in_latin: boolean, appears_in_italian: boolean, english_translation: string) => {
+  // const ConstructTranslationSentence = (appears_in_french: boolean, appears_in_amharic: boolean,
+  //   appears_in_latin: boolean, appears_in_italian: boolean, english_translation: string) => {
 
-    let language_list: string[] = ['Gəˁəz'];
+  //   let language_list: string[] = ['Gəˁəz'];
 
-    if (appears_in_french) {
-      language_list.push('French');
-    }
-    if (appears_in_amharic) {
-      language_list.push('Amharic');
-    }
-    if (appears_in_latin) {
-      language_list.push('Latin');
-    }
-    if (appears_in_italian) {
-      language_list.push('Italian');
+  //   if (appears_in_french) {
+  //     language_list.push('French');
+  //   }
+  //   if (appears_in_amharic) {
+  //     language_list.push('Amharic');
+  //   }
+  //   if (appears_in_latin) {
+  //     language_list.push('Latin');
+  //   }
+  //   if (appears_in_italian) {
+  //     language_list.push('Italian');
+  //   }
+
+  //   // determines if english translation exists
+  //   if ((english_translation != null) && (english_translation.toLowerCase() != 'summary only')) {
+  //     language_list.push('English');
+  //   }
+
+  //   return <>This story is available in the following <u>languages</u>: {language_list.join(", ")}. </>
+  // }
+
+  // function to write translation availability sentences
+  const ConstructNewTranslationSentence = (all_translations: Array<any>) => {
+    let all_languages: string[] = [];
+
+    for (var translation of all_translations){
+      let trans_from = translation.language_translated_from
+      let trans_to = translation.language_translated_to
+
+      if (trans_from != null && all_languages.includes(trans_from) == false){
+        all_languages.push(translation.language_translated_from);
+      }
+      if (trans_to != null && all_languages.includes(trans_to) == false){
+        all_languages.push(translation.language_translated_to);
+      }
     }
 
-    // determines if english translation exists
-    if ((english_translation != null) && (english_translation.toLowerCase() != 'summary only')) {
-      language_list.push('English');
+    let geez = <></>
+    if (all_languages.includes("Geez")){
+      geez = <>Geez, </>
+      all_languages.splice(all_languages.indexOf("Geez"), 1) // removes Geez from list
     }
 
-    return <>This story is available in the following <u>languages</u>: {language_list.join(", ")}. </>
+    let languages = all_languages.join(", ")
+    return <>This story is available in the following <u>languages</u>: {geez}{languages}</>
   }
 
   // function to write painting sentences, if any
@@ -163,8 +189,6 @@ export const GeneratedStoryText = (props: any) => {
     return;
   }
 
-  // parts n, m, p instructions are missing from issue post
-  // WHERE TO GET UPLOAD DATE + TOTAL NUM OF MANUSCRIPTS
   return (
     <>
       <div>
@@ -175,7 +199,7 @@ export const GeneratedStoryText = (props: any) => {
         <h2 style={{textIndent:"20px"}}>{ConstructLifeMiracleSentence(story.type_of_story)} </h2>
         <h2 style={{textIndent:"20px"}}>This story was originally <u>composed</u> in {story.origin}. </h2>
         <h2 style={{textIndent:"20px"}}>{ConstructReadAloudSentence(story.readings_dates)} </h2>
-        <h2 style={{textIndent:"20px"}}>{ConstructTranslationSentence(story.appears_in_french, story.appears_in_amharic, story.appears_in_latin, story.appears_in_italian, story.english_translation)} </h2>
+        <h2 style={{textIndent:"20px"}}>{ConstructNewTranslationSentence(story.translations)} </h2>
         <h2 style={{textIndent:"20px"}}>{ConstructStoryPlaceSentence(story.canonical_story_place, story.canonical_story_place_type)} </h2>
       </div>
       <div style={{ marginTop: "10px", textIndent:"20px" }}>
