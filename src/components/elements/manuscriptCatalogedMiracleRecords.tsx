@@ -25,12 +25,6 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
   // Check if incipit field is empty (null) for all stories in the manuscript
   const isIncipitEmpty = manuscript.story_instances.every((row: any) => !row.incipit);
 
-  // Check if total_tm_paintings field is 0 for the manuscript
-  const isPaintingsHidden = manuscript.total_tm_paintings === 0;
-
-  // Check if recension_id field is empty (null) for all stories in the manuscript
-  const isRecensionEmpty = manuscript.story_instances.every((row: any) => !row.recension_id);
-
   return (
     <>
       <TableContainer sx={{
@@ -63,17 +57,6 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   Story Title
                 </Typography>
               </TableCell>
-              {/* <TableCell
-                colSpan={1}
-                align="left"
-                sx={{
-                  wordWrap: "break-word",
-                  whiteSpace: 'normal',
-                }}>
-                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                  ID Certainty
-                </Typography>
-              </TableCell> */}
               <TableCell
                 colSpan={1}
                 align="left"
@@ -96,30 +79,28 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   Number in MS
                 </Typography>
               </TableCell>
-              {!isRecensionEmpty && (
-                <TableCell
-                  colSpan={1}
-                  align="left"
-                  sx={{
-                    wordWrap: "break-word",
-                    whiteSpace: 'normal',
-                  }}>
-                  <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                    Story Recension by MS
-                  </Typography>
-                </TableCell>)}
-              {!isPaintingsHidden && (
-                <TableCell
-                  colSpan={1}
-                  align="left"
-                  sx={{
-                    wordWrap: "break-word",
-                    whiteSpace: 'normal',
-                  }}>
-                  <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                    Paintings of Story in MS
-                  </Typography>
-                </TableCell>)}
+              <TableCell
+                colSpan={1}
+                align="left"
+                sx={{
+                  wordWrap: "break-word",
+                  whiteSpace: 'normal',
+                }}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
+                  Story Recension by MS
+                </Typography>
+              </TableCell>
+              <TableCell
+                colSpan={1}
+                align="left"
+                sx={{
+                  wordWrap: "break-word",
+                  whiteSpace: 'normal',
+                }}>
+                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
+                  Paintings of Story in MS
+                </Typography>
+              </TableCell>
               {!isIncipitEmpty && (
                 <TableCell
                   colSpan={1}
@@ -140,18 +121,7 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   whiteSpace: 'normal',
                 }}>
                 <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                  Stanzas
-                </Typography>
-              </TableCell>
-              <TableCell
-                colSpan={1}
-                align="left"
-                sx={{
-                  wordWrap: "break-word",
-                  whiteSpace: 'normal',
-                }}>
-                <Typography fontWeight={"bold"} variant="subtitle2" color={secondary}>
-                  Symbols
+                  Other Aspects
                 </Typography>
               </TableCell>
             </StyledTableRow>
@@ -182,14 +152,6 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   align="left">
                   {row.macomber_title}
                 </TableCell>
-                {/* <TableCell
-                  sx={{
-                    wordWrap: "break-word",
-                    whiteSpace: 'normal',
-                  }}
-                  align="left">
-                  {row.confidence_score}
-                </TableCell> */}
                 <TableCell
                   sx={{
                     wordWrap: "break-word",
@@ -214,20 +176,20 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   align="left">
                   {row.recension_id}
                 </TableCell>
-                {!isPaintingsHidden && (
-                  <TableCell
-                    sx={{
-                      wordWrap: "break-word",
-                      whiteSpace: 'normal',
-                    }}
-                    align="left">
-                    {row.no_of_paintings_per_story_instance}
-                  </TableCell>)}
+                <TableCell
+                  sx={{
+                    wordWrap: "break-word",
+                    whiteSpace: 'normal',
+                  }}
+                  align="left">
+                  {row.no_of_paintings_per_story_instance}
+                </TableCell>
                 {!isIncipitEmpty && (
                   <TableCell
                     sx={{
                       wordWrap: "break-word",
                       whiteSpace: 'normal',
+                      width: '600px', // Adjust the width of the incipit column
                     }}
                     align="left">
                     {row.incipit}
@@ -238,15 +200,7 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                     whiteSpace: 'normal',
                   }}
                   align="left">
-                  {row.stanza}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    wordWrap: "break-word",
-                    whiteSpace: 'normal',
-                  }}
-                  align="left">
-                  {row.total_records === 1 ? "☆" : ""} {row.stanza === "Yes" ? "♫" : ""} {(row.confidence_score === "Low" || row.confidence_score === "Medium") ? "(−)" : ""}
+                  {row.total_records === 1 ? "☆" : ""} {row.stanza === "Yes" ? "♫" : ""} {(row.confidence_score === "Low" || row.confidence_score === "Medium") ? "(?)" : ""}
                 </TableCell>
               </TableRow>
             ))}

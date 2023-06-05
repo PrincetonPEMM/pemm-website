@@ -50,4 +50,7 @@ export type Stories = {
     folio_start?: string | null,
     folio_end?: string | null,
     translations?: Array<any> | null,
+    canonical_translation_recension?: boolean | null,
+    translation_status?: string | null,
+    translation_author?: string | null,
   }

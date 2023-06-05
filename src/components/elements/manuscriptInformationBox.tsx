@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 
 // List of all the centuries we currently have story instances in.
-const CENTURIES: [number, string][] = [[13, '1300s'], [14, '1400s'], [15, '1500s'], [16, '1600s'], [17, '1700s'], [18, '1800s'], [19, '1900s']];
+const CENTURIES: [number, string][] = [[13, '1300s'], [14, '1400s'], [15, '1500s'], [16, '1600s'], [17, '1700s'], [18, '1800s'], [19, '1900s'], [20, '2000s']];
 
 export const ManuscriptInformationBox = (props: any) => {
     const INSTANCES = props.instances;
@@ -43,7 +43,7 @@ export const ManuscriptInformationBox = (props: any) => {
     return (
         <>
             <Typography variant="subtitle1"> <b>MANUSCRIPTS</b> </Typography>
-            <Typography variant="body2"> GMP Manuscripts in which story appears (with page or folio start): </Typography>
+            <Typography variant="body2"> PEMM Manuscripts in which story appears (with page or folio start): </Typography>
             {CENTURIES.map(function (century, i) {
                 return (
                     <div className='block' key={i}>
