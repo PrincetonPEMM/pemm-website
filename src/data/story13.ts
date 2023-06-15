@@ -48,18 +48,18 @@ export const STORY_13_TEST_DATA: Stories = {
   "folio_start": "120v",
   "folio_end": "124r",
   "translations": [
-    {"translation_id": 38427, "canonical_translation_recension": true, "translation_status": "Published translation", "language_translated_to": "English", "language_translated_from": "Geez",
+    {"translation_id": 38427, "canonical_translation_recension": true, "translation_status": "Published translation", "language_translated_to": "English", 
       "translation_author": "Wallis Budge", "translation_as_of_date": "1933", "published_translation_book_title": "One Hundred and Ten Miracles of Our Lady Mary",
       "published_translation_book_page_span": "1", "published_translation_book_item": null,
       "translation_source_manuscript_name": "B-Oslo (SCOL) 248", "translation_source_manuscript_folio": "ff. 3r-5r"},
-      {"translation_id": 3693, "canonical_translation_recension": false, "translation_status": "Published translation", "language_translated_to": "Italian", "language_translated_from": "Geez",
+      {"translation_id": 3693, "canonical_translation_recension": false, "translation_status": "Published translation", "language_translated_to": "Italian", 
       "translation_author": "Enrico Cerulli", "translation_as_of_date": "1943", "published_translation_book_title": "Il Libro Etiopico dei Miracoli di Maria e le sue fonti nelle letterature del Medio Evo Latino",
       "published_translation_book_page_span": "311", "published_translation_book_item": null,
       "translation_source_manuscript_name": "TG (EOTC) 1931/1968", "translation_source_manuscript_folio": "p. 13-17"},
-      {"translation_id": 2953, "canonical_translation_recension": false, "translation_status": "Published translation", "language_translated_to": "French", "language_translated_from": "Geez",
+      {"translation_id": 2953, "canonical_translation_recension": false, "translation_status": "Published translation", "language_translated_to": "French", 
       "translation_author": "Gérard Colin", "translation_as_of_date": "2004", "published_translation_book_title": "Le Livre éthiopien des miracles de Marie",
       "published_translation_book_page_span": null, "published_translation_book_item": "1",
-      "translation_source_manuscript_name": "TGS (EOTC) 1996", "translation_source_manuscript_folio": "p. 5"}],
+      "translation_source_manuscript_name": "TGS (EOTC) 1996", "translation_source_manuscript_folio": "p. 5"}]
 };
 
 export const STORY_13_INSTANCE_TEST_DATA: Instances[] = [
