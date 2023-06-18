@@ -8,7 +8,7 @@ import { theme } from "../styles/theme";
 import * as ga from "../lib/ga";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import "../components/common/HomePageSlider.css";
+// import "../components/common/HomePageSlider.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();

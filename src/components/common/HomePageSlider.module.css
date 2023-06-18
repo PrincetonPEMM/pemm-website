@@ -1,0 +1,27 @@
+.Featured {
+  font-size: 40px;
+  text-align: center;
+}
+.title {
+  font-size: 5vw;
+  text-align: center;
+}
+.detailes {
+  text-align: left;
+  font-size: 25px;
+}
+.textWrapper {
+  background-color: rgb(235, 168, 26);
+  padding: 20px;
+}
+.textWrapper div {
+  width: 60%;
+  margin: auto;
+}
+.threeImgWrapper {
+  display: flex;
+}
+.threeImgWrapper img {
+  height: 80vh;
+  width: 100%;
+}
