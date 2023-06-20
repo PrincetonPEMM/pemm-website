@@ -4,7 +4,7 @@ import { AppBar } from "@mui/material";
 import Image from "next/image";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import logo from "../../../public/navbar_logo.png";
+import logo from "../../../public/navbar_logo_not_hompage.png";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
