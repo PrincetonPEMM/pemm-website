@@ -3,19 +3,19 @@
   /* background-image: linear-gradient(to top, #221f21, transparent, #221f21); */
 }
 .bgImg1 {
-  background-image: url("/featured_stories.jpeg");
+  background-image: url("/Home_page/bG1.jpg");
 }
 .bgImg2 {
-  background-image: url("/featured_manuscripts.jpg");
+  background-image: url("/Home_page/BG2.jpg");
 }
 .bgImg3 {
-  background-image: url("/featured_paintings.jpg");
+  background-image: url("/Home_page/BG3.jpg");
 }
 .bgImg1,
 .bgImg2,
 .bgImg3 {
   width: 33%;
-  height: 100vh;
+  height: 120vh;
   background-position: center;
   background-size: cover;
   color: white;
@@ -65,7 +65,7 @@
   border: 3px solid orange; /* creates padding around scroll thumb */
 }
 .Shadow {
-  background-image: linear-gradient(to top, #221f21, transparent, #221f21);
+  /* background-image: linear-gradient(to top, #221f21, transparent, #221f21); */
   padding-top: 10vw;
   height: 100%;
 }

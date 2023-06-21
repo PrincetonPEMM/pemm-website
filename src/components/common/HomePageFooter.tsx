@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { AppBar } from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import Footermodulecss from "./Footer.module.css";
 
 const HomePageFooter = () => {
   return (
@@ -21,11 +22,19 @@ const HomePageFooter = () => {
             flexDirection: { xs: "column", md: "row", lg: "row" },
           }}
         >
-          <Box className="pl-5 inline-flex flex-col flex-grow text-center items-center">
+          <Box className="inline-flex flex-col flex-grow text-center items-center">
             <Link href="/">
-              <div className="cursor-pointer">
-                <br />
-                <img alt="PEMM Logo" src={"/navbar_logo.png"} width={400} />
+              <div className={Footermodulecss.footerImgs}>
+                <img
+                  alt="PEMM Logo"
+                  src={"/NavIMG/arat_netib.png"}
+                  width={400}
+                />
+                <img
+                  alt="PEMM Logo"
+                  src={"/NavIMG/navbar_logo.png"}
+                  width={400}
+                />
                 <br />
               </div>
             </Link>

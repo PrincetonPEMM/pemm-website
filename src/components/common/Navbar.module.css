@@ -2,35 +2,39 @@
   display: flex;
   justify-content: space-between;
   position: absolute;
-  background-image: linear-gradient(#221f21, transparent);
+  /* background-image: linear-gradient(#221f21, transparent); */
   color: #e7e3dc;
-  padding-bottom: 90px;
   z-index: 4;
   width: 95%;
+  margin-top: 4vw;
 }
 
 .nav ul {
   display: flex;
   list-style: none;
-  margin-top: 4vw;
+  align-items: flex-end;
 }
 .nav ul li {
-  margin: 1vw;
+  margin: 0 1vw;
 }
 .navLinks {
   text-decoration: none;
   color: white;
-  /* font-family: "Noto Serif", serif; */
+  /* font-family: "Source Serif"; */
   /* font-family: "Nunito", sans-serif; */
-  /* font-family: "Source Serif Pro", serif; */
-  font-size: 25px;
+  font-family: "Source Serif", serif;
+  font-size: 20px;
+  font-weight: 600;
 }
-.homeLogoIMG {
-  max-width: 400px;
-}
-.navToHome {
-}
+
 .rightUL {
   position: relative;
   max-width: 100%;
+}
+.LeftSideIMG {
+  max-width: 400px;
+  display: flex;
+}
+.LeftSideIMG img {
+  height: 5vw;
 }

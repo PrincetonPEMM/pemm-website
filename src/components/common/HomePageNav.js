@@ -7,11 +7,14 @@ function HomePageNav() {
       <ul id={navCSS.navToHome}>
         <li>
           <Link id={navCSS.homeLogo} href="/">
-            <img
-              alt="PEMM Logo"
-              className={navCSS.homeLogoIMG}
-              src={"./navbar_logo.png"}
-            />
+            <span className={navCSS.LeftSideIMG}>
+              <img alt="PEMM Logo" src="./NavIMG/arat_netib.png" />
+              <img
+                alt="PEMM Logo"
+                className={navCSS.homeLogoIMG}
+                src={"./NavIMG/navbar_logo.png"}
+              />
+            </span>
           </Link>
         </li>
       </ul>

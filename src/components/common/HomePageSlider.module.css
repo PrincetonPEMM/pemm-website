@@ -3,8 +3,9 @@
   text-align: center;
 }
 .title {
-  font-size: 5vw;
+  font-size: 3vw;
   text-align: center;
+  font-family: "Maghfirea", sans-serif;
 }
 .detailes {
   text-align: left;
@@ -16,7 +17,7 @@
   color: white;
 }
 .textWrapper div {
-  width: 60%;
+  width: 70%;
   margin: auto;
 }
 .threeImgWrapper {

@@ -22,7 +22,11 @@ function Home() {
   let showTarget = (className) => {
     const element = document.getElementsByClassName(className)[0];
     console.log(element);
-    element.scrollIntoView();
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
   };
   useEffect(() => {
     let targetClass = document.getElementsByClassName("HomePageSlider")[0];
