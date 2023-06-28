@@ -13,7 +13,7 @@
 .textWrapper div {
   margin: auto;
   max-width: 1000px;
-  padding: 1vw;
+  padding: 0 1vw;
 }
 .TextContent {
   font-size: 40px;
