@@ -12,11 +12,10 @@
 }
 .textWrapper div {
   margin: auto;
-  max-width: 1000px;
   padding: 0 1vw;
 }
 .TextContent {
-  font-size: 40px;
+  font-size: 35px;
 }
 .threeImgWrapper {
   display: flex;
