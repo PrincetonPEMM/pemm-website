@@ -1,24 +1,22 @@
-.Featured {
-  font-size: 40px;
-  text-align: center;
-}
 .title {
-  font-size: 3vw;
+  font-size: 70px;
   text-align: center;
   font-family: "Maghfirea", sans-serif;
 }
-.detailes {
-  text-align: left;
-  font-size: 25px;
-}
+
 .textWrapper {
   background-color: rgb(235, 168, 26);
   padding: 20px;
   color: white;
+  text-align: center;
 }
 .textWrapper div {
-  width: 70%;
   margin: auto;
+  max-width: 1000px;
+  padding: 1vw;
+}
+.TextContent {
+  font-size: 40px;
 }
 .threeImgWrapper {
   display: flex;
