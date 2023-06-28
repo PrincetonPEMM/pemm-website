@@ -23,7 +23,7 @@
   /* font-family: "Source Serif"; */
   /* font-family: "Nunito", sans-serif; */
   font-family: "Source Serif", serif;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -32,7 +32,7 @@
   max-width: 100%;
 }
 .LeftSideIMG {
-  max-width: 400px;
+  max-width: 100%;
   display: flex;
 }
 .LeftSideIMG img {
