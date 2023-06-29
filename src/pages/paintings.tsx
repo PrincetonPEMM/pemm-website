@@ -44,6 +44,7 @@ const PaintingsPage: NextPage = ({
   let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
   const [NoData, setNoData] = useState("initial");
   let [searchResult, setSearchResult] = useState<Paintings[]>([]);
+
   useEffect(() => {
     let byColor = (
         document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
@@ -324,7 +325,7 @@ const PaintingsPage: NextPage = ({
           <h3>No data found in your search.</h3>
         </div>
       ) : searchItemResult?.length > 0 ? (
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap ">
           <ImagesComponent
             images={searchItemImageUri}
             paintings={searchItemResult}
