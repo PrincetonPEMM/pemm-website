@@ -24,7 +24,7 @@ function Home() {
     console.log(element);
     element.scrollIntoView({
       behavior: "smooth",
-      block: "end",
+      block: "start",
       inline: "nearest",
     });
   };
@@ -95,9 +95,9 @@ function Home() {
           TextContent: `Miracle of Mary manuscripts from Ethiopia are among the most spectacular of Ethiopia's parchment manuscripts. The staff of PEMM has selected three manuscirpts that best represent the genre. One is the very earliest known Miracle of Mary manuscript (from the 1300s), one is a Second Gondarine style manuscript (at Princeton), and one illustrates many stories never illustrated before (at the British Library).`,
 
           imgs: [
-            "/ManuscriptsIMG/BGAYINT.jpg",
-            "/ManuscriptsIMG/BOR520.jpg",
-            "/ManuscriptsIMG/PEM 65.jpg",
+            "/ManuscriptsIMG/Manu1.jpg",
+            "/ManuscriptsIMG/Manu2.jpg",
+            "/ManuscriptsIMG/Manu3.jpg",
           ],
         }}
       />
@@ -108,9 +108,9 @@ function Home() {
           TextContent: `Miracle of Mary manuscripts from Ethiopia sometimes having paintings, also called illuminations or miniatures. The staff of PEMM has selected three paintings that best represent the genre. The first is from one of the earliest manuscripts (1400), the second is a [something], and the third is from one of the most recent manuscripts (19xx)`,
 
           imgs: [
-            "/Paintings/oldest14thC.jpg",
-            "/Paintings/Middel18Th.jpg",
-            "/Paintings/Newest20Th.jpg",
+            "/Paintings/featured1.jpg",
+            "/Paintings/featured2.jpg",
+            "/Paintings/featured3.jpg",
           ],
         }}
       />
