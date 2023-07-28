@@ -36,7 +36,7 @@ function HomePageNav() {
         </div>
         <div className={navCSS.navLinks}>
           <li>
-            <Link id={navCSS.navToManuscript} href="/manuscript">
+            <Link id={navCSS.navToManuscript} href="/manuscripts">
               Manuscripts
             </Link>
           </li>

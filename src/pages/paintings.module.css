@@ -1,0 +1,53 @@
+.empitySpace {
+  height: 10px;
+}
+.searchInputWrapper {
+  width: 80%;
+  display: flex;
+  border: solid 3px #3c6f57;
+  background-color: white;
+  margin: auto;
+  padding: 0 10px;
+  max-width: 860px;
+}
+.searchInputWrapper img {
+  width: 20px;
+  margin-left: 0px;
+}
+.searchInput {
+  padding: 10px;
+  display: block;
+  flex: 1;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+.selectList {
+  width: fit-content;
+  margin: auto;
+  color: white;
+}
+.selectList select {
+  background-color: #3c6f57;
+  border: none;
+  padding: 10px;
+  margin: 5px 3px;
+  max-width: 190px;
+}
+.hiddenOption {
+  display: none;
+}
+.noDataFound {
+  width: fit-content;
+  margin: auto;
+}
+.default {
+  display: flex;
+  justify-content: center;
+}
+.default button {
+  background-color: #3c6f57;
+  padding: 6px 12px;
+  border-radius: 10px;
+}

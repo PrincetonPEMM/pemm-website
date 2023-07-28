@@ -2,7 +2,18 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['api.bl.uk', 'iiif-cloud.princeton.edu', 'repository.library.brown.edu', 'pemm-data-migration.s3.amazonaws.com', 'ethiopic-manuscripts.s3.amazonaws.com'],
+    domains: [
+    'api.bl.uk',
+    'iiif-cloud.princeton.edu',
+    'repository.library.brown.edu',
+    'pemm-data-migration.s3.amazonaws.com',
+    'ethiopic-manuscripts.s3.amazonaws.com',
+    'gundagunde.digital.utsc.utoronto.ca',
+    'ia903203.us.archive.org',
+    'www.bombeck.de',
+    'ethiopia.deeds.utoronto.ca',
+    'sites.hampshire.edu'
+    ],
   },
   env: {
     REACT_APP_API: process.env.REACT_APP_API,
