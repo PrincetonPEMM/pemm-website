@@ -10,39 +10,19 @@ import Image from "next/image";
 import ArchiveOfPainting from "../components/elements/ArchiveOfPainting";
 function getImageUrisFromPaintings(paintings: Paintings[]): string[] {
   let imageUris: string[] = [];
-  // for (let i = 0; i < paintings.length; i++) {
-  //   if (paintings[i].image_link) {
-  //     imageUris.push(paintings[i].image_link!);
-  //   }
-  // }
   return imageUris;
 }
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const res = await axios(process.env.REACT_APP_API + "images/");
     const paintings: Paintings[] = await res.data;
-    // let myMock: Paintings[] = [
-    //   {
-    //     image_link:
-    //       "https://ethiopic-manuscripts.s3.amazonaws.com/EMML+Mss/EMML+22/EMML_22_203.jpg",
-    //     painting_date: 1421,
-    //     is_black_and_white: true,
-    //     painting_available: true,
-    //     type_of_story: "blab abababa",
-    //     canonical_story_id: "" + Math.random(),
-    //     manuscript: "lorem ipsum louranmt",
-    //     episode_keywords: ["qolo", "abeba"],
-    //     painting_id: 23,
-    //   },
-    // ];
+
     let imageUris = getImageUrisFromPaintings(paintings);
-    // let imageUris = getImageUrisFromPaintings(myMock);
     return {
       props: {
         data: {
           imageUris: imageUris,
           paintings: paintings,
-          // paintings: myMock,
         },
       },
     };
@@ -57,15 +37,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
   }
 };
-
 const PaintingsPage: NextPage = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  let paintings: Paintings[] = data.paintings;
-  let [searchResult, setSearchResult] = useState<Paintings[]>([]);
   let [searchItemResult, setSearchItemResult] = useState<Paintings[]>([]);
   let [searchItemImageUri, setSearchItemImageUri] = useState<string[]>([]);
   const [NoData, setNoData] = useState("initial");
+  let [searchResult, setSearchResult] = useState<Paintings[]>([]);
   useEffect(() => {
     let byColor = (
         document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
@@ -78,10 +56,10 @@ const PaintingsPage: NextPage = ({
       ).value,
       year = 0;
     if (byDate != "default") year = Number(byDate.replaceAll("s", ""));
-    // selectByDateOfPaintigs,selectByColorOfPaintigs,selectByStoryTypePaintigs
-    searchFromPaintings(year, byColor, byStoryType);
+
+    searchFromPaintings();
   }, [, searchResult]);
-  // let [searchImageUri, setSearchImageUri] = useState<string[]>([]);
+  let paintings: Paintings[] = data.paintings;
   if (paintings.length === 0) {
     return (
       <div className="h-screen">
@@ -110,12 +88,9 @@ const PaintingsPage: NextPage = ({
         choosenItems.push(item);
         searchUri.push(image_link);
       } else {
-        // push has to be only one
         let pushCounter = 0;
         episode_keywords?.map((episodeItem) => {
           if (episodeItem.toLowerCase()?.includes(searchValue.toLowerCase())) {
-            // push has to be done only once which is done when pushCounter is 0;
-            // if pushCounter>0 data is already pushed so no need to push again
             if (pushCounter == 0) {
               choosenItems.push(item);
               searchUri.push(image_link);
@@ -128,12 +103,19 @@ const PaintingsPage: NextPage = ({
 
     setSearchResult(choosenItems);
   };
-  let searchFromPaintings = (
-    searchYear: number,
-    searchColor: String,
-    storyType: String
-  ) => {
-    // console.log("paintings", paintings);
+
+  let searchFromPaintings = () => {
+    let Year: any = (
+      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
+    ).value.replace("s", "");
+    if (Year == "default") Year = 0;
+    let searchYear = Number(Year);
+    let searchColor = (
+      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
+    ).value;
+    let storyType = (
+      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
+    ).value;
 
     let searchedItems: Paintings[] = [],
       SearchedImgURL: any[] = [];
@@ -166,10 +148,7 @@ const PaintingsPage: NextPage = ({
         SearchedImgURL.push(image_link);
       }
     });
-    // console.log("searchedItems.length", searchedItems.length);
-    // if (searchedItems.length <= 0) {
-    //   setNoData("No Data Found");
-    // } else setNoData("");
+    console.log("searchedItems", searchedItems);
     let collectedItems: Paintings[] = [],
       collectedImagesURL: any[] = [];
 
@@ -196,17 +175,15 @@ const PaintingsPage: NextPage = ({
       searchedItems = collectedItems;
       SearchedImgURL = collectedImagesURL;
     }
-    // filter by story type
+
     let storysArray: Paintings[] = [],
       byStoryImagesURL: any[] = [];
     if (storyType != "default") {
       searchedItems?.map((item) => {
         if (storyType == item.type_of_story) {
-          console.log("item.type_of_story", item.type_of_story);
           storysArray.push(item);
           byStoryImagesURL.push(item.image_link);
         } else {
-          // console.log("wrong selection ");
         }
       });
       searchedItems = storysArray;
@@ -218,20 +195,16 @@ const PaintingsPage: NextPage = ({
     if (archive_of_painting != "default") {
       let archivedItems: Paintings[] = [],
         archivedImgURL: any[] = [];
-      // console.log("searchedItems", searchedItems);
       searchedItems.map((item) => {
         if (archive_of_painting == item.archive_of_painting) {
-          // console.log(item);
           archivedItems.push(item);
           archivedImgURL.push(item.image_link);
         }
-        // console.log("archivedItems", archivedItems);
       });
       searchedItems = archivedItems;
       SearchedImgURL = archivedImgURL;
-      // setSearchItemResult(searchedItems);
     }
-    console.log(searchedItems);
+
     if (searchedItems.length <= 0) {
       setNoData("No Data Found");
       return;
@@ -240,56 +213,7 @@ const PaintingsPage: NextPage = ({
     setSearchItemResult(searchedItems);
     setSearchItemImageUri(SearchedImgURL);
   };
-  // searchItemResult,searchItemImageUri,
-  let searchByDateOfPaintings = (e: any) => {
-    console.log(e.target.className);
-    let Year: any = e.target.value.replace("s", "");
-    Year = Number(Year);
-    let byColor = (
-      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
-    ).value;
-    let byStory = (
-      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
-    ).value;
-
-    searchFromPaintings(Year, byColor, byStory);
-    console.log("paintings", paintings);
-  };
-  let selectByStoryType = (e: any) => {
-    console.log(e.target.value);
-    let value = e.target.value;
-    console.log("searchItemResult", searchItemResult);
-    let byDate = (
-      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
-    ).value;
-    let byColor = (
-      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
-    ).value;
-    let Year: any = byDate.replace("s", "");
-    if (byDate == "default") Year = 0;
-    else Year = Number(Year);
-    searchFromPaintings(Year, byColor, value);
-  };
-  let selectPaintingsIncolor = (e: any) => {
-    let selectByDateOfPaintigs = (
-      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
-    ).value;
-    // console.log(searchItemResult);
-    let Year: any = selectByDateOfPaintigs.replace("s", "");
-    console.log("Year", Year);
-    // return;
-    if (Year == "default") Year = 0;
-    else Year = Number(Year);
-    let value = e.target.value;
-    console.log(value);
-    // selectByDateOfPaintigs,selectByColorOfPaintigs,selectByStoryTypePaintigs
-    let byStory = (
-      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
-    ).value;
-    searchFromPaintings(Year, value, byStory);
-  };
   let handleDefaultInputValues = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("e", e.target);
     if (e.target) {
     }
     (
@@ -297,33 +221,15 @@ const PaintingsPage: NextPage = ({
     ).value = "default";
     (
       document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
-    ).value = "Include B&W";
+    ).value = "Paintings in color only";
     (
       document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
     ).value = "default";
     (document.getElementById("archive_of_painting") as HTMLInputElement).value =
       "default";
 
-    searchFromPaintings(0, "Paintings in color only", "default");
+    searchFromPaintings();
   };
-  let selectByArchives = (e: any) => {
-    console.log(e.target.className);
-    // selectByDateOfPaintigs
-    let Year: any = (
-      document.getElementById("selectByDateOfPaintigs") as HTMLInputElement
-    ).value.replace("s", "");
-    if (Year == "default") Year = 0;
-    Year = Number(Year);
-    let byColor = (
-      document.getElementById("selectByColorOfPaintigs") as HTMLInputElement
-    ).value;
-    let byStory = (
-      document.getElementById("selectByStoryTypePaintigs") as HTMLInputElement
-    ).value;
-    searchFromPaintings(Year, byColor, byStory);
-    console.log("paintings", paintings);
-  };
-
   return (
     <div className="paintingWrapper">
       <div className={stylePaintings.empitySpace}></div>
@@ -341,12 +247,11 @@ const PaintingsPage: NextPage = ({
         <select
           id="selectByDateOfPaintigs"
           className={stylePaintings.paintingSelection}
-          onChange={searchByDateOfPaintings}
+          onChange={searchFromPaintings}
         >
           <option value={"default"} className={stylePaintings.hiddenOption}>
             Date of Paintings
           </option>
-          {/* <div className={stylePaintings.dropdownList}> </div> */}
           <option>1300s</option>
           <option>1400s</option>
           <option>1500s</option>
@@ -359,7 +264,7 @@ const PaintingsPage: NextPage = ({
         <select
           id="selectByColorOfPaintigs"
           className={stylePaintings.paintingSelection}
-          onChange={selectPaintingsIncolor}
+          onChange={searchFromPaintings}
         >
           <option value={"default"} className={stylePaintings.hiddenOption}>
             Paintings in Color
@@ -372,7 +277,7 @@ const PaintingsPage: NextPage = ({
         </select>
         <select
           className={stylePaintings.paintingSelection}
-          onChange={selectByStoryType}
+          onChange={searchFromPaintings}
           id="selectByStoryTypePaintigs"
         >
           <option className={stylePaintings.hiddenOption} value={"default"}>
@@ -383,12 +288,11 @@ const PaintingsPage: NextPage = ({
         </select>
         <select
           id="archive_of_painting"
-          onChange={selectByArchives}
+          onChange={searchFromPaintings}
           className={""}
         >
           {ArchiveOfPainting()?.map((item) => {
             let x = ArchiveOfPainting().indexOf(item);
-            // console.log(x);
             if (x == 0)
               return (
                 <option
@@ -428,15 +332,6 @@ const PaintingsPage: NextPage = ({
         </div>
       ) : (
         ""
-        // <div className="flex flex-wrap justify-center">
-        //   {
-        //     imageUris?.length > 0
-        //       ? ""
-        // :  <ImagesComponent images={imageUris} paintings={paintings} />
-        //         ""
-        //     // <ImagesComponent images={searchImageUri} paintings={searchResult} />
-        //   }
-        // </div>
       )}
     </div>
   );

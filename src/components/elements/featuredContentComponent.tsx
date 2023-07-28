@@ -12,20 +12,19 @@ export const FeaturedContentComponent = (props: any) => {
                     display: { xs: 'flex', md: 'flex', lg: 'flex' },
                     backgroundColor: props.backgroundColor
                 }}>
-                <Image src={props.imageUrl} width={600} height={600}/>
                 <div style={{
                         display: 'flex' ,
                         justifyContent: 'center',
                         alignItems: 'center',
                         width: 1000
                     }}>
-                        <div style={{width: 700}}>
-                            <Typography variant="h5" color="secondary">
+                        <div>
+                            <div className='common featured'>
                                 Featured {props.title}
-                            </Typography>
-                            <Typography variant="subtitle1" color="secondary">
+                            </div>
+                            <div className='common details'>
                                 {props.description}
-                            </Typography>
+                            </div>
                         </div>
                         
                 </div>
@@ -46,6 +45,19 @@ export const FeaturedContentComponent = (props: any) => {
                 link={props.link}/>
             </Box>
         </div>
+        <style jsx>{`
+          .common {
+            font-family: "Maghfirea", sans-serif;
+            color: white;
+            margin-left: 10px
+          }
+          .featured {
+            font-size: 40px;
+          }
+          .details {
+            font-size: 20px;
+          }
+        `}</style>
       </>
     );
 };

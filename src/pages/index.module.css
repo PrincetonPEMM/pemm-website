@@ -1,0 +1,71 @@
+.bodyImages {
+  display: flex;
+  /* background-image: linear-gradient(to top, #221f21, transparent, #221f21); */
+}
+.bgImg1 {
+  background-image: url("/Home_page/bG1.jpg");
+}
+.bgImg2 {
+  background-image: url("/Home_page/BG2.jpg");
+}
+.bgImg3 {
+  background-image: url("/Home_page/BG3.jpg");
+}
+.bgImg1,
+.bgImg2,
+.bgImg3 {
+  width: 33%;
+  height: 120vh;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+.mainText {
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+  padding-top: 2vw;
+  width: 100%;
+}
+.mainText div {
+  flex: 1;
+  padding-left: 20px;
+  color: white;
+  font-family: "Maghfirea", sans-serif;
+}
+.Featured {
+  padding-top: 10vw;
+  font-size: 40px;
+}
+.title {
+  font-size: 5vw;
+}
+.detailes {
+  text-align: left;
+  font-size: 25px;
+}
+.STORY_SUMMARY,
+.PAINTINGS_SUMMARY,
+.MANUSCRIPTS_SUMMARY {
+  height: 100%;
+  padding-left: 20px;
+  -ms-overflow-style: none; /*Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.STORY::-webkit-scrollbar {
+  width: 6px; /* width of the entire scrollbar */
+}
+.STORY::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
+}
+.STORY::-webkit-scrollbar-thumb {
+  background-color: blue; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid orange; /* creates padding around scroll thumb */
+}
+.Shadow {
+  /* background-image: linear-gradient(to top, #221f21, transparent, #221f21); */
+  padding-top: 10vw;
+  height: 100%;
+}

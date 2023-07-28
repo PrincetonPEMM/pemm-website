@@ -4,29 +4,38 @@ import Typography from "@mui/material/Typography";
 import { AppBar } from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import logo from "../../../public/footer_logo.png";
+import Footermodulecss from "./Footer.module.css";
 
-const Footer = () => {
+const HomePageFooter = () => {
   return (
     <footer>
       <AppBar
         position="relative"
-        color="secondary"
+        color="primary"
         sx={{ top: "auto", bottom: 0 }}
       >
         <Box
-          className="p-7 gap-x-56"
+          className="p-7"
           sx={{
             display: "flex",
             flexWrap: "wrap",
             flexDirection: { xs: "column", md: "row", lg: "row" },
           }}
         >
-          <Box className="pl-5 inline-flex flex-col text-center items-center">
+          <Box className="inline-flex flex-col flex-grow text-center items-center">
             <Link href="/">
-              <div className="cursor-pointer">
-                <Image alt="PEMM Logo" src={logo} width={250} height={75} />
+              <div className={Footermodulecss.footerImgs}>
+                <img
+                  alt="PEMM Logo"
+                  src={"/NavIMG/arat_netib.png"}
+                  width={400}
+                />
+                <img
+                  alt="PEMM Logo"
+                  src={"/NavIMG/navbar_logo.png"}
+                  width={400}
+                />
+                <br />
               </div>
             </Link>
             <Typography className="max-w-sm text-left">
@@ -51,16 +60,16 @@ const Footer = () => {
               </p>
               <p>
                 <a href="mailto: pemm@princeton.edu">
-                  <Button>pemm@princeton.edu</Button>
+                  <Button color="secondary">pemm@princeton.edu</Button>
                 </a>
               </p>
               <p>© The Trustees of Princeton University</p>
             </Typography>
           </Box>
-          <div className="inline-flex flex-col text-center">
+          <div className="inline-flex flex-col flex-grow text-center">
             <Typography
               className="text-2xl"
-              color="primary"
+              color="secondary"
               sx={{
                 paddingTop: { xs: "1.25rem", md: "0", lg: "0" },
                 paddingBottom: { xs: "0", md: "1.25rem", lg: "1.25rem" },
@@ -69,37 +78,37 @@ const Footer = () => {
               About
             </Typography>
             <Link href="/about/mission">
-              <Button>Our Mission</Button>
+              <Button color="secondary">Our Mission</Button>
             </Link>
             <Link href="/about/mission">
-              <Button>Our History</Button>
+              <Button color="secondary">Our History</Button>
             </Link>
             <Link href="/about/people">
-              <Button>Our Team</Button>
+              <Button color="secondary">Our Team</Button>
             </Link>
             <Link href="/about/people">
-              <Button>Our Partners</Button>
+              <Button color="secondary">Our Partners</Button>
             </Link>
             <Link href="/about/people">
-              <Button>Our Funders</Button>
+              <Button color="secondary">Our Funders</Button>
             </Link>
             <Link href="/about/connect">
-              <Button>Our News</Button>
+              <Button color="secondary">Our News</Button>
             </Link>
             <Link href="/about/connect">
-              <Button>Our Events</Button>
+              <Button color="secondary">Our Events</Button>
             </Link>
             <Link href="/about/connect">
-              <Button>Volunteers</Button>
+              <Button color="secondary">Volunteers</Button>
             </Link>
             <Link href="/about/connect">
-              <Button>Give Feedback</Button>
+              <Button color="secondary">Give Feedback</Button>
             </Link>
           </div>
-          <div className="inline-flex flex-col text-center">
+          <div className="inline-flex flex-col flex-grow text-center">
             <Typography
               className="text-2xl"
-              color="primary"
+              color="secondary"
               sx={{
                 paddingTop: { xs: "1.25rem", md: "0", lg: "0" },
                 paddingBottom: { xs: "0", md: "1.25rem", lg: "1.25rem" },
@@ -108,28 +117,28 @@ const Footer = () => {
               Explore
             </Typography>
             <Link href="/stories">
-              <Button>Find Stories</Button>
+              <Button color="secondary">Find Stories</Button>
             </Link>
             <Link href="/paintings">
-              <Button>Find Paintings</Button>
+              <Button color="secondary">Find Paintings</Button>
             </Link>
             <Link href="/manuscripts">
-              <Button>Find Manuscripts</Button>
+              <Button color="secondary">Find Manuscripts</Button>
             </Link>
             <Link href="/stories">
-              <Button>Featured Stories</Button>
+              <Button color="secondary">Featured Stories</Button>
             </Link>
             <Link href="/paintings">
-              <Button>Featured Paintings</Button>
+              <Button color="secondary">Featured Paintings</Button>
             </Link>
             <Link href="/manuscripts">
-              <Button>Featured Manuscripts</Button>
+              <Button color="secondary">Featured Manuscripts</Button>
             </Link>
           </div>
-          <div className="inline-flex flex-col text-center">
+          <div className="inline-flex flex-col flex-grow text-center">
             <Typography
               className="text-2xl"
-              color="primary"
+              color="secondary"
               sx={{
                 paddingTop: { xs: "1.25rem", md: "0", lg: "0" },
                 paddingBottom: { xs: "0", md: "1.25rem", lg: "1.25rem" },
@@ -140,30 +149,44 @@ const Footer = () => {
             <div>
               <p className="text-white w-60 inline-flex flex-col">
                 <Link href="/">
-                  <Button className="p-0">Incipit Tool</Button>
+                  <Button className="p-0" color="secondary">
+                    Incipit Tool
+                  </Button>
                 </Link>
                 <Link href="/research/arabic-manuscripts">
-                  <Button className="p-0">Arabic Manuscripts</Button>
+                  <Button className="p-0" color="secondary">
+                    Arabic Manuscripts
+                  </Button>
                 </Link>
                 <Link href="/research/arabic-stories">
-                  <Button className="p-0">Arabic Stories</Button>
+                  <Button className="p-0" color="secondary">
+                    Arabic Stories
+                  </Button>
                 </Link>
                 <Link href="/maps">
-                  <Button className="p-0">Maps</Button>
+                  <Button className="p-0" color="secondary">
+                    Maps
+                  </Button>
                 </Link>
                 <Link href="/research/spellings">
-                  <Button className="p-0">
+                  <Button className="p-0" color="secondary">
                     Interchangeable Spellings of Ethiopic Terms
                   </Button>
                 </Link>
                 <Link href="/research/research-posts">
-                  <Button className="p-0">Research Posts</Button>
+                  <Button className="p-0" color="secondary">
+                    Research Posts
+                  </Button>
                 </Link>
                 <Link href="/research/macomber">
-                  <Button className="p-0">Macomber Handlist</Button>
+                  <Button className="p-0" color="secondary">
+                    Macomber Handlist
+                  </Button>
                 </Link>
                 <Link href="/research/repositories">
-                  <Button className="p-0">List of Repositories</Button>
+                  <Button className="p-0" color="secondary">
+                    List of Repositories
+                  </Button>
                 </Link>
 
                 <Link href="/research/bibliography">
@@ -174,13 +197,19 @@ const Footer = () => {
                   <Button className="p-0">Using the Site</Button>
                 </Link>
                 <Link href="https://github.com/PrincetonPEMM/pemm-website">
-                  <Button className="p-0">PEMM Github Repository</Button>
+                  <Button className="p-0" color="secondary">
+                    PEMM Github Repository
+                  </Button>
                 </Link>
                 <Link href="/about/terms-of-use">
-                  <Button className="p-0">Terms of Use</Button>
+                  <Button className="p-0" color="secondary">
+                    Terms of Use
+                  </Button>
                 </Link>
                 <Link href="https://accessibility.princeton.edu/help">
-                  <Button className="p-0">Accessibility</Button>
+                  <Button className="p-0" color="secondary">
+                    Accessibility
+                  </Button>
                 </Link>
               </p>
               <div className="pt-3">
@@ -194,4 +223,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default HomePageFooter;
