@@ -9,14 +9,14 @@ export const ImageTextComponent = (props: any) => {
         <div 
           className="absolute top-1/4 left-5 right-5 text-center -translate-x-1/2 -translate-y-1/2 flex flex-col">
             <Button className="block">
-                <Typography className="block" variant="h5" color="secondary">
+                <div className="block features">
                     Featured
-                </Typography>
+                </div>
             </Button>
             <Button className="block">
-                <Typography variant="h3" color="secondary">
+                <div className="block title">
                     {props.title}
-                </Typography>
+                </div>
             </Button>
             <div className="hidden md:block lg:block xl:block">
             <Button>
@@ -26,6 +26,18 @@ export const ImageTextComponent = (props: any) => {
             </Button>
             </div>
         </div>
+        <style jsx>{`
+          .features {
+            font-family: "Maghfirea", sans-serif;
+            font-size: 25px;
+            color: white;
+          }
+          .title {
+            font-family: "Maghfirea", sans-serif;
+            font-size: 45px;
+            color: white;
+          }
+        `}</style>
     </div>
     );
 };

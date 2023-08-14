@@ -1,0 +1,26 @@
+.title {
+  font-size: 70px;
+  text-align: center;
+  font-family: "Maghfirea", sans-serif;
+}
+
+.textWrapper {
+  background-color: rgb(235, 168, 26);
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+.textWrapper div {
+  margin: auto;
+  padding: 0 1vw;
+}
+.TextContent {
+  font-size: 35px;
+}
+.threeImgWrapper {
+  display: flex;
+}
+.threeImgWrapper img {
+  height: 80vh;
+  width: 33.39%;
+}

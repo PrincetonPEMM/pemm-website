@@ -148,6 +148,7 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                   sx={{
                     wordWrap: "break-word",
                     whiteSpace: 'normal',
+                    width: '550px', // Adjust the width of the story title column
                   }}
                   align="left">
                   {row.macomber_title}

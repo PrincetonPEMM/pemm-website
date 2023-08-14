@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  /* background-image: linear-gradient(#221f21, transparent); */
+  color: #e7e3dc;
+  z-index: 4;
+  width: 95%;
+  margin-top: 4vw;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+.nav ul li {
+  margin: 0 1vw;
+}
+.navLinks {
+  text-decoration: none;
+  color: white;
+  /* font-family: "Source Serif"; */
+  /* font-family: "Nunito", sans-serif; */
+  font-family: "Source Serif", serif;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.rightUL {
+  position: relative;
+  max-width: 100%;
+}
+.LeftSideIMG {
+  max-width: 100%;
+  display: flex;
+}
+.LeftSideIMG img {
+  height: 5vw;
+}

@@ -57,7 +57,6 @@ const placeOfOriginMap : {[key: string]: any} = {
       {
         chips && 
         chips.map((origin: string, index: number) => {
-          console.log(origin, index);
           if (['Africa', 'Europe', 'Levant'].includes(origin)) {
             return (<Chip key={index}
               size="small"
