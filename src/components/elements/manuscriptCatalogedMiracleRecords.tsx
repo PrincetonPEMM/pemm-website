@@ -190,7 +190,7 @@ const ManuscriptCatalogedMiracleRecords = (props: any) => {
                     sx={{
                       wordWrap: "break-word",
                       whiteSpace: 'normal',
-                      width: '600px', // Adjust the width of the incipit column
+                      width: '5500px', // Adjust the width of the incipit column
                     }}
                     align="left">
                     {row.incipit}
